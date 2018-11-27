@@ -1,0 +1,19 @@
+a{
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.5s;
+    text-shadow: 2px;
+}
+
+a:hover{
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.footer-logo{
+    max-width: 40px;
+}
+
+.main-content p{
+    text-indent: 5em;
+}

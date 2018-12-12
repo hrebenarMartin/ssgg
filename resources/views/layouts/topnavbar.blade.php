@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel w3-theme">
+<nav class="navbar navbar-expand-md navbar-laravel w3-theme-d3" id="navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand w3-bottombar  color-border-green" href="{{ url('/') }}">
             {{ config('app.name', 'SSGG') }}
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -11,15 +11,15 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('home') }}">{{__('Home')}}</a>
+                    <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('index') }}">{{__('Home')}}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">{{__('Contact')}}</a>
+                    <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('show', 'contact') }}">{{__('Contact')}}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}">{{__('About')}}</a>
+                    <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('show', 'about') }}">{{__('About')}}</a>
                 </li>
             </ul>
 
@@ -28,11 +28,11 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('login') }}">{{ __('Login') }}</a>
                     </li>
                     <li class="nav-item">
                         @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('register') }}">{{ __('Register') }}</a>
                         @endif
                     </li>
                 @else

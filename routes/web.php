@@ -11,9 +11,18 @@
 |
 */
 
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home2');
+/*Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'AboutController@index')->name('about');
-Route::get('/contact', 'ContactController@index')->name('contact');
+Route::get('/contact', 'ContactController@index')->name('contact');*/
+
+Route::resource('/', 'PagesController');
+
+Route::resource('/admin', 'Dashboard\DashboardController');
+
+

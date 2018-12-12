@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Block;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,12 +16,12 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $page = DB::table('pages as p')
-            ->join('page_content as pc','pc.page_id', '=','p.id')
-            ->where('p.id','=',1)
-            ->get();
+        $page = Page::getHomePage();
+        $page_blocks = Block::getPageBlocks($page->id);
 
-        return view('page')->with('data', $page);
+        return view('page')
+            ->with('page', $page)
+            ->with('data', $page_blocks);
     }
 
     /**

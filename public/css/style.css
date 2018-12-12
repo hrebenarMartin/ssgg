@@ -1,12 +1,13 @@
 a{
     text-decoration: none;
-    color: #ffffff;
+    color: #fff;
     transition: 0.5s;
-    text-shadow: 2px;
+    /*text-shadow: ;*/
 }
 
 a:hover{
     text-decoration: none;
+    color: #fff;
     transition: 0.5s;
 }
 

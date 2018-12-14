@@ -4,29 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" line="27" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54f7aabe-222f-423c-a96f-4982ac9ae847" name="Default Changelist" comment="commit - files ready to deploy to websupport server">
-      <change afterPath="$PROJECT_DIR$/public/css/admin.style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/w3.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery-3.3.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
+    <list default="true" id="54f7aabe-222f-423c-a96f-4982ac9ae847" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AboutController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/color_scheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/color_scheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/uiux.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/uiux.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/about/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/contact/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/topnavbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/topnavbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +20,7 @@
     <session id="678213569">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.2" value="2" />
@@ -407,12 +386,20 @@
       <workItem from="1542728067600" duration="8384000" />
       <workItem from="1543352782677" duration="736000" />
       <workItem from="1543852108000" duration="11689000" />
-      <workItem from="1544635606976" duration="4926000" />
+      <workItem from="1544635606976" duration="5417000" />
     </task>
+    <task id="LOCAL-00001" summary="commit - files ready to deploy to websupport server">
+      <created>1544644812202</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1544644812202</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42329000" />
+    <option name="totallyTimeSpent" value="42820000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -430,7 +417,7 @@
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8691756" visible="true" weight="0.08199357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.13082437" side_tool="true" weight="0.19298245" />
-      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.3296582" />
+      <window_info anchor="bottom" id="Messages" sideWeight="0.4994641" visible="true" weight="0.3296582" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32894737" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -442,7 +429,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.25904486" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32894737" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="11" sideWeight="0.5005359" side_tool="true" visible="true" weight="0.3296582" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -660,6 +647,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

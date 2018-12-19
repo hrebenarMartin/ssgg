@@ -21,8 +21,8 @@ Auth::routes();
 Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/contact', 'ContactController@index')->name('contact');*/
 
-Route::resource('/', 'PagesController');
+Route::resource('/', 'Frontend\PagesController');
 
-Route::resource('/admin', 'Dashboard\DashboardController');
+Route::resource('/dashboard', 'Backend\Dashboard\DashboardController');
 
-
+Route::resource('/admin/user','Backend\User\UserController');

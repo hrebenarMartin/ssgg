@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-laravel w3-theme-d3" id="navbar">
     <div class="container">
-        <a class="navbar-brand w3-bottombar  color-border-green" href="{{ url('/') }}">
-            {{ config('app.name', 'SSGG') }}
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img src="{{ asset('images/logo.png') }}" style="max-height: 50px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>

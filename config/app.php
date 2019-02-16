@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'sk',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,7 +159,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
         'Barryvdh\Debugbar\ServiceProvider',
+        'Collective\Html\HtmlServiceProvider',
+        Intervention\Image\ImageServiceProvider::class,
+
+
 
     ],
 
@@ -211,6 +216,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class
 
     ],
 

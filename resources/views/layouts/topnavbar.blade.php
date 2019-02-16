@@ -1,60 +1,87 @@
-<nav class="navbar navbar-expand-md navbar-laravel w3-theme-d3" id="navbar">
-    <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo.png') }}" style="max-height: 50px">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('index') }}">{{__('Home')}}</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('show', 'contact') }}">{{__('Contact')}}</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('show', 'about') }}">{{__('About')}}</a>
-                </li>
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    <li class="nav-item">
-                        @if (Route::has('register'))
-                            <a class="nav-link w3-bottombar w3-border-theme-d3 color-hover-border-green" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        @endif
-                    </li>
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+<header class="header-global">
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="{{route('index')}}">
+                <img src="{{asset('images/logo_sq.png')}}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="{{route('index')}}">
+                                <img src="{{asset('images/s_logo_sq.png')}}">
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
                         </div>
-                    </li>
-                @endguest
-            </ul>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    @foreach ($menu_items as $i)
+                        <li class="nav-item dropdown">
+                            <a href="{{url($i->route)}}" class="nav-link" role="button">
+                                @if(App::isLocale('en'))
+                                    <span class="nav-link-inner--text">{{ $i->name_en }}</span>
+                                @else
+                                    <span class="nav-link-inner--text">{{ $i->name_sk }}</span>
+                                @endif
+                            </a>
+                        </li>
+                    @endforeach
+
+                    @if($conference->is == 1)
+                        <li class="nav-item dropdown">
+                            <a href="{{route('conference.show', $conference->year)}}" class="nav-link" role="button">
+                                <span class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                    @if(App::isLocale('en'))
+                        <li>
+                            <a href="{{route('set_locale', 'sk')}}" class="btn btn-neutral btn-sm btn-icon">
+                                <span class="btn-inner--icon">SK</span>
+                            </a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{route('set_locale', 'en')}}" class="btn btn-neutral btn-sm btn-icon">
+                                <span class="btn-inner--icon">EN</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if($user)
+                        <li class="nav-item d-none d-lg-block ml-lg-4">
+                            <a href="#!" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" target="_blank" class="btn btn-neutral btn-icon">
+                                <span class="nav-link-inner--text">{{__('main.logout')}}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <img src="{{asset('public/images/profiles/'.$user->id."/".$user->profile->image)}}" class="rounded-circle" width="50">
+                        </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @else
+                        <li class="nav-item d-none d-lg-block ml-lg-4">
+                            <a href="{{route('login')}}" class="btn btn-neutral btn-icon">
+                                <span class="nav-link-inner--text">{{__('main.login')}}</span>
+                            </a>
+                        </li>
+                    @endif
+
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>

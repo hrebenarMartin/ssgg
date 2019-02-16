@@ -24,28 +24,26 @@
                 </li>
 
                 <h3 class="menu-title">Admin</h3><!-- /.admin-title -->
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>CMS</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-wrench"></i><a href="{{ route('dashboard.index') }}">{{ __('b_menu.cms_front_ssgg') }}</a></li>
-                        <li><i class="fa fa-wrench"></i><a href="{{ route('dashboard.index') }}">{{ __('b_menu.cms_front_conference') }}</a></li>
-                    </ul>
+                <li>
+                    <a href="{{ route('admin.cms.index') }}"><i class="menu-icon fa fa-wrench"></i>{{ __('b_menu.cms') }}</a>
                 </li>
 
                 <li>
-                    <a href="{{ route('user.index') }}"> <i class="menu-icon fa fa-group"></i>{{ __('b_menu.users') }}</a>
+                    <a href="{{ route('admin.user.index') }}"> <i class="menu-icon fa fa-group"></i>{{ __('b_menu.users') }}</a>
                 </li>
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-file-word-o"></i>{{ __('b_menu.contributions') }}</a>
+                    <a href="#!"> <i class="menu-icon fa fa-file-word-o"></i>{{ __('b_menu.contributions') }}</a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.conferences.index') }}"> <i class="menu-icon fa fa-file-word-o"></i>{{ __('b_menu.conference_management') }}</a>
                 </li>
 
                 <h3 class="menu-title">Menu</h3><!-- /.menu-title -->
-
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-id-card"></i>{{ __('b_menu.profile') }}</a>
+                    <a href="{{ route('user.profile.show', Auth::id()) }}"> <i class="menu-icon fa fa-id-card"></i>{{ __('b_menu.profile') }}</a>
                 </li>
                 <li>
-                    <a href="widgets.html"> <i class="menu-icon fa fa-id-card"></i>{{ __('b_menu.user_contribution') }}</a>
+                    <a href="{{ route('user.myContribution.index') }}"> <i class="menu-icon fa fa-id-card"></i>{{ __('b_menu.user_contribution') }}</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

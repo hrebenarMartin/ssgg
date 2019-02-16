@@ -11,33 +11,18 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'access_level',
-    ];
+    protected $table = 'users';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'access_level',
+    ];
 
-    public static function getUserById($id){
-
-        $res = DB::table('users')
-            ->where('id', '=', $id)
-            ->get();
-
-        if($res == null) dd($res);
-
-        return $res;
-    }
 }

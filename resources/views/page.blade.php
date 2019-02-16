@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+
+
+@if(App::isLocale('en'))
+    @section('title', $page->title_second)
+@else
+    @section('title', $page->title)
+@endif
 
 @section('page_css')
 
@@ -8,16 +14,16 @@
 
 
 @section('content')
+
     {{-- dd($data) --}}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                @foreach($data as $block)
-                    {!! $block->data !!}
-                @endforeach
-            </div>
-        </div>
-    </div>
+    @foreach($data as $block)
+        @if(App::isLocale('en'))
+            {!! $block->content !!}
+        @else
+            {!! $block->content_en !!}
+        @endif
+    @endforeach
+
 
 @endsection
 

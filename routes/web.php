@@ -12,17 +12,37 @@
 */
 
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-/*Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about', 'AboutController@index')->name('about');
-Route::get('/contact', 'ContactController@index')->name('contact');*/
 
-Route::resource('/', 'Frontend\PagesController');
+//Route::resource('/conference', 'Frontend\Conference\PagesController');
 
 Route::resource('/dashboard', 'Backend\Dashboard\DashboardController');
 
-Route::resource('/admin/user','Backend\User\UserController');
+Route::get('/set_locale/{locale}', 'Helpers\LocaleController@setLocale')->name('set_locale');
+
+Route::get('/', 'Frontend\PagesController@index')->name("index");
+Route::get('/{page}', 'Frontend\PagesController@show')->name('show');
+Route::get("/konferencia/{year}", 'Frontend\PagesController@show')->name('conference.show');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function (){
+    Route::resource('/user','Backend\User\UserController');
+
+    Route::resource('/cms', 'Backend\CMS\PagesController');
+    Route::resource('/cms/content', 'Backend\CMS\ContentController');
+    Route::get('/cms/content/create/{page_id}', 'Backend\CMS\ContentController@createForPage')->name('content.createForPage');
+    Route::resource('/cms/front_menu', 'Backend\CMS\FrontMenuController');
+
+    Route::resource('/conferences', 'Backend\Admin\ConferenceController');
+});
+
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {
+    Route::resource('/profile', 'Backend\User\ProfileController');
+    Route::resource('/myContribution', 'Backend\User\ContributionController');
+    Route::get('/myContribution/download/{id}', 'Backend\User\ContributionController@downloadContribution')->name('myContribution.download');
+    Route::get('/myContribution/download_template/{id}', 'Backend\User\ContributionController@downloadTemplate')->name('myContribution.download_template');
+});

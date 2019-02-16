@@ -11,14 +11,10 @@ class Page extends Model
 
     protected $fillable =[
         'title',
+        'title_second',
+        'description',
+        'module',
         'alias',
     ];
 
-    public static function getHomePage(){
-        $res = DB::table('pages')
-            ->where('alias', 'home')
-            ->first();
-
-        return $res;
-    }
 }

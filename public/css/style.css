@@ -1,20 +1,5 @@
-a{
-    text-decoration: none;
-    color: #fff;
-    transition: 0.5s;
-    /*text-shadow: ;*/
-}
-
-a:hover{
-    text-decoration: none;
-    color: #fff;
-    transition: 0.5s;
-}
-
-.footer-logo{
-    max-width: 40px;
-}
-
-.main-content p{
-    text-indent: 5em;
+.flag-btn-sk{
+    background-image: url("../flag-icon-css-master/flags/1x1/sk.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
 }

@@ -136,16 +136,10 @@
 
                     <div class="row form-group">
                         <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="reg_start">{{ __('form.conference_reg_start') }}</label>
+                            <label class="col-form-label" for="reg_start">{{ __('form.conference_registration_dates') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="reg_start" name="reg_start" class="form-control" value="{{ old('reg_start') }}" required>
-                        </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="reg_end">{{ __('form.conference_reg_end') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="reg_end" name="reg_end" class="form-control" value="{{ old('reg_end') }}" required>
@@ -154,22 +148,284 @@
 
                     <div class="row form-group">
                         <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="conf_start">{{ __('form.conference_start') }}</label>
+                            <label class="col-form-label" for="conf_start">{{ __('form.conference_conference_dates') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="conf_start" name="conf_start" class="form-control" value="{{ old('conf_start') }}" required>
-                        </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="conf_end">{{ __('form.conference_end') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="conf_end" name="conf_end" class="form-control" value="{{ old('conf_end') }}" required>
                         </div>
                     </div>
 
+                    <div class="row form-group">
+                        <div class="col-sm-4" style="padding-bottom: 1em">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label">{{ __('form.conference_day') }} 1:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-check">
+                                            <div class="checkbox">
+                                                <label for="day_1_break" class="form-check-label ">
+                                                    <input type="checkbox" id="day_1_break" name="day_1_break" value="1" @if(old('day_1_break')) checked @endif class="form-check-input">{{ __('form.conference_breakfast') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_1_lunch" class="form-check-label ">
+                                                    <input type="checkbox" id="day_1_lunch" name="day_1_lunch" value="1" @if(old('day_1_lunch')) checked @endif class="form-check-input"> {{ __('form.conference_lunch') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_1_dinner" class="form-check-label ">
+                                                    <input type="checkbox" id="day_1_dinner" name="day_1_dinner" value="1" @if(old('day_1_dinner')) checked @endif class="form-check-input"> {{ __('form.conference_dinner') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="padding-bottom: 1em" id="day_2">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label">{{ __('form.conference_day') }} 2:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-check">
+                                            <div class="checkbox">
+                                                <label for="day_2_break" class="form-check-label ">
+                                                    <input type="checkbox" id="day_2_break" name="day_2_break" value="1" @if(old('day_2_break')) checked @endif class="form-check-input">{{ __('form.conference_breakfast') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_2_lunch" class="form-check-label ">
+                                                    <input type="checkbox" id="day_2_lunch" name="day_2_lunch" value="1" @if(old('day_2_lunch')) checked @endif class="form-check-input"> {{ __('form.conference_lunch') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_2_dinner" class="form-check-label ">
+                                                    <input type="checkbox" id="day_2_dinner" name="day_2_dinner" value="1" @if(old('day_2_dinner')) checked @endif class="form-check-input"> {{ __('form.conference_dinner') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="padding-bottom: 1em" id="day_3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label">{{ __('form.conference_day') }} 3:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-check">
+                                            <div class="checkbox">
+                                                <label for="day_3_break" class="form-check-label ">
+                                                    <input type="checkbox" id="day_3_break" name="day_3_break" value="1" @if(old('day_3_break')) checked @endif class="form-check-input">{{ __('form.conference_breakfast') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_3_lunch" class="form-check-label ">
+                                                    <input type="checkbox" id="day_3_lunch" name="day_3_lunch" value="1" @if(old('day_3_lunch')) checked @endif class="form-check-input"> {{ __('form.conference_lunch') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_3_dinner" class="form-check-label ">
+                                                    <input type="checkbox" id="day_3_dinner" name="day_3_dinner" value="1" @if(old('day_3_dinner')) checked @endif class="form-check-input"> {{ __('form.conference_dinner') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="padding-bottom: 1em" id="day_4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label">{{ __('form.conference_day') }} 4:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-check">
+                                            <div class="checkbox">
+                                                <label for="day_4_break" class="form-check-label ">
+                                                    <input type="checkbox" id="day_4_break" name="day_4_break" value="1" @if(old('day_4_break')) checked @endif class="form-check-input">{{ __('form.conference_breakfast') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_4_lunch" class="form-check-label ">
+                                                    <input type="checkbox" id="day_4_lunch" name="day_4_lunch" value="1" @if(old('day_4_lunch')) checked @endif class="form-check-input"> {{ __('form.conference_lunch') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_4_dinner" class="form-check-label ">
+                                                    <input type="checkbox" id="day_4_dinner" name="day_4_dinner" value="1" @if(old('day_4_dinner')) checked @endif class="form-check-input"> {{ __('form.conference_dinner') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="padding-bottom: 1em" id="day_5">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label class="col-form-label">{{ __('form.conference_day') }} 5:</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <div class="form-check">
+                                            <div class="checkbox">
+                                                <label for="day_5_break" class="form-check-label ">
+                                                    <input type="checkbox" id="day_5_break" name="day_5_break" value="1" @if(old('day_5_break')) checked @endif class="form-check-input">{{ __('form.conference_breakfast') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_5_lunch" class="form-check-label ">
+                                                    <input type="checkbox" id="day_5_lunch" name="day_5_lunch" value="1" @if(old('day_5_lunch')) checked @endif class="form-check-input"> {{ __('form.conference_lunch') }}
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label for="day_5_dinner" class="form-check-label ">
+                                                    <input type="checkbox" id="day_5_dinner" name="day_5_dinner" value="1" @if(old('day_5_dinner')) checked @endif class="form-check-input"> {{ __('form.conference_dinner') }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label>{{ __('form.conference_special_event') }} 1:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="special_1" name="special_1" value="1" @if(old('special_1')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" name="special_1_sk" placeholder="Event description(Slovak)" rows="3" style="margin-bottom: 1em">{{old('special_1_sk')}}</textarea>
+                            <textarea class="form-control" name="special_1_en" placeholder="Event description(English)" rows="3">{{old('special_1_en')}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label>{{ __('form.conference_special_event') }} 2:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="special_2" name="special_2" value="1" @if(old('special_2')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" name="special_2_sk" placeholder="Event description(Slovak)" rows="3" style="margin-bottom: 1em">{{old('special_2_sk')}}</textarea>
+                            <textarea class="form-control" name="special_2_en" placeholder="Event description(English)" rows="3">{{old('special_2_en')}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label>{{ __('form.conference_special_event') }} 3:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="special_3" name="special_3" value="1" @if(old('special_3')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" name="special_3_sk" placeholder="Event description(Slovak)" rows="3" style="margin-bottom: 1em">{{old('special_3_sk')}}</textarea>
+                            <textarea class="form-control" name="special_3_en" placeholder="Event description(English)" rows="3">{{old('special_3_en')}}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="room_1">{{ __('form.conference_room1') }}:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="room_1" name="room_1" value="1" @if(old('room_1')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" id="room_1_price" name="room_1_price" value="{{ old('room_1_price') }}" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="room_1_price" class="col-form-label">{{ __('form.conference_room_price') }} €</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="room_2">{{ __('form.conference_room2') }}:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="room_2" name="room_2" value="1" @if(old('room_2')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" id="room_2_price" name="room_2_price" value="{{ old('room_2_price') }}" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="room_2_price" class="col-form-label">{{ __('form.conference_room_price') }} €</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="room_3">{{ __('form.conference_room3') }}:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="room_3" name="room_3" value="1" @if(old('room_3')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" id="room_3_price" name="room_3_price" value="{{ old('room_3_price') }}" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="room_3_price" class="col-form-label">{{ __('form.conference_room_price') }} €</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="room_4">{{ __('form.conference_room5') }}:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="room_4" name="room_4" value="1" @if(old('room_4')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" id="room_4_price" name="room_4_price" value="{{ old('room_4_price') }}" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="room_4_price" class="col-form-label">{{ __('form.conference_room_price') }} €</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="room_5">{{ __('form.conference_room5') }}:</label>
+                        </div>
+                        <div class="col-sm-1 text-center">
+                            <input type="checkbox" id="room_5" name="room_5" value="1" @if(old('room_5')) checked @endif class="form-check-input">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="number" id="room_5_price" name="room_5_price" value="{{ old('room_5_price') }}" class="form-control">
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="room_5_price" class="col-form-label">{{ __('form.conference_room_price') }} €</label>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="extra_sk" class="col-form-label">{{ __('form.conference_extra_sk') }}</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea id="extra_sk" name="extra_sk" class="form-control">{{ old('extra_sk') }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-4 text-right">
+                            <label for="extra_en" class="col-form-label">{{ __('form.conference_extra_en') }}</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea id="extra_en" name="extra_en" class="form-control">{{ old('extra_en') }}</textarea>
+                        </div>
+                    </div>
 
                 </form>
             </div>

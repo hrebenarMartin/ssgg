@@ -137,16 +137,10 @@
 
                     <div class="row form-group">
                         <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="reg_start">{{ __('form.conference_reg_start') }}</label>
+                            <label class="col-form-label" for="reg_start">{{ __('form.conference_registration_dates') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="reg_start" name="reg_start" class="form-control" value="{{ old('reg_start') ? old('reg_start') : $data->registration_start }}" required>
-                        </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="reg_end">{{ __('form.conference_reg_end') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="reg_end" name="reg_end" class="form-control" value="{{ old('reg_end') ? old('reg_end') : $data->registration_end }}" required>
@@ -155,16 +149,10 @@
 
                     <div class="row form-group">
                         <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="conf_start">{{ __('form.conference_start') }}</label>
+                            <label class="col-form-label" for="conf_start">{{ __('form.conference_conference_dates') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="conf_start" name="conf_start" class="form-control" value="{{ old('conf_start') ? old('conf_start') : $data->conference_start }}" required>
-                        </div>
-                    </div>
-
-                    <div class="row form-group">
-                        <div class="col-sm-4 text-right">
-                            <label class="col-form-label" for="conf_end">{{ __('form.conference_end') }}</label>
                         </div>
                         <div class="col-sm-3">
                             <input type="date" id="conf_end" name="conf_end" class="form-control" value="{{ old('conf_end') ? old('conf_end') : $data->conference_end }}" required>

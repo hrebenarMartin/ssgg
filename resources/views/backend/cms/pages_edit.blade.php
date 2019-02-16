@@ -54,9 +54,9 @@
                             </div>
                             <div class="col col-md-3">
                                 <select class="form-control" id="page_module" name="page_module" required>
-                                    <option value="" disabled selected>Choose page module...</option>
+                                    <option value="" disabled selected>{{ __('form.cms_page_module_choose') }}</option>
                                     <option value="1" @if(old('page_module') == 1 || $page->module == 1) selected @endif >SSGG</option>
-                                    <option value="2" @if(old('page_module') == 2 || $page->module == 2) selected @endif >Conference</option>
+                                    <option value="2" @if(old('page_module') == 2 || $page->module == 2) selected @endif >{{ __('form.cms_page_module_conference') }}</option>
                                 </select>
                             </div>
                         </div>

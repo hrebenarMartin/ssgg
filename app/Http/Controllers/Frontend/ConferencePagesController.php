@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Block;
+use App\Models\Conference;
+use App\Models\ConferenceConfiguration;
+use App\Models\Contribution;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PagesController extends Controller
+class ConferencePagesController extends Controller
 {
 
     public function __construct()
     {
-        session()->put('module', 1);
+        session()->put('module', 2);
     }
 
     /**
@@ -22,12 +25,26 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $page = Page::where('alias', 'home')->where('module', 1)->first();
-        $page_blocks = Block::where('page_id', $page->id)->get();
+        $conference = Conference::where('status', 1)->first();
+
+        if(!$conference) return abort(404);
+
+        $page = Page::where('alias', $conference->year)->where('module', 2)->where('active', 1)->first();
+
+        if(!$page) return abort(404);
+
+        $page_blocks = Block::where('page_id', $page->id)->orderBy('rank', 'ASC')->get();
+
+        //Dáta pre fixné dynamické bloky
+        $dynamic_data = collect();
+        $dynamic_data->conference = $conference;
+        $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id);
+        $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id);
 
         return view('page')
             ->with('page', $page)
-            ->with('data', $page_blocks);
+            ->with('data', $page_blocks)
+            ->with('dynamic_data', $dynamic_data);
     }
 
     /**
@@ -59,15 +76,26 @@ class PagesController extends Controller
      */
     public function show($id)
     {
-        $page = Page::where('alias', $id)->where('module', 1)->first();
+        $conference = Conference::where('status', 1)->first();
+
+        if(!$conference) return abort(404);
+
+        $page = Page::where('alias', $id)->where('module', 2)->where('active', 1)->first();
 
         if(!$page) return abort(404);
 
-        $page_blocks = Block::where('page_id', $page->id)->get();
+        $page_blocks = Block::where('page_id', $page->id)->orderBy('rank', 'ASC')->get();
+
+        //Dáta pre fixné dynamické bloky
+        $dynamic_data = collect();
+        $dynamic_data->conference = $conference;
+        $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id);
+        $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id);
 
         return view('page')
             ->with('page', $page)
-            ->with('data', $page_blocks);
+            ->with('data', $page_blocks)
+            ->with('dynamic_data', $dynamic_data);
     }
 
     /**

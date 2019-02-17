@@ -35,11 +35,16 @@
                             </a>
                         </li>
                     @endforeach
-
-                    @if($conference->is == 1)
+                    @if(isset($conference) and $module == 1)
                         <li class="nav-item dropdown">
-                            <a href="{{route('conference.show', $conference->year)}}" class="nav-link" role="button">
+                            <a href="{{route('conference.index')}}" class="nav-link" role="button">
                                 <span class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
+                            </a>
+                        </li>
+                    @elseif($module == 2)
+                        <li class="nav-item dropdown">
+                            <a href="{{route('index')}}" class="nav-link" role="button">
+                                <span class="nav-link-inner--text">SSGG</span>
                             </a>
                         </li>
                     @endif

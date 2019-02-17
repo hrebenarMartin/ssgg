@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\CMS;
 
+use App\Models\Conference;
 use App\Models\FrontMenu;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,7 +26,12 @@ class FrontMenuController extends Controller
      */
     public function create()
     {
-        return view('backend.cms.menu_add');
+        $conference = Conference::where('status', '!=', 3)->first();
+        if(!$conference){
+            session(['message'=>__('messages.no_active_conference'), 'message_type' => 'warning']);
+            return view("backend.cms.menu_add");
+        }
+        return view("backend.cms.menu_add")->with('conference_id', $conference->id);
     }
 
     /**
@@ -53,6 +59,7 @@ class FrontMenuController extends Controller
         $item->name_en = $request->menu_title_en;
         $item->route = $request->menu_route;
         $item->module = $request->menu_module;
+        if($request->menu_module == 2) $item->conference_id = $request->conference_id;
         $item->rank = $request->menu_rank;
 
         $item->save();

@@ -15,6 +15,27 @@ class Page extends Model
         'description',
         'module',
         'alias',
+        'conference_id',
+        'active',
     ];
 
+
+    public static function destroyPagesOfConference($conference_id)
+    {
+        $pages = self::where('module', 2)->where('conference_id', $conference_id)->get();
+        foreach ($pages as $p){
+            Block::destroyBlocksOfPage($p->id);
+            self::destroy($p->id);
+        }
+    }
+
+    public static function disablePagesOfConference($conference_id)
+    {
+        self::where('conference_id', $conference_id)->update(['active' => 0]);
+    }
+
+    public static function enablePagesOfConference($conference_id)
+    {
+        self::where('conference_id', $conference_id)->update(['active' => 1]);
+    }
 }

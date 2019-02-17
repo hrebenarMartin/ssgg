@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\CMS;
 
+use App\Models\Conference;
 use App\Models\FrontMenu;
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -17,8 +18,8 @@ class PagesController extends Controller
     public function index()
     {
         $pages_ssgg = Page::where('module', 1)->get();
-        $pages_conference = Page::where('module', 2)->get();
-        $menu_conf = FrontMenu::where('module', 2)->get();
+        $pages_conference = Page::where('module', 2)->where('active', 1)->get();
+        $menu_conf = FrontMenu::where('module', 2)->where('active', 1)->get();
         $menu_ssgg = FrontMenu::where('module', 1)->get();
 
         return view("backend.cms.pages_listing")
@@ -35,7 +36,12 @@ class PagesController extends Controller
      */
     public function create()
     {
-        return view("backend.cms.pages_add");
+        $conference = Conference::where('status', '!=', 3)->first();
+        if(!$conference){
+            session(['message'=>__('messages.no_active_conference'), 'message_type' => 'warning']);
+            return view("backend.cms.pages_add");
+        }
+        return view("backend.cms.pages_add")->with('conference_id', $conference->id);
     }
 
     /**
@@ -51,7 +57,7 @@ class PagesController extends Controller
             'page_title' => 'required',
             'page_title_second' => 'required',
             'page_alias' => 'required',
-            'page_description' => 'required'
+            'page_description' => 'required',
         ];
 
         $this->validate($request, $rules);

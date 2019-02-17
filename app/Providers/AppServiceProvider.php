@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Conference;
+use App\Models\ConferenceConfiguration;
+use App\Models\Contribution;
 use App\Models\FrontMenu;
 use App\Models\Profile;
 use App\User;
@@ -27,15 +29,20 @@ class AppServiceProvider extends ServiceProvider
             $user = User::find($logged_user);
             if($user) $user->profile = Profile::where('user_id', $user->id)->first();
 
-            $front_menu = FrontMenu::orderBy('rank', 'ASC')->get();
-            $conference = Conference::where('status', 1)->first();
+            if(session()->has('module')) $module = session()->pull('module');
+            else $module = 1;
 
-            if($conference) $conference->is = 1;
-            else $conference->is = 0;
+            $front_menu = FrontMenu::where('module', $module)->where('active', 1)->orderBy('rank', 'ASC')->get();
+            $conference = Conference::where('status', 1)->first();
 
             view()->share('menu_items', $front_menu);
             view()->share('user', $user);
-            view()->share('conference', $conference);
+            view()->share('module', $module);
+
+            //Ak je otvorená konferencia, vložíme do view všetky potrebné dáta
+            if($conference){
+                view()->share('conference', $conference);
+            }
 
         });
 

@@ -21,10 +21,10 @@ class ContributionController extends Controller
         $has_contribution = Contribution::where('user_id', Auth::id())->count() == 1;
 
         $conference = Conference::where('status', 1)->first();
-
+        //dd($conference);
         if(!$conference){
             return view('backend.contribution.user_contribution')
-                ->with('no_conference');
+                ->with('no_conference', true);
         }
 
         $contrib_deadline = Conference::where('status', 1)->first()->registration_end;

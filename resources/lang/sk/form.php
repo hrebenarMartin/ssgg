@@ -127,6 +127,23 @@ return [
     'conference_breakfast' => "Raňajky",
     'conference_lunch' => "Obed",
     'conference_dinner' => "Večera",
+    'conference_config' => "Konfigurácia konferencie",
+    'conference_food' => "Ponuka stravy",
+    'conference_food_choose' => "Zvoľte ponúkanú stravu pre každý deň",
+    'conference_special' => "Špeciálne udalosti (Exkurzie, Výlety, Párty, a pod.)",
+    'conference_special_event' => "Udalosť",
+    'conference_special_event_desc_sk' => "Popis udalosti (Slovensky)",
+    'conference_special_event_desc_en' => "Popis udalosti (Anglicky)",
+    'conference_rooms' => "Možnosti ubytovania",
+    'conference_room1' => "Jedno lôžkové izby",
+    'conference_room2' => "Dvoj lôžkové izby (Manželská posteľ)",
+    'conference_room3' => "Dvoj lôžkové izby",
+    'conference_room4' => "Troj lôžkové izby",
+    'conference_room5' => "Štvor lôžkové izby",
+    'conference_room_price' => "Cena v ",
+    'conference_extra' => "Doplňujúce informácie",
+    'conference_extra_sk' => "Slovenská verzia",
+    'conference_extra_en' => "Anglická verzia",
 
 
 ];

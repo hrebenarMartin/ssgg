@@ -124,6 +124,10 @@
 
         @yield('content')
 
+        @php
+            session()->forget(['message','message_type']);
+        @endphp
+
     </div> <!-- .content -->
 </div><!-- /#right-panel -->
 

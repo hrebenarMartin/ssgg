@@ -17,10 +17,29 @@
 
     {{-- dd($data) --}}
     @foreach($data as $block)
-        @if(App::isLocale('en'))
-            {!! $block->content !!}
+        @if($block->type == 4)
+            @if($block->fixed_id == 99)
+                @include('components.fixed_99_conference_head')
+            @endif
+        @elseif($block->type == 3)
+            @if(App::isLocale('en'))
+                {!! $block->content_en !!}
+            @else
+                {!! $block->content !!}
+            @endif
+        @elseif($block->type == 2)
+            @if(App::isLocale('en'))
+                {!! $block->content_en !!}
+            @else
+                {!! $block->content !!}
+            @endif
+        @elseif($block->type == 1)
+            @if(App::isLocale('en'))
+                {!! $block->content_en !!}
+            @else
+                {!! $block->content !!}
+            @endif
         @else
-            {!! $block->content_en !!}
         @endif
     @endforeach
 

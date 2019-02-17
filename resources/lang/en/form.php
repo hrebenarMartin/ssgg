@@ -128,5 +128,23 @@ return [
     'conference_breakfast' => "Breakfast",
     'conference_lunch' => "Lunch",
     'conference_dinner' => "Dinner",
+    'conference_config' => "Conference configuration",
+    'conference_food' => "Food availability",
+    'conference_food_choose' => "Choose food options for each day",
+    'conference_special' => "Special events (Excursions, trips, parties, etc.)",
+    'conference_special_event' => "Event",
+    'conference_special_event_desc_sk' => "Event description (Slovak)",
+    'conference_special_event_desc_en' => "Event description (English)",
+    'conference_rooms' => "Accommodation options",
+    'conference_room1' => "Single-bed rooms",
+    'conference_room2' => "Double-bed rooms",
+    'conference_room3' => "Two bed rooms",
+    'conference_room4' => "Three bed rooms",
+    'conference_room5' => "Four bed rooms",
+    'conference_room_price' => "Price in ",
+    'conference_extra' => "Additional info",
+    'conference_extra_sk' => "Slovak version",
+    'conference_extra_en' => "English version",
+
 
 ];

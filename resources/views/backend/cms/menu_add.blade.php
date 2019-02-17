@@ -57,10 +57,12 @@
                                 <select class="form-control" id="menu_module" name="menu_module" required>
                                     <option value="" disabled selected>Choose module...</option>
                                     <option value="1" @if(old('page_module') == 1) selected @endif >SSGG</option>
-                                    <option value="2" @if(old('page_module') == 2) selected @endif >Conference</option>
+                                    @if(isset($conference_id))<option value="2" @if(old('page_module') == 2) selected @endif >Conference</option>@endif
                                 </select>
                             </div>
                         </div>
+
+                        @if(isset($conference_id))<input type="hidden" name="conference_id" value="{{$conference_id}}">@endif
 
                         <div class="row form-group">
                             <div class="col col-md-2">

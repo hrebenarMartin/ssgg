@@ -55,10 +55,12 @@
                                 <select class="form-control" id="page_module" name="page_module" required>
                                     <option value="" disabled selected>{{ __('form.cms_page_module_choose') }}</option>
                                     <option value="1" @if(old('page_module') == 1) selected @endif >SSGG</option>
-                                    <option value="2" @if(old('page_module') == 2) selected @endif >{{ __('form.cms_page_module_conference') }}</option>
+                                    @if(isset($conference_id))<option value="2" @if(old('page_module') == 2) selected @endif >{{ __('form.cms_page_module_conference') }}</option>@endif
                                 </select>
                             </div>
                         </div>
+
+                        @if(isset($conference_id))<input type="hidden" name="conference_id" value="{{$conference_id}}">@endif
 
                         <div class="row form-group">
                             <div class="col col-md-2">
@@ -80,6 +82,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection

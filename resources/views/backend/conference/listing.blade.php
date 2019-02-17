@@ -41,13 +41,19 @@
                             <td>
                                 @if($conference->status == 1) <span class="badge badge-success"><i class="fa fa-check"></i></span>
                                 @elseif($conference->status == 2) <span class="badge badge-warning"><i class="fa fa-minus-circle"></i></span>
-                                @else <span class="badge badge-primary"><i class="fa fa-store"></i></span>
+                                @else <span class="badge badge-primary"><i class="fa fa-download"></i></span>
                                 @endif
                             </td>
                             <td>{{ $conference->conference_start }}</td>
                             <td>{{ $conference->conference_end }}</td>
                             <td>
-                                <a href="#!" class="btn btn-danger btn-sm listing_controls pull-right"><i class="fa fa-times"></i></a>
+                                <a href="#!" data-item-id="{{ $conference->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-times"></i></a>
+                                {{ Form::open(['method' => 'DELETE', 'route' => ['admin.conferences.destroy', $conference->id ],
+                                        'id' => 'item-del-'. $conference->id  ])
+                                    }}
+                                {{ Form::hidden('conference_id', $conference->id) }}
+                                {{ Form::close() }}
+
                                 <a href="{{ route('admin.conferences.edit', $conference->id) }}" class="btn btn-warning btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
                                 <a href="{{ route('admin.conferences.show', $conference->id) }}" class="btn btn-primary btn-sm listing_controls pull-right"><i class="fa fa-search"></i></a>
                             </td>
@@ -60,3 +66,29 @@
     </div>
 
 @endsection
+
+@section('scripts')
+    <script>
+
+        $(document).ready(function () {
+
+            $('.delete-alert').click(function (e) {
+                var id = $(e.currentTarget).attr("data-item-id");
+                swal({
+                    title: "DANGER ZONE! Are you sure you want to proceed?",
+                    text: "Once confirmed, everything connected to this conference will be permanently deleted! (pages, content, images, contributions, etc.)",
+                    icon: "error",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if(willDelete){
+                            document.getElementById('item-del-'+id).submit();
+                        }
+                    });
+            });
+
+        })
+
+    </script>
+@stop

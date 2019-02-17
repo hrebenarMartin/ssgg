@@ -38,7 +38,7 @@
                     <div class="col col-md-3">
                         <select class="form-control" id="block_parent" name="block_parent" required>
                             @foreach ($pages as $p)
-                                <option value="{{ $p->id }}" @if(old('block_parent') == $p->id ) selected @endif>{{ $p->title." (".$p->id.")" }}</option>
+                                <option value="{{ $p->id }}" @if(old('block_parent') == $p->id or $page_id == $p->id) selected @endif>{{ $p->title." (".$p->id.")" }}</option>
                             @endforeach
                         </select>
                     </div>

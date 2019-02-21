@@ -26,7 +26,7 @@
                         <th scope="col">{{ __('form.cms_block_title') }}</th>
                         <th scope="col">{{ __('form.cms_block_type') }}</th>
                         <th scope="col">{{ __('form.cms_block_content') }}</th>
-                        <th scope="col" class="text-right">{{ __('form.actions') }}</th>
+                        <th scope="col" style="width:20%;" class="text-right">{{ __('form.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,7 +37,7 @@
                                 <th scope="row">{{ $block->id }}</th>
                                 <td>{{ $block->title }}</td>
                                 <td>{{ $block->type }}</td>
-                                <td>{{ $block->content }}</td>
+                                <td>{{ substr($block->content,0, 250) }}...</td>
                                 <td>
                                     <a href="#!" data-item-id="{{ $block->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash-o"></i></a>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['admin.content.destroy', $block->id ],

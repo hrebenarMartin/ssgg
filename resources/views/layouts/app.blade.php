@@ -14,15 +14,17 @@
     <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
 
+    <link type="text/css" href="{{asset('css/animate.css')}}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!-- Icons -->
-    <link href="{{asset('vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Argon CSS -->
-    <link type="text/css" href="{{asset('css/argon.css')}}?v=1.0.1" rel="stylesheet">
+    <link type="text/css" href="{{asset('vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <link type="text/css" href="{{asset('flag-icon-css-master/css/flag-icon.min.css')}}">
+    <!-- Argon CSS -->
+    <link type="text/css" href="{{asset('css/argon.css')}}" rel="stylesheet">
+
+    <link type="text/css" href="{{asset('flag-icon-css-master/css/flag-icon.min.css')}}" rel="stylesheet">
 
     @yield('page_css')
 </head>
@@ -44,7 +46,7 @@
     <!-- Argon JS -->
     <script src="{!! asset('js/argon.js') !!}?v=1.0.1"></script>
 
-    @yield('scripts')
+    @yield('page_scripts')
 
 
 </html>

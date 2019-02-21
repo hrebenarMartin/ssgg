@@ -90,20 +90,14 @@
                     </div>
                 </div>
 
-                <div class="language-select dropdown" id="language-select">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
-                        <i class="flag-icon flag-icon-gb-eng"></i>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="language">
-                        <div class="dropdown-item">
-                            <span class="flag-icon flag-icon-gb-eng"></span>
-                        </div>
-                        <div class="dropdown-item">
-                            <i class="flag-icon flag-icon-sk"></i>
-                        </div>
-                    </div>
+                <div class="pull-right" style="padding-top: 5px; padding-right: 2em">
+                    <button class="btn btn-sm">{{ __('main.language_change') }}: </button>
+                    @if(App::isLocale('en'))
+                        <a href="{{route('set_locale', 'sk')}}" class="btn btn-primary btn-sm" style="border-radius: 20%">SK</a>
+                    @else
+                        <a href="{{route('set_locale', 'en')}}" class="btn btn-primary btn-sm" style="border-radius: 20%">EN</a>
+                    @endif
                 </div>
-
             </div>
         </div>
 

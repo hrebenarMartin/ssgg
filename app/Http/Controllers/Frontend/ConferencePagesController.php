@@ -6,6 +6,7 @@ use App\Models\Block;
 use App\Models\Conference;
 use App\Models\ConferenceConfiguration;
 use App\Models\Contribution;
+use App\Models\Country;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -38,9 +39,8 @@ class ConferencePagesController extends Controller
         //Dáta pre fixné dynamické bloky
         $dynamic_data = collect();
         $dynamic_data->conference = $conference;
-        $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id);
-        $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id);
-
+        $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id)->first();
+        $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id)->get();
         return view('page')
             ->with('page', $page)
             ->with('data', $page_blocks)
@@ -89,9 +89,10 @@ class ConferencePagesController extends Controller
         //Dáta pre fixné dynamické bloky
         $dynamic_data = collect();
         $dynamic_data->conference = $conference;
-        $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id);
-        $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id);
-
+        $dynamic_data->conference->country_name = Country::getCountryName($conference->address_country);
+        $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id)->first();
+        $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id)->get();
+        //dd($dynamic_data->conf_config);
         return view('page')
             ->with('page', $page)
             ->with('data', $page_blocks)

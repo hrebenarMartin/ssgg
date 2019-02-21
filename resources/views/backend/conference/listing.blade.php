@@ -30,7 +30,7 @@
                         <th scope="col">{{ __('form.conference_status') }}</th>
                         <th scope="col">{{ __('form.conference_start') }}</th>
                         <th scope="col">{{ __('form.conference_end') }}</th>
-                        <th scope="col">{{ __('form.actions') }}</th>
+                        <th scope="col" style="width:20%;">{{ __('form.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,7 +54,7 @@
                                 {{ Form::hidden('conference_id', $conference->id) }}
                                 {{ Form::close() }}
 
-                                <a href="{{ route('admin.conferences.edit', $conference->id) }}" class="btn btn-warning btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
+                                <a href="{{ route('admin.conferences.edit', $conference->id) }}" class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
                                 <a href="{{ route('admin.conferences.show', $conference->id) }}" class="btn btn-primary btn-sm listing_controls pull-right"><i class="fa fa-search"></i></a>
                             </td>
                         </tr>

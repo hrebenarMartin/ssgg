@@ -10,7 +10,7 @@
                     <th scope="col">#</th>
                     <th scope="col">{{ __('form.cms_page_title') }}</th>
                     <th scope="col">{{ __('form.cms_page_alias') }}</th>
-                    <th scope="col" class="text-right">{{ __('form.actions') }}</th>
+                    <th scope="col" style="width:40%;" class="text-right">{{ __('form.actions') }}</th>
                 </tr>
                 </thead>
                 <tbody>

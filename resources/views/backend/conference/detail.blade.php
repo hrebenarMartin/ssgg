@@ -40,7 +40,9 @@
             <div class="card-body">
                 <div class="row pb-4">
                     <div class="col-12 text-center">
-                        <h1>{{ $data->title_en }}</h1>
+                        @if(App::getLocale() == 'en') <h1>{{ $data->title_en }}</h1>
+                        @else <h1>{{ $data->title_sk }}</h1>
+                        @endif
                     </div>
                 </div>
                 <div class="row pb-2">
@@ -120,7 +122,9 @@
 
                 <div class="row mt-5 mb-5">
                     <div class="col-10 offset-1">
-                        {!! \Illuminate\Mail\Markdown::parse($data->schedule_sk) !!}
+                        @if(App::getLocale() == 'en') {!! \Illuminate\Mail\Markdown::parse($data->schedule_en) !!}
+                        @else {!! \Illuminate\Mail\Markdown::parse($data->schedule_sk) !!}
+                        @endif
                     </div>
                 </div>
 
@@ -140,22 +144,22 @@
     <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
             async defer></script>
     <script>
-            var map;
-            function initMap() {
-                map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: {{$data->lat}}, lng: {{$data->lng}}},
-                    zoom: 16,
-                    panControl: false,
-                    zoomControl: true,
-                    scaleControl: true,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP,
-                });
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng({{$data->lat}}, {{$data->lng}}),
-                    map: map,
-                });
-                marker.setAnimation(google.maps.Animation.BOUNCE)
-            }
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: {{$data->lat}}, lng: {{$data->lng}}},
+                zoom: 16,
+                panControl: false,
+                zoomControl: true,
+                scaleControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            });
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng({{$data->lat}}, {{$data->lng}}),
+                map: map,
+            });
+            marker.setAnimation(google.maps.Animation.BOUNCE)
+        }
 
 
     </script>

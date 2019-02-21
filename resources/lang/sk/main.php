@@ -10,4 +10,8 @@ return [
     'create_account' => 'Vytvorte si účet',
     'remember_me' => 'Zapamätať si prihlásenie',
     'logout' => "Odhlásiť sa",
+    'language_change' => 'Zmena jazyka',
+    'when' => 'Kedy',
+    'where' => 'Kde',
+    'cost' => 'cena (za lôžko)',
 ];

@@ -10,4 +10,8 @@ return [
     'create_account' => 'Create an account',
     'remember_me' => 'Remember me',
     'logout' => "Log Out",
+    'language_change' => 'Change language',
+    'when' => 'When',
+    'where' => 'Where',
+    'cost' => 'cost (for one bed)',
 ];

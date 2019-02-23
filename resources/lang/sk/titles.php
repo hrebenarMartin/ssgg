@@ -8,5 +8,6 @@ return [
     'my_contribution' => 'Môj príspevok',
     'conference_detail' => 'Detaily konferencie',
     'conference_when_where' => 'Kedy a kde',
+    'conference_accom_food' => 'Ubytovanie a strava',
 
 ];

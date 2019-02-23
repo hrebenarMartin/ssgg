@@ -94,11 +94,16 @@
 
                 <div class="row form-group" id="content_fixed">
                     <div class="col col-md-2">
-                        <label for="block_content_fixed" class="form-control-label">{{ __('form.cms_block_content_en') }}</label>
+                        <label for="block_content_fixed" class="form-control-label">{{ __('form.cms_block_type_fixed') }}</label>
                     </div>
                     <div class="col col-md-8">
                         <select id="block_content_fixed" class="form-control" name="block_content_fixed">
-                            <option value="0">NYI</option>
+                            <option value="0" selected disabled>Vyber blok...</option>
+                            <option value="99" @if($block->fixed_id == 99) selected @endif>Úvodný blok konferencie, farebný, animovaný (#99)</option>
+                            <option value="98" @if($block->fixed_id == 98) selected @endif>Program konferencie, obyčajný (#98)</option>
+                            <option value="97" @if($block->fixed_id == 97) selected @endif>Adresa a mapa miesta konania (#97)</option>
+                            <option value="96" @if($block->fixed_id == 96) selected @endif>Možnosti ubytovania a stravy (#96)</option>
+                            <option value="95" @if($block->fixed_id == 95) selected @endif>Špeciálne udalosti konferencie (#95)</option>
                         </select>
                     </div>
                 </div>
@@ -141,12 +146,15 @@
                     </div>
                 </div>
 
+                    <input type="hidden" id="stay" name="stay" value="0">
+
                 </form>
 
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-success" form="content_ssgg_edit">{{ __('form.save') }}</button>
                 <button type="reset" class="btn btn-danger" form="content_ssgg_edit">{{ __('form.reset') }}</button>
+                <button type="button" id="saveAndStay" class="btn btn-primary">{{ __('form.saveAndStay') }}</button>
             </div>
         </div>
     </div>
@@ -228,6 +236,11 @@
             $copy_btn.click(function () {
                 copySkToEn()
             });
+
+            $('#saveAndStay').click(function () {
+                $('#stay').val('1');
+                $('#content_ssgg_edit').submit();
+            })
 
         });
 

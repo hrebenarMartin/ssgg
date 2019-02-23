@@ -3,14 +3,14 @@
 @section('content')
 <section class="section section-shaped section-lg">
     <div class="shape shape-style-1 bg-gradient-default">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span class="animated infinite delay-1s pulse slow"></span>
+        <span class="animated infinite delay-2s pulse slower"></span>
+        <span class="animated infinite delay-1s pulse slow"></span>
+        <span class="animated infinite delay-3s pulse slow"></span>
+        <span class="animated infinite delay-1s pulse slow"></span>
+        <span class="animated infinite delay-2s pulse slower"></span>
+        <span class="animated infinite delay-5s pulse slow"></span>
+        <span class="animated infinite delay-2s pulse slower"></span>
     </div>
     <div class="container pt-lg-md">
         <div class="row justify-content-center pb-100">

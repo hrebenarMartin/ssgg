@@ -170,6 +170,9 @@ class ContentController extends Controller
 
         $block->save();
 
+        if($request->stay == 1)  return redirect()->route('admin.content.edit', $id);
+
+
         return redirect()->route('admin.content.show', $request->block_parent);
     }
 

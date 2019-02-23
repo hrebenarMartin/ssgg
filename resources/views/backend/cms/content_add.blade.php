@@ -97,7 +97,12 @@
                     </div>
                     <div class="col col-md-8">
                         <select id="block_content_fixed" class="form-control" name="block_content_fixed">
-                            <option value="0">NYI</option>
+                            <option value="0" selected disabled>Vyber blok...</option>
+                            <option value="99">Úvodný blok konferencie, farebný, animovaný (#99)</option>
+                            <option value="98">Program konferencie, obyčajný (#98)</option>
+                            <option value="97">Adresa a mapa miesta konania (#97)</option>
+                            <option value="96">Možnosti ubytovania a stravy (#96)</option>
+                            <option value="95">Špeciálne udalosti konferencie (#95)</option>
                         </select>
                     </div>
                 </div>

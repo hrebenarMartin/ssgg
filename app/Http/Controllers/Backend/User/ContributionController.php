@@ -177,7 +177,6 @@ class ContributionController extends Controller
                 return redirect()->route('user.myContribution.index')
                     ->with('message', 'Error while uploading files')
                     ->with('message_type', 'danger');
-                ;
             }
 
             $file = $request->file('file');
@@ -197,7 +196,6 @@ class ContributionController extends Controller
                 redirect()->route('user.myContribution.index')
                     ->with('message', 'Error while saving files')
                     ->with('message_type', 'danger');
-                ;
             }
 
             $contribution->file = $file_name;

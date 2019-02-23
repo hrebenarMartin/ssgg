@@ -21,12 +21,15 @@ Auth::routes();
 
 //Route::resource('/conference', 'Frontend\Conference\PagesController');
 
+Route::post('/ajax', 'Helpers\AjaxController@main')->name('ajax');
+
 Route::resource('/dashboard', 'Backend\Dashboard\DashboardController');
 
 Route::get('/set_locale/{locale}', 'Helpers\LocaleController@setLocale')->name('set_locale');
 
 Route::get('/konferencia', 'Frontend\ConferencePagesController@index')->name('conference.index');
 Route::get("/konferencia/{page}", 'Frontend\ConferencePagesController@show')->name('conference.show');
+Route::get("/konferencia/zbornik_download/{year}", 'Frontend\ConferencePagesController@proceedingsDownload')->name('conference.proceedings_download');
 
 Route::get('/', 'Frontend\PagesController@index')->name("index");
 Route::get('/{page}', 'Frontend\PagesController@show')->name('show');

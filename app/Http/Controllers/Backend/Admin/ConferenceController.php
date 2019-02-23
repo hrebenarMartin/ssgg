@@ -6,6 +6,7 @@ use App\Models\Block;
 use App\Models\Conference;
 use App\Models\ConferenceConfiguration;
 use App\Models\Contribution;
+use App\Models\Country;
 use App\Models\FrontMenu;
 use App\Models\Page;
 use App\Models\Profile;
@@ -14,6 +15,8 @@ use DemeterChain\B;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class ConferenceController extends Controller
 {
@@ -182,6 +185,14 @@ class ConferenceController extends Controller
             $config->accom_3 = $request->room_3;
             $config->accom_3_price = $request->room_3_price;
         }
+        if (!empty($request->room_4)) {
+            $config->accom_4 = $request->room_4;
+            $config->accom_4_price = $request->room_4_price;
+        }
+        if (!empty($request->room_5)) {
+            $config->accom_5 = $request->room_5;
+            $config->accom_5_price = $request->room_5_price;
+        }
 
         $config->extra_info_sk = $request->extra_sk;
         $config->extra_info_en = $request->extra_en;
@@ -238,13 +249,16 @@ class ConferenceController extends Controller
     public function show($id)
     {
         $conference = Conference::find($id);
+        $conference->address_country = Country::getCountryName($conference->address_country);
         $stats = collect();
         $stats->attendees = -1;
         $stats->contributions = Contribution::where('conference_id', $id)->count();
+        $config = ConferenceConfiguration::where('conference_id', $id)->first();
 
         return view('backend.conference.detail')
             ->with('data', $conference)
-            ->with('stats', $stats);
+            ->with('stats', $stats)
+            ->with('config', $config);
     }
 
     /**
@@ -257,10 +271,12 @@ class ConferenceController extends Controller
     {
         $conference = Conference::find($id);
         $countries = DB::table('countries')->get();
+        $config = ConferenceConfiguration::where('conference_id', $id)->first();
 
         return view('backend.conference.edit')
             ->with('data', $conference)
-            ->with('countries', $countries);
+            ->with('countries', $countries)
+            ->with('config', $config);
     }
 
     /**
@@ -316,6 +332,27 @@ class ConferenceController extends Controller
         $conf->updated_at = Carbon::now();
 
         //TODO upload proceedings file if provided
+        if($request->hasFile('pro_file') and $request->file('pro_file')->isValid()){
+            $file = $request->file('pro_file');
+
+            $file_path = public_path('/files/conference_proceedings/');
+            if(File::isDirectory($file_path) or File::makeDirectory($file_path, 0777, true, true));
+
+            $file_extension = strtolower($file->getClientOriginalExtension());
+            $file_name = "conference_".$conf->year.".".$file_extension;
+
+            if(File::exists($file_path.$file_name)){
+                File::delete($file_path.$file_name);
+            }
+
+            if (!$file->move($file_path, $file_name)) {
+                redirect()->route('admin.conferences.show', $id)
+                    ->with('message', 'Error while saving file')
+                    ->with('message_type', 'danger');
+            }
+
+            $conf->proceedings_file = $file_name;
+        }
 
         $conf->save();
 
@@ -325,85 +362,142 @@ class ConferenceController extends Controller
         }
         else{
             FrontMenu::enableMenuOfConference($conf->id);
-            Page::disablePagesOfConference($conf->id);
+            Page::enablePagesOfConference($conf->id);
         }
 
         $config = ConferenceConfiguration::where('conference_id', $id)->first();
 
-        /*$config->conference_id = $conf->id;
         if (!empty($request->day_1_break)) {
             $config->day1_breakfast = $request->day_1_break;
         }
+        else $config->day1_breakfast = 0;
         if (!empty($request->day_1_lunch)) {
             $config->day1_lunch = $request->day_1_lunch;
         }
+        else $config->day1_lunch = 0;
         if (!empty($request->day_1_dinner)) {
             $config->day1_dinner = $request->day_1_dinner;
         }
+        else $config->day1_dinner = 0;
         if (!empty($request->day_2_break)) {
             $config->day2_breakfast = $request->day_2_break;
         }
+        else $config->day2_breakfast = 0;
         if (!empty($request->day_2_lunch)) {
             $config->day2_lunch = $request->day_2_lunch;
         }
+        else $config->day2_lunch = 0;
         if (!empty($request->day_2_dinner)) {
             $config->day2_dinner = $request->day_2_dinner;
         }
+        else  $config->day2_dinner = 0;
         if (!empty($request->day_3_break)) {
             $config->day3_breakfast = $request->day_3_break;
         }
+        else $config->day3_breakfast = 0;
         if (!empty($request->day_3_lunch)) {
             $config->day3_lunch = $request->day_3_lunch;
         }
+        else $config->day3_lunch = 0;
         if (!empty($request->day_3_dinner)) {
             $config->day3_dinner = $request->day_3_dinner;
         }
+        else $config->day3_dinner = 0;
         if (!empty($request->day_4_break)) {
             $config->day4_breakfast = $request->day_4_break;
         }
+        else $config->day4_breakfast = 0;
         if (!empty($request->day_4_lunch)) {
             $config->day4_lunch = $request->day_4_lunch;
         }
+        else $config->day4_lunch = 0;
         if (!empty($request->day_4_dinner)) {
             $config->day4_dinner = $request->day_4_dinner;
         }
+        else $config->day4_dinner = 0;
         if (!empty($request->day_5_break)) {
             $config->day5_breakfast = $request->day_5_break;
         }
+        else $config->day5_breakfast = 0;
         if (!empty($request->day_5_lunch)) {
             $config->day5_lunch = $request->day_5_lunch;
         }
+        else $config->day5_lunch = 0;
         if (!empty($request->day_5_dinner)) {
             $config->day5_dinner = $request->day_5_dinner;
         }
+        else $config->day5_dinner = 0;
 
         if (!empty($request->special_1)) {
             $config->special_1 = $request->special_1;
             $config->special_1_sk = $request->special_1_sk;
             $config->special_1_en = $request->special_1_en;
         }
+        else {
+            $config->special_1 = 0;
+            $config->special_1_sk = null;
+            $config->special_1_en = null;
+        }
         if (!empty($request->special_2)) {
             $config->special_2 = $request->special_2;
             $config->special_2_sk = $request->special_2_sk;
             $config->special_2_en = $request->special_2_en;
+        }
+        else{
+            $config->special_2 = 0;
+            $config->special_2_sk = null;
+            $config->special_2_en = null;
         }
         if (!empty($request->special_3)) {
             $config->special_3 = $request->special_3;
             $config->special_3_sk = $request->special_3_sk;
             $config->special_3_en = $request->special_3_en;
         }
+        else{
+            $config->special_3 = 0;
+            $config->special_3_sk = null;
+            $config->special_3_en = null;
+        }
 
         if (!empty($request->room_1)) {
             $config->accom_1 = $request->room_1;
             $config->accom_1_price = $request->room_1_price;
         }
+        else {
+            $config->accom_1 = 0;
+            $config->accom_1_price = 0;
+        }
         if (!empty($request->room_2)) {
             $config->accom_2 = $request->room_2;
             $config->accom_2_price = $request->room_2_price;
         }
+        else{
+            $config->accom_2 = 0;
+            $config->accom_2_price = 0;
+        }
         if (!empty($request->room_3)) {
             $config->accom_3 = $request->room_3;
             $config->accom_3_price = $request->room_3_price;
+        }
+        else{
+            $config->accom_3 = 0;
+            $config->accom_3_price = 0;
+        }
+        if (!empty($request->room_4)) {
+            $config->accom_4 = $request->room_4;
+            $config->accom_4_price = $request->room_4_price;
+        }
+        else{
+            $config->accom_4 = 0;
+            $config->accom_4_price = 0;
+        }
+        if (!empty($request->room_5)) {
+            $config->accom_5 = $request->room_5;
+            $config->accom_5_price = $request->room_5_price;
+        }
+        else{
+            $config->accom_5 = 0;
+            $config->accom_5_price = 0;
         }
 
         $config->extra_info_sk = $request->extra_sk;
@@ -412,7 +506,7 @@ class ConferenceController extends Controller
         $config->updated_at = Carbon::now();
         $config->created_at = Carbon::now();
 
-        $config->save();*/
+        $config->save();
 
         return redirect()->route('admin.conferences.show', $id)
             ->with('message', "Conference successfully updated")

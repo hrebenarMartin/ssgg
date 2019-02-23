@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{!! asset('backend/vendors/flag-icon-css/css/flag-icon.css') !!}">
     <link rel="stylesheet" href="{!! asset('backend/vendors/selectFX/css/cs-skin-elastic.css') !!}">
     <link rel="stylesheet" href="{!! asset('backend/vendors/jqvmap/dist/jqvmap.min.css') !!}">
+    <link rel="stylesheet" href="{!! asset('css/toastr.css') !!}">
 
 
     <link rel="stylesheet" href="{!! asset('backend/css/style.css') !!}">
@@ -148,6 +149,8 @@
 <script src="{!! asset('backend/vendors/jquery-validation/dist/jquery.validate.js') !!}"></script>
 
 <script src="{!! asset('backend/js/sweetalert.min.js') !!}"></script>
+<script src="{!! asset('js/toastr.min.js') !!}"></script>
+
 
 <script>
 

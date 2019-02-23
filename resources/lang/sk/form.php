@@ -4,6 +4,7 @@ return [
 
     'save' => 'Uložiť',
     'reset' => 'Zmazať',
+    'saveAndStay' => 'Ulož a zostaň',
 
     'actions' => 'Akcie',
     'action_back' => 'Späť',
@@ -106,7 +107,7 @@ return [
     'conference_statistics' => 'Štatistiky',
     'conference_attendees' => 'Počet účastníkov',
     'conference_contributions_uploaded' => 'Počet príspevkov',
-    'conference_proceedings_file_not_available' => 'Zborník príspevkoj je zatiaľ nedostupný',
+    'conference_proceedings_file_not_available' => 'Zborník príspevkov nie je nedostupný',
     'conference_gallery' => 'Galéria',
     'conference_edit' => 'Úprava konferencie',
     'conference_choose_status' => 'Zvoľte stav...',

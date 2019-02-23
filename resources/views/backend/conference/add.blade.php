@@ -158,6 +158,30 @@
                         </div>
                     </div>
 
+                    <div class="row form-group" id="content_markdown">
+                        <div class="col-4 text-right">
+                            <label for="schedule_sk" class="col-form-label">{{ __('form.conference_schedule_sk') }}</label>
+                        </div>
+                        <div class="col-7">
+                            <textarea id="schedule_sk" class="form-control" name="schedule_sk" rows="8" required>{{ old('schedule_sk')  }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col col-sm-12 text-center">
+                            <button type="button" class="btn btn-primary" id="copy_schedule_button"><i class="fa fa-copy"></i> Copy Slovak schedule</button>
+                        </div>
+                    </div>
+
+                    <div class="row form-group" id="content_markdown">
+                        <div class="col-4 text-right">
+                            <label for="schedule_en" class="col-form-label">{{ __('form.conference_schedule_en') }}</label>
+                        </div>
+                        <div class="col-7">
+                            <textarea id="schedule_en" class="form-control" name="schedule_en" rows="8">{{ old('schedule_en') }}</textarea>
+                        </div>
+                    </div>
+
                     <div class="row" style="padding-top: 1em">
                         <div class="col-sm-12">
                             <h2>{{ __('form.conference_config') }}</h2>
@@ -486,6 +510,10 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
             async defer></script>
+
+    <script src="{!! asset('backend/vendors/bootstrap-markdown/js/bootstrap-markdown.js') !!}"></script>
+    <script src="{!! asset('backend/vendors/bootstrap-markdown/js/markdown.js') !!}"></script>
+
     <script>
         var map;
         var marker;
@@ -529,6 +557,33 @@
                 $('#reg_end').datepicker();
                 $('#conf_end').datepicker();
             });
+        }
+
+        //Initialize Markdown editor
+        $("#schedule_sk").markdown({
+            autofocus:false,
+            fullscreen: true,
+            iconlibrary: 'fa',
+            savable:false,
+            height: 300
+        });
+        $("#schedule_en").markdown({
+            autofocus:false,
+            fullscreen: true,
+            iconlibrary: 'fa',
+            savable:false,
+            height: 300
+        });
+        $copy_btn = $('#copy_schedule_button');
+        $copy_btn.click(function () {
+            copySkToEn()
+        });
+
+        function copySkToEn() {
+            $('#schedule_en').val($('#schedule_sk').val());
+
+            $ace_editor2.session.setValue($textbox.value);
+            $textbox2.value = $textbox.value;
         }
 
         $().ready(function () {

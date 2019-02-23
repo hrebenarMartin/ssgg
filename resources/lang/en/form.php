@@ -4,6 +4,7 @@ return [
 
     'save' => 'Save',
     'reset' => 'Reset',
+    'saveAndStay' => 'Save and Stay',
 
     'actions' => 'Actions',
     'action_back' => 'Back',

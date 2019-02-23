@@ -48,27 +48,6 @@ class ConferencePagesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -92,44 +71,24 @@ class ConferencePagesController extends Controller
         $dynamic_data->conference->country_name = Country::getCountryName($conference->address_country);
         $dynamic_data->conf_config = ConferenceConfiguration::where('conference_id', $conference->id)->first();
         $dynamic_data->conf_contributions = Contribution::where('conference_id', $conference->id)->get();
-        //dd($dynamic_data->conf_config);
+
         return view('page')
             ->with('page', $page)
             ->with('data', $page_blocks)
             ->with('dynamic_data', $dynamic_data);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function proceedingsDownload($year)
     {
-        //
-    }
+        $name = 'conference_'.$year.".pdf";
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $file = public_path(). "/files/conference_proceedings/".$name;
+
+        $headers = [
+            'Content-Type' => 'application/zip',
+        ];
+
+        return response()->download($file, $name, $headers);
     }
 }

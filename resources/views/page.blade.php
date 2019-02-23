@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
 
-
 @if(App::isLocale('en'))
-    @section('title', $page->title_second)
+    @section('title', "SSGG | ".$page->title_second)
 @else
-    @section('title', $page->title)
+    @section('title', "SSGG | ".$page->title)
 @endif
 
 @section('page_css')
@@ -15,7 +14,6 @@
 
 @section('content')
 
-    {{-- dd($data) --}}
     @foreach($data as $block)
         @if($block->type == 4)
             @if($block->fixed_id == 99)
@@ -26,6 +24,8 @@
                 @include('components.fixed_97_conference_address_map')
             @elseif($block->fixed_id == 96)
                 @include('components.fixed_96_conference_accomm_and_food')
+            @elseif($block->fixed_id == 95)
+                @include('components.fixed_95_conference_special_events')
             @endif
         @elseif($block->type == 3)
             @if(App::isLocale('en'))
@@ -35,9 +35,9 @@
             @endif
         @elseif($block->type == 2)
             @if(App::isLocale('en'))
-                {!! $block->content_en !!}
+                {!! \Illuminate\Mail\Markdown::parse($block->content_en) !!}
             @else
-                {!! $block->content !!}
+                {!! \Illuminate\Mail\Markdown::parse($block->content) !!}
             @endif
         @elseif($block->type == 1)
             @if(App::isLocale('en'))

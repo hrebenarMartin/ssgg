@@ -331,7 +331,6 @@ class ConferenceController extends Controller
         }
         $conf->updated_at = Carbon::now();
 
-        //TODO upload proceedings file if provided
         if($request->hasFile('pro_file') and $request->file('pro_file')->isValid()){
             $file = $request->file('pro_file');
 

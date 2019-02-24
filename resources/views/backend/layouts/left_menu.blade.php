@@ -45,6 +45,9 @@
                 <li>
                     <a href="{{ route('user.myContribution.index') }}"> <i class="menu-icon fa fa-id-card"></i>{{ __('b_menu.user_contribution') }}</a>
                 </li>
+                <li>
+                    <a href="{{ route('user.application.index') }}"> <i class="menu-icon fa fa-file"></i>{{ __('b_menu.user_application') }}</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>

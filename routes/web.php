@@ -51,4 +51,6 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], fu
     Route::resource('/myContribution', 'Backend\User\ContributionController');
     Route::get('/myContribution/download/{id}', 'Backend\User\ContributionController@downloadContribution')->name('myContribution.download');
     Route::get('/myContribution/download_template/{id}', 'Backend\User\ContributionController@downloadTemplate')->name('myContribution.download_template');
+
+    Route::resource('/application', 'Backend\User\ApplicationController');
 });

@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Helpers;
 use App\Models\Conference;
 use App\Models\ConferenceConfiguration;
 use App\Models\ConferenceGallery;
+use App\Models\Contribution;
+use App\Models\ContributionComment;
 use App\Models\FrontMenu;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 
@@ -16,7 +19,7 @@ class AjaxController extends Controller
 {
     public function __construct()
     {
-
+        $this->middleware('auth');
     }
 
     public function main(Request $request)
@@ -77,6 +80,20 @@ class AjaxController extends Controller
             ConferenceGallery::deleteConferenceImage($img_id);
 
             return response()->json(['status' => 'OK']);
+        }
+
+        else if(isset($request->action) && strcmp($request->action, "save_contribution_comment") == 0 ){
+            Log::info("Ajax call - save comment for contribution -> ".$request->contr_id);
+
+            $comment = new ContributionComment();
+
+            $comment->user_id = Auth::id();
+            $comment->contribution_id = $request->contr_id;
+            $comment->comment = $request->comment;
+
+            $comment->save();
+
+            return response()->json(['status' => 'OK', 'comment_id' => $comment->id]);
         }
 
     }

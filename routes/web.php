@@ -22,6 +22,7 @@ Auth::routes();
 //Route::resource('/conference', 'Frontend\Conference\PagesController');
 
 Route::post('/ajax', 'Helpers\AjaxController@main')->name('ajax');
+Route::post('/ajax-ext', 'Helpers\AjaxExternalController@main')->name('ajax_ext');
 
 Route::resource('/dashboard', 'Backend\Dashboard\DashboardController');
 

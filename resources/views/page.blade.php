@@ -26,6 +26,8 @@
                 @include('components.fixed_96_conference_accomm_and_food')
             @elseif($block->fixed_id == 95)
                 @include('components.fixed_95_conference_special_events')
+            @elseif($block->fixed_id == 94)
+                @include('components.fixed_94_conference_participants_and_contributions')
             @endif
         @elseif($block->type == 3)
             @if(App::isLocale('en'))

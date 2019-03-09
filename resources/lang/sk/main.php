@@ -14,4 +14,6 @@ return [
     'when' => 'Kedy',
     'where' => 'Kde',
     'cost' => 'cena (za lôžko)',
+    'edit' => 'Upraviť',
+    'confirm' => 'Potvrdiť',
 ];

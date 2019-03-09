@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers\Backend\Admin;
 
+use App\Models\Application;
 use App\Models\Block;
 use App\Models\Conference;
 use App\Models\ConferenceConfiguration;
+use App\Models\ConferenceGallery;
 use App\Models\Contribution;
 use App\Models\Country;
 use App\Models\FrontMenu;
 use App\Models\Page;
 use App\Models\Profile;
+use App\Models\UploadImages;
 use Carbon\Carbon;
-use DemeterChain\B;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 
 class ConferenceController extends Controller
@@ -250,15 +253,18 @@ class ConferenceController extends Controller
     {
         $conference = Conference::find($id);
         $conference->address_country = Country::getCountryName($conference->address_country);
-        $stats = collect();
-        $stats->attendees = -1;
-        $stats->contributions = Contribution::where('conference_id', $id)->count();
         $config = ConferenceConfiguration::where('conference_id', $id)->first();
+        $gallery = ConferenceGallery::getConferenceGallery($id);
+
+        $stats = collect();
+        $stats->attendees = Application::where('status', '>=', 3)->where('conference_id', $id)->count();
+        $stats->contributions = Contribution::where('conference_id', $id)->count();
 
         return view('backend.conference.detail')
             ->with('data', $conference)
             ->with('stats', $stats)
-            ->with('config', $config);
+            ->with('config', $config)
+            ->with('gallery', $gallery);
     }
 
     /**
@@ -533,4 +539,27 @@ class ConferenceController extends Controller
 
         return redirect()->back()->with('message', 'Action successful')->with('message_type', 'success');
     }
+
+    public function uploadImagesBlueImp(Request $request){
+        $image_class = new UploadImages();
+
+        $files = Input::file('files');
+        $data = [];
+
+        $conference_id = intval(Input::get('conference_id'));
+
+        $conference = Conference::find($conference_id);
+
+        $conference_file_name = 'Conference-'.$conference->year . '-';
+
+        $data['conference_id'] = $conference_id;
+
+        $res = $image_class->processImagesBlueImp($files, 'conference', $data['conference_id'], $conference_file_name, $data);
+
+        Log::info('upload_blue_imp', ['object' => $res] );
+
+        // errors, no uploaded file
+        return response()->json(['files' => $res ]);
+    }
+
 }

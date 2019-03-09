@@ -146,6 +146,7 @@ return [
     'conference_extra' => "Additional info",
     'conference_extra_sk' => "Slovak version",
     'conference_extra_en' => "English version",
+    'conference_status_change' => "Status change",
 
 
 ];

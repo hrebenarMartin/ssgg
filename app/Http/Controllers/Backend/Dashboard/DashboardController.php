@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Backend\Dashboard;
 
+use App\Models\Conference;
+use App\Models\ConferenceGallery;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -20,7 +24,12 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('backend.dashboard.index');
+        $profile = Profile::where('user_id', Auth::id())->first();
+        $conference = Conference::where('status', 1)->first();
+
+        return view('backend.dashboard.index')
+            ->with('profile', $profile)
+            ->with('conference', $conference);
     }
 
     /**

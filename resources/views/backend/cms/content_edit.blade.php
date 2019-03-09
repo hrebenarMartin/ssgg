@@ -104,6 +104,7 @@
                             <option value="97" @if($block->fixed_id == 97) selected @endif>Adresa a mapa miesta konania (#97)</option>
                             <option value="96" @if($block->fixed_id == 96) selected @endif>Možnosti ubytovania a stravy (#96)</option>
                             <option value="95" @if($block->fixed_id == 95) selected @endif>Špeciálne udalosti konferencie (#95)</option>
+                            <option value="94" @if($block->fixed_id == 94) selected @endif>Zoznam účastníkov a príspevky (#94)</option>
                         </select>
                     </div>
                 </div>

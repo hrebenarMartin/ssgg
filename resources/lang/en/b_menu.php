@@ -8,4 +8,5 @@ return [
     'profile' => 'Profile',
     'user_contribution'=> 'My contribution',
     'conference_management'=> 'Conferences',
+    'user_application'=> 'My Application',
 ];

@@ -41,12 +41,6 @@
                                 <span class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
                             </a>
                         </li>
-                    @elseif($module == 2)
-                        <li class="nav-item dropdown">
-                            <a href="{{route('index')}}" class="nav-link" role="button">
-                                <span class="nav-link-inner--text">SSGG</span>
-                            </a>
-                        </li>
                     @endif
                 </ul>
                 <ul class="navbar-nav align-items-lg-center ml-lg-auto">

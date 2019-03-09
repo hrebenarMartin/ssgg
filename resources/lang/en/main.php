@@ -14,4 +14,6 @@ return [
     'when' => 'When',
     'where' => 'Where',
     'cost' => 'cost (for one bed)',
+    'edit' => 'Edit',
+    'confirm' => 'Confirm',
 ];

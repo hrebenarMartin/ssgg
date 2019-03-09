@@ -124,7 +124,7 @@ return [
     'conference_schedule_sk' => "Program konferencie (Slovensky)",
     'conference_schedule_en' => "Program konferencie (Anglicky)",
     'conference_choose_country' => "Zvoľte krajinu...",
-    'conference_day' => "Ďeň",
+    'conference_day' => "Deň",
     'conference_breakfast' => "Raňajky",
     'conference_lunch' => "Obed",
     'conference_dinner' => "Večera",
@@ -145,6 +145,7 @@ return [
     'conference_extra' => "Doplňujúce informácie",
     'conference_extra_sk' => "Slovenská verzia",
     'conference_extra_en' => "Anglická verzia",
+    'conference_status_change' => "Zmeniť stav",
 
 
 ];

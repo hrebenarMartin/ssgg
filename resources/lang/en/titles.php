@@ -9,5 +9,8 @@ return [
     'conference_detail' => 'Detail of conference',
     'conference_when_where' => 'When and Where',
     'conference_accom_food' => 'Accommodation and food',
+    'my_application' => 'My application',
+    'my_application_edit' => 'Edit My application',
+
 
 ];

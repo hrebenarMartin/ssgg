@@ -518,9 +518,6 @@
 
 @section('scripts')
 
-    <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
-            async defer></script>
-
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/bootstrap-markdown.js') !!}"></script>
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/markdown.js') !!}"></script>
 
@@ -735,5 +732,8 @@
         }
 
     </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
+            async defer></script>
 
 @stop

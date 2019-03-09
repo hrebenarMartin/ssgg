@@ -103,6 +103,7 @@
                             <option value="97">Adresa a mapa miesta konania (#97)</option>
                             <option value="96">Možnosti ubytovania a stravy (#96)</option>
                             <option value="95">Špeciálne udalosti konferencie (#95)</option>
+                            <option value="94">Zoznam účastníkov a príspevky (#94)</option>
                         </select>
                     </div>
                 </div>

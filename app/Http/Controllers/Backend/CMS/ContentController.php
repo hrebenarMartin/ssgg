@@ -73,8 +73,8 @@ class ContentController extends Controller
             $block->content = $request->block_content_html;
             $block->content_en = $request->block_content_html_en;
         }
-        elseif ($request->block_type == 3){
-            $block->content = $request->block_content_fixed;
+        elseif ($request->block_type == 4){
+            $block->fixed_id = $request->block_content_fixed;
             $block->content_en = "";
         }
         else{
@@ -159,8 +159,8 @@ class ContentController extends Controller
             $block->content = $request->block_content_html;
             $block->content_en = $request->block_content_html_en;
         }
-        elseif ($request->block_type == 3){
-            $block->content = $request->block_content_fixed;
+        elseif ($request->block_type == 4){
+            $block->fixed_id = $request->block_content_fixed;
             $block->content_en = "";
         }
         else{

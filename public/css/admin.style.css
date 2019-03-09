@@ -606,7 +606,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     color: #23c6c8;
 }
 .btn-warning.btn-outline {
-    color: #f8ac59;
+    color: #F8B739;
 }
 .btn-danger.btn-outline {
     color: #ed5565;
@@ -781,8 +781,8 @@ fieldset[disabled] .btn-default.active {
     color: #cacaca;
 }
 .btn-warning {
-    background-color: #f8a436;
-    border-color: #f8a436;
+    background-color: #F8B739;
+    border-color: #F8B739;
     color: #FFFFFF;
 }
 .btn-warning:hover,
@@ -794,8 +794,8 @@ fieldset[disabled] .btn-default.active {
 .btn-warning:active:hover,
 .btn-warning.active:hover,
 .btn-warning.active:focus {
-    background-color: #f7a54a;
-    border-color: #f7a54a;
+    background-color: #F8B739;
+    border-color: #F8B739;
     color: #FFFFFF;
 }
 .btn-warning:active,

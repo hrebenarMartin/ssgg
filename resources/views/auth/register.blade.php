@@ -59,11 +59,26 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
+                            <div class="custom-control custom-control-alternative custom-checkbox">
+                                <input class="custom-control-input" value="1" id="customCheckLogin" name="confirm" type="checkbox" required>
+                                <label class="custom-control-label" for="customCheckLogin">
+                                    <span>
+                                        * Zaškrtnutím tohto poľa a odoslaním regisrácie suhlasíte s našimi <a href="#!">podmienkami o spracovaní osobných údajov</a>.
+                                    </span>
+                                </label>
+                            </div>
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary my-4">{{ __('main.register') }}</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <a href="{{ route('login') }}" class="text-light">
+                            <small>{{ __('main.login') }}</small>
+                        </a>
                     </div>
                 </div>
             </div>

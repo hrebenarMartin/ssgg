@@ -8,4 +8,6 @@ return [
     'profile' => 'Môj profil',
     'user_contribution'=> 'Môj príspevok',
     'conference_management'=> 'Správa konferencií',
+    'user_application'=> 'Moja prihláška',
+
 ];

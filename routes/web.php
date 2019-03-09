@@ -44,6 +44,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/cms/front_menu', 'Backend\CMS\FrontMenuController');
 
     Route::resource('/conferences', 'Backend\Admin\ConferenceController');
+    Route::post('/conference_upload_images', 'Backend\Admin\ConferenceController@uploadImagesBlueImp')->name('conferences.upload_images');
+
+    Route::get('/test', 'Backend\Admin\TestController@index')->name('test');
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {

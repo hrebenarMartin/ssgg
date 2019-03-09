@@ -9,5 +9,7 @@ return [
     'conference_detail' => 'Detaily konferencie',
     'conference_when_where' => 'Kedy a kde',
     'conference_accom_food' => 'Ubytovanie a strava',
+    'my_application' => 'Moja prihláška',
+    'my_application_edit' => 'Úprava mojej prihlášky',
 
 ];

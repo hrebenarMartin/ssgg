@@ -29,4 +29,22 @@ class Conference extends Model
         'schedule_sk',
         'schedule_en',
     ];
+
+    public static function getAllTimeConferenceCount(){
+        return self::all()->count();
+    }
+
+    //----------------------------------------------------\\
+
+    public function contributions(){
+        return $this->hasMany('App\Models\Contributions');
+    }
+
+    public function config(){
+        return $this->hasOne('App\Models\ConferenceConfiguration');
+    }
+
+    public function gallery(){
+        return $this->hasMany('App\Models\ConferenceGallery');
+    }
 }

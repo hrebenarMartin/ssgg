@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\User;
 
 use App\Models\Conference;
 use App\Models\Contribution;
+use App\Models\ContributionComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -21,24 +22,24 @@ class ContributionController extends Controller
         $has_contribution = Contribution::where('user_id', Auth::id())->count() == 1;
 
         $conference = Conference::where('status', 1)->first();
-        //dd($conference);
-        if(!$conference){
+
+        if (!$conference) {
             return view('backend.contribution.user_contribution')
                 ->with('no_conference', true);
         }
 
         $contrib_deadline = Conference::where('status', 1)->first()->registration_end;
 
-
-
-        if($has_contribution == 0) return view('backend.contribution.user_contribution')
+        if ($has_contribution == 0) return view('backend.contribution.user_contribution')
             ->with('no_contribution', $has_contribution)
             ->with('deadline', $contrib_deadline);
         else {
             $contribution = Contribution::where('user_id', Auth::id())->first();
+            $comments = $contribution->comments;
             return view('backend.contribution.user_contribution')
                 ->with('contribution', $contribution)
-                ->with('deadline', $contrib_deadline);
+                ->with('deadline', $contrib_deadline)
+                ->with('comments', $comments);
         }
     }
 
@@ -49,7 +50,7 @@ class ContributionController extends Controller
      */
     public function create()
     {
-        if (Contribution::where('user_id', Auth::id())->count() > 0){
+        if (Contribution::where('user_id', Auth::id())->count() > 0) {
             return redirect()->route('user.myContribution.index')
                 ->with('message', 'You can upload only one contribution')
                 ->with('message_type', 'danger');
@@ -85,42 +86,38 @@ class ContributionController extends Controller
         $contribution->abstract = $request->abstract;
         $contribution->conference_id = Conference::where('status', 1)->first()->id;
 
-        if($request->hasFile('file') and $request->file('file')->isValid()){
+        if ($request->hasFile('file') and $request->file('file')->isValid()) {
             $file = $request->file('file');
 
-            $file_path = public_path('/files/'.$module.'/');
-            if(File::isDirectory($file_path) or File::makeDirectory($file_path, 0777, true, true));
+            $file_path = public_path('/files/' . $module . '/');
+            if (File::isDirectory($file_path) or File::makeDirectory($file_path, 0777, true, true)) ;
 
             $file_extension = strtolower($file->getClientOriginalExtension());
-            $file_name = "contribution_".$contribution->user_id.".".$file_extension;
+            $file_name = "contribution_" . $contribution->user_id . "." . $file_extension;
 
             if (!$file->move($file_path, $file_name)) {
                 redirect()->route('user.myContribution.index')
                     ->with('message', 'Error while saving files')
-                    ->with('message_type', 'danger');
-                ;
+                    ->with('message_type', 'danger');;
             }
 
             $contribution->file = $file_name;
 
-        }
-        else return redirect()->route('user.myContribution.index')
+        } else return redirect()->route('user.myContribution.index')
             ->with('message', 'Error while uploading files')
-            ->with('message_type', 'danger');
-        ;
+            ->with('message_type', 'danger');;
 
         $contribution->save();
 
         return redirect()->route('user.myContribution.index')
             ->with('message', 'Contribution was successfully updated')
-            ->with('message_type', 'success');
-        ;
+            ->with('message_type', 'success');;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -131,14 +128,14 @@ class ContributionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $contribution = Contribution::find($id);
 
-        if(!$contribution or $contribution->user_id != Auth::id()) return redirect()->route('user.myContribution.index')
+        if (!$contribution or $contribution->user_id != Auth::id()) return redirect()->route('user.myContribution.index')
             ->with('message', 'Invalid action')
             ->with('message_type', 'danger');
 
@@ -172,8 +169,8 @@ class ContributionController extends Controller
         $contribution->type = $request->type;
         $contribution->abstract = $request->abstract;
 
-        if($request->hasFile('file')){
-            if(!$request->file('file')->isValid()){
+        if ($request->hasFile('file')) {
+            if (!$request->file('file')->isValid()) {
                 return redirect()->route('user.myContribution.index')
                     ->with('message', 'Error while uploading files')
                     ->with('message_type', 'danger');
@@ -181,15 +178,15 @@ class ContributionController extends Controller
 
             $file = $request->file('file');
 
-            $file_path = public_path('/files/'.$module.'/');
-            if(File::isDirectory($file_path) or File::makeDirectory($file_path, 0777, true, true));
+            $file_path = public_path('/files/' . $module . '/');
+            if (File::isDirectory($file_path) or File::makeDirectory($file_path, 0777, true, true)) ;
 
 
             $file_extension = strtolower($file->getClientOriginalExtension());
-            $file_name = "contribution_".$contribution->user_id.".".$file_extension;
+            $file_name = "contribution_" . $contribution->user_id . "." . $file_extension;
 
-            if(File::exists($file_path.$file_name)){
-                File::delete($file_path.$file_name);
+            if (File::exists($file_path . $file_name)) {
+                File::delete($file_path . $file_name);
             }
 
             if (!$file->move($file_path, $file_name)) {
@@ -206,21 +203,24 @@ class ContributionController extends Controller
 
         return redirect()->route('user.myContribution.index')
             ->with('message', 'Contribution was successfully updated')
-            ->with('message_type', 'success');
-        ;
+            ->with('message_type', 'success');;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $contribution = Contribution::find($id);
-        if(File::exists(public_path('/files/contributions/').$contribution->file)){
-            File::delete(public_path('/files/contributions/').$contribution->file);
+        if (File::exists(public_path('/files/contributions/') . $contribution->file)) {
+            File::delete(public_path('/files/contributions/') . $contribution->file);
+        }
+        $comments = ContributionComment::where('contribution_id', $id)->get();
+        foreach ($comments as $c) {
+            ContributionComment::destroy($c->id);
         }
         Contribution::destroy($id);
 
@@ -230,12 +230,11 @@ class ContributionController extends Controller
     }
 
 
-
     public function downloadContribution($id)
     {
 
         $contribution = Contribution::find($id);
-        $file = public_path(). "/files/contributions/".$contribution->file;
+        $file = public_path() . "/files/contributions/" . $contribution->file;
 
         $headers = [
             'Content-Type' => 'application/pdf',
@@ -246,16 +245,28 @@ class ContributionController extends Controller
 
     public function downloadTemplate($id)
     {
-        switch ($id){
-            case 1: $archive = 'template_word_sk.zip'; break;
-            case 2: $archive = 'template_tex_sk.zip'; break;
-            case 3: $archive = 'template_word_cz.zip'; break;
-            case 4: $archive = 'template_tex_cz.zip'; break;
-            case 5: $archive = 'template_word_en.zip'; break;
-            case 6: $archive = 'template_tex_en.zip'; break;
+        switch ($id) {
+            case 1:
+                $archive = 'template_word_sk.zip';
+                break;
+            case 2:
+                $archive = 'template_tex_sk.zip';
+                break;
+            case 3:
+                $archive = 'template_word_cz.zip';
+                break;
+            case 4:
+                $archive = 'template_tex_cz.zip';
+                break;
+            case 5:
+                $archive = 'template_word_en.zip';
+                break;
+            case 6:
+                $archive = 'template_tex_en.zip';
+                break;
         }
 
-        $file = public_path(). "/files/contribution_templates/".$archive;
+        $file = public_path() . "/files/contribution_templates/" . $archive;
 
         $headers = [
             'Content-Type' => 'application/zip',

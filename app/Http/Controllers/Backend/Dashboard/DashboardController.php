@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Dashboard;
 
+use App\Models\Application;
 use App\Models\Conference;
 use App\Models\ConferenceGallery;
+use App\Models\Contribution;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,11 +27,19 @@ class DashboardController extends Controller
     public function index()
     {
         $profile = Profile::where('user_id', Auth::id())->first();
-        $conference = Conference::where('status', 1)->first();
+        $conference = Conference::where('status', '!=', 3)->first();
+        $stats = collect();
+        $stats->put('participants', $conference ? Application::getConferenceParticipantsCount($conference->id) : -1);
+        $stats->put('participants_at', Application::getAllTimeParticipantsCount());
+        $stats->put('contributions', $conference ? Contribution::getConferenceContributionsCount($conference->id) : -1);
+        $stats->put('contributions_at', Contribution::getAllTimeContributionsCount());
+        $stats->put('conferences', Conference::getAllTimeConferenceCount());
+        $stats->put('photos_at', ConferenceGallery::getAllTimePhotosCount());
 
         return view('backend.dashboard.index')
             ->with('profile', $profile)
-            ->with('conference', $conference);
+            ->with('conference', $conference)
+            ->with('stats', $stats);
     }
 
     /**
@@ -45,7 +55,7 @@ class DashboardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -56,7 +66,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,7 +77,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -78,8 +88,8 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -90,7 +100,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -14,7 +14,7 @@
         </div>
 
         <hr>
-        @if(Auth::id() == $data->user_id || Auth::user()->access_level == 3)
+        @if(Auth::id() == $data->user_id || Auth::user()->access_level == 4)
 
         <div class="card">
             <form id="profile_edit_form" method="POST" enctype="multipart/form-data" action="{{ route('user.profile.update', $data->id) }}">

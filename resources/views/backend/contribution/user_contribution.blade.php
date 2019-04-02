@@ -8,7 +8,8 @@
         <div class="container">
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
-                    <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
+                    <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i
+                            class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
                 </div>
             </div>
         </div>
@@ -48,30 +49,40 @@
                             <hr>
                         </div>
                         <div class="col-sm-6 col-md-6 text-sm-center col-lg-2">
-                            <a href="{{ route('user.myContribution.download_template', 1) }}" class="btn btn-outline-primary animated fadeInDown" >Slovensky - Word</a>
+                            <a href="{{ route('user.myContribution.download_template', 1) }}"
+                               class="btn btn-outline-primary animated fadeInDown">Slovensky - Word</a>
                         </div>
                         <div class="col-sm-6 col-md-6 text-md-center col-lg-2">
-                            <a href="{{ route('user.myContribution.download_template', 2) }}" class="btn btn-outline-primary animated fadeInDown" >Slovensky - Tex</a>
+                            <a href="{{ route('user.myContribution.download_template', 2) }}"
+                               class="btn btn-outline-primary animated fadeInDown">Slovensky - Tex</a>
                         </div>
                         <div class="col-sm-6 col-md-6 text-md-center col-lg-2">
-                            <a href="{{ route('user.myContribution.download_template', 3) }}" class="btn btn-outline-danger animated fadeInDown" >Česky - Word</a>
+                            <a href="{{ route('user.myContribution.download_template', 3) }}"
+                               class="btn btn-outline-danger animated fadeInDown">Česky - Word</a>
                         </div>
                         <div class="col-sm-6 col-md-6 text-md-center col-lg-2">
-                            <a href="{{ route('user.myContribution.download_template', 4) }}" class="btn btn-outline-danger animated fadeInDown" >Česky - Tex</a>
+                            <a href="{{ route('user.myContribution.download_template', 4) }}"
+                               class="btn btn-outline-danger animated fadeInDown">Česky - Tex</a>
                         </div>
                         <div class="col-sm-6 col-md-6 text-md-center col-lg-2">
-                            <a href="{{ route('user.myContribution.download_template', 5) }}" class="btn btn-outline-success animated fadeInDown" >English - Word</a>
+                            <a href="{{ route('user.myContribution.download_template', 5) }}"
+                               class="btn btn-outline-success animated fadeInDown">English - Word</a>
                         </div>
                         <div class="col-sm-6 col-md-6 text-md-center col-lg-2">
-                            <a href="{{ route('user.myContribution.download_template', 6) }}" class="btn btn-outline-success animated fadeInDown" >English - Tex</a>
+                            <a href="{{ route('user.myContribution.download_template', 6) }}"
+                               class="btn btn-outline-success animated fadeInDown">English - Tex</a>
                         </div>
                     </div>
-                    <div class="space-30"><hr></div>
+                    <div class="space-30">
+                        <hr>
+                    </div>
 
                     @if(isset($no_contribution))
                         <div class="row">
                             <div class="col-6 offset-3">
-                                <a href="{{ route('user.myContribution.create') }}" class="btn btn-lg btn-block btn-success" style="padding: 1em 0">{{ __('contribution.upload') }}</a>
+                                <a href="{{ route('user.myContribution.create') }}"
+                                   class="btn btn-lg btn-block btn-success"
+                                   style="padding: 1em 0">{{ __('contribution.upload') }}</a>
                             </div>
                         </div>
                     @else
@@ -80,56 +91,48 @@
                                 <h2>My contribution details</h2>
                             </div>
                             <div class="col-6 text-right">
-                                <a href="{{ route('user.myContribution.edit', $contribution->id) }}" class="btn btn-success">{{ __('titles.edit_contribution') }}</a>
-                                <a href="#!" data-item-id="{{ $contribution->id }}"
-                                   class="btn btn-danger delete-alert"><i class="fa fa-trash-o"></i> {{ __('titles.delete_contribution') }}</a>
+                                <a href="{{ route('user.myContribution.edit', $contribution->id) }}"
+                                   class="btn btn-success"><i
+                                        class="far fa-edit"></i> {{ __('titles.edit_contribution') }}</a>
+
+                               {{--<a href="#!" data-item-id="{{ $contribution->id }}"
+                                   class="btn btn-danger delete-alert"><i
+                                        class="far fa-trash-alt"></i> {{ __('titles.delete_contribution') }}</a>
 
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['user.myContribution.destroy',$contribution->id ],
                                     'class' => 'class="btn btn-danger delete-alert hide',
                                     'id' => 'item-del-'. $contribution->id  ])
                                 }}
                                 {{ Form::hidden('contribution_id', $contribution->id) }}
-                                {{ Form::close() }}
+                                {{ Form::close() }}--}}
                             </div>
                         </div>
 
                         <br>
 
-                        <div class="row">
-                            <div class="col-2">
-                                <strong>{{ __('form.contribution_title') }}:</strong>
-                            </div>
-                            <div class="col-10">
-                                {{ $contribution->title }}
-                            </div>
-                        </div>
+                        @include('backend.contribution.components.contribution_detail')
+
+                        <hr>
 
                         <div class="row">
                             <div class="col-2">
-                                <strong>{{ __('form.contribution_type') }}:</strong>
+                                <strong>{{ __('contribution.review') }}:</strong>
                             </div>
                             <div class="col-10">
-                                @if($contribution->type == 1){{ __('form.contribution_type1') }}
-                                @else{{ __('form.contribution_type2') }}
-                                @endif
+                                @include('backend.contribution.components.review')
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-2">
-                                <strong>{{ __('form.contribution_abstract') }}:</strong>
-                            </div>
-                            <div class="col-10">
-                                {{ $contribution->abstract }}
-                            </div>
-                        </div>
+                        <hr>
 
                         <div class="row">
                             <div class="col-2">
-                                <strong>{{ __('contribution.contribution_file') }}:</strong>
+                                <strong>{{ __('main.comments') }}:</strong>
                             </div>
                             <div class="col-10">
-                                <a href="{{ route('user.myContribution.download', $contribution->id) }}" class="btn btn-outline-primary">{{ __('contribution.download_document') }}</a>
+                                @foreach($comments as $c)
+                                    @include('backend.contribution.components.comment')
+                                @endforeach
                             </div>
                         </div>
 
@@ -155,8 +158,8 @@
                 dangerMode: true,
             })
                 .then((willDelete) => {
-                    if(willDelete){
-                        document.getElementById('item-del-'+id).submit();
+                    if (willDelete) {
+                        document.getElementById('item-del-' + id).submit();
                     }
                 });
         });

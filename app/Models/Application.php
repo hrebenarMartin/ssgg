@@ -45,4 +45,18 @@ class Application extends Model
         'created_at',
         'updated_at',
     ];
+
+    public static function getConferenceParticipantsCount($conf_id){
+        return self::where('conference_id', $conf_id)->where('status', '3')->count();
+    }
+
+    public static function getAllTimeParticipantsCount(){
+        return self::where('status', '3')->count();
+    }
+
+    //----------------------------------------------------\\
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

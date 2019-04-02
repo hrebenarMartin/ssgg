@@ -72,6 +72,9 @@ class RegisterController extends Controller
 
         $profile = new Profile();
         $profile->user_id = $user->id;
+        $n = explode(' ', $data['name']);
+        $profile->first_name = $n[0];
+        $profile->last_name = $n[1];
         $profile->save();
 
         return $user;

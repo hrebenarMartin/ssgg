@@ -18,4 +18,10 @@ class Block extends Model
             self::destroy($block->id);
         }
     }
+
+    //----------------------------------------------------\\
+
+    public function page(){
+        return $this->belongsTo('App\Models\Page');
+    }
 }

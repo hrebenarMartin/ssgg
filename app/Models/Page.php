@@ -38,4 +38,10 @@ class Page extends Model
     {
         self::where('conference_id', $conference_id)->update(['active' => 1]);
     }
+
+    //----------------------------------------------------\\
+
+    public function blocks(){
+        return $this->hasMany('App\Models\Block');
+    }
 }

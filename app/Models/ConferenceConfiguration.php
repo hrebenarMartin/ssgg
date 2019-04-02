@@ -55,4 +55,10 @@ class ConferenceConfiguration extends Model
         $id = self::where('conference_id', $conference_id)->first()->id;
         self::destroy($id);
     }
+
+    //----------------------------------------------------\\
+
+    public function conference(){
+        return $this->belongsTo('App\Models\Conference');
+    }
 }

@@ -2,12 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1233687-5633-43be-92ff-9502c67a63f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxExternalController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/ContributionComment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Review/UserReviewController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyAdmin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/EmailMessage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Review.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/conference.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/en/stats.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/conference.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/lang/sk/stats.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/contribution/components/comment.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/contribution/components/contribution_detail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/contribution/components/review.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/contribution/components/reviewer_assign_modal.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/contribution/contribution_detail_admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/contribution/contribution_listing_admin.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/review/components/accepted_table.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/review/components/new_table.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/review/detail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/review/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/review/listing.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/backend/review/user_reviews.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/email/html/test.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/email/text/test.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/fixed_94_conference_participants_and_contributions.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/fixed_94_conference_participants_and_contributions.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/ContributionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/ContributionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/TestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/TestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/CMS/ContentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/CMS/ContentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/Dashboard/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ContributionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ContributionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxExternalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxExternalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Helpers/LocaleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Helpers/LocaleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Application.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Application.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Block.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Block.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Conference.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Conference.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ConferenceConfiguration.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ConferenceConfiguration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ConferenceGallery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ConferenceGallery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Content.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Contribution.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Contribution.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ContributionComment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ContributionComment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/profiles/1/orig_profile_1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/profiles/1/profile_1.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/b_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/b_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/sk/b_menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sk/b_menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/sk/form.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sk/form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/sk/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/sk/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/conference/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/conference/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/contribution/user_contribution.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/contribution/user_contribution.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/layouts/left_menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/layouts/left_menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/profile/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/profile/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/profile/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/profile/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/user/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/backend/user/listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/backend/user/listing.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,6 +79,11 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="ssgg/b96c36a5-22f2-4588-93f4-6fcf747b0b5b:SCHEMA" value="Violet" />
+    </colors>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -46,13 +112,6 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="ssgg: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="ssgg@development.env" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="ssgg: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="contribution_comments: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -64,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+            <state relative-caret-position="693">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#392#427#0#PHP" expanded="true" />
               </folding>
@@ -74,56 +133,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/components/fixed_94_conference_participants_and_contributions.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#small#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-              </folding>
+        <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/contribution_comments">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/page.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/components/review.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="105" column="34" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Models/ContributionComment.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
-              <folding>
-                <element signature="e#48#74#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxExternalController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="114" selection-start-line="19" selection-start-column="114" selection-end-line="19" selection-end-column="114" />
-              <folding>
-                <element signature="e#48#76#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="420">
+              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -149,6 +171,12 @@
       <find>'</find>
       <find>info</find>
       <find>contribution_id</find>
+      <find>Auth::user\(\)</find>
+      <find>.*</find>
+      <find>\n</find>
+      <find>}</find>
+      <find>\$c</find>
+      <find>btn-info</find>
     </findStrings>
     <replaceStrings>
       <replace>boolean</replace>
@@ -163,6 +191,8 @@
       <replace>appl</replace>
       <replace>\$request-&gt;accom ==</replace>
       <replace>&quot;</replace>
+      <replace>\$user</replace>
+      <replace>\n</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -171,57 +201,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ContributionController.php" />
-        <option value="$PROJECT_DIR$/resources/views/components/fixed_96_conference_accomm_and_food.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_02_24_081238_create_applications_table.php" />
-        <option value="$PROJECT_DIR$/app/Models/Application.php" />
-        <option value="$PROJECT_DIR$/resources/lang/en/application.php" />
-        <option value="$PROJECT_DIR$/resources/lang/sk/application.php" />
-        <option value="$PROJECT_DIR$/resources/lang/en/b_menu.php" />
-        <option value="$PROJECT_DIR$/resources/lang/sk/b_menu.php" />
-        <option value="$PROJECT_DIR$/resources/lang/en/main.php" />
-        <option value="$PROJECT_DIR$/resources/lang/sk/main.php" />
-        <option value="$PROJECT_DIR$/resources/lang/sk/titles.php" />
-        <option value="$PROJECT_DIR$/resources/lang/en/titles.php" />
-        <option value="$PROJECT_DIR$/resources/lang/sk/form.php" />
-        <option value="$PROJECT_DIR$/resources/lang/en/form.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/conference/listing.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/TestController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ProfileController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/User/UserController.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/user/edit.blade.php" />
+        <option value="$PROJECT_DIR$/config/services.php" />
+        <option value="$PROJECT_DIR$/resources/views/email/test.blade.php" />
+        <option value="$PROJECT_DIR$/config/mail.php" />
+        <option value="$PROJECT_DIR$/app/Mail/Test.php" />
+        <option value="&lt;0e8c2aff-a6c9-493a-9560-5a9f09dcfdfc&gt;/.env" />
+        <option value="$PROJECT_DIR$/resources/email/html/test.blade.php" />
+        <option value="$PROJECT_DIR$/resources/email/text/test.blade.php" />
+        <option value="$PROJECT_DIR$/storage/logs/laravel.log" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_21_140543_create_email_queue_table.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/resources/views/backend/test.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/admin.style.css" />
-        <option value="$PROJECT_DIR$/resources/views/backend/conference/edit.blade.php" />
-        <option value="$PROJECT_DIR$/config/image_type.php" />
-        <option value="$PROJECT_DIR$/../../../xamppfiles/htdocs/Projects/ssgg/public/js/jQuery-File-Upload/js/main.js" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-        <option value="$PROJECT_DIR$/public/js/jQuery-File-Upload/js/main.js" />
-        <option value="$PROJECT_DIR$/resources/views/backend/conference/detail.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/UploadImages.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/app/Models/EmailMessage.php" />
+        <option value="$PROJECT_DIR$/app/Models/Role.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/TestController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_31_075733_create_reviews_table.php" />
+        <option value="$PROJECT_DIR$/app/Models/Conference.php" />
         <option value="$PROJECT_DIR$/app/Models/ConferenceGallery.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Dashboard/DashboardController.php" />
-        <option value="$PROJECT_DIR$/public/css/app.css" />
-        <option value="$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/layouts/left_menu.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/application/user_application.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/application/edit.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/application/add.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ApplicationController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/ConferenceController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/topnavbar.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Frontend/ConferencePagesController.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/cms/content_add.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/backend/cms/content_edit.blade.php" />
+        <option value="$PROJECT_DIR$/app/Models/ConferenceConfiguration.php" />
+        <option value="$PROJECT_DIR$/app/Models/Application.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/CMS/ContentController.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_03_09_205501_create_contribution_comments_table.php" />
+        <option value="$PROJECT_DIR$/app/Models/Block.php" />
+        <option value="$PROJECT_DIR$/app/Models/Page.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Models/Review.php" />
         <option value="$PROJECT_DIR$/app/Models/ContributionComment.php" />
+        <option value="$PROJECT_DIR$/app/Models/Contribution.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/components/reviewer_assign_modal.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/User/ContributionController.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/components/comment.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/components/contribution_detail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/layouts/left_menu.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxExternalController.php" />
-        <option value="$PROJECT_DIR$/resources/views/page.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/components/fixed_94_conference_participants_and_contributions.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/app.css" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/resources/views/backend/review/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/review/components/rejected_table.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/user_contribution.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/ContributionsController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Backend/Review/UserReviewController.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/review/user_reviews.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/review/components/new_table.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/review/components/accepted_table.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/review/detail.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/contribution_listing_admin.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/components/review.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/backend/contribution/contribution_detail_admin.blade.php" />
       </list>
     </option>
   </component>
@@ -324,8 +354,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="812" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -350,186 +381,12 @@
               <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
               <item name="ssgg" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Backend" type="462c0819:PsiDirectoryNode" />
-              <item name="CMS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Backend" type="462c0819:PsiDirectoryNode" />
-              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Backend" type="462c0819:PsiDirectoryNode" />
-              <item name="User" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="Helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Middleware" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
               <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="cms" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="conference" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="profile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ssgg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ssgg" type="462c0819:PsiDirectoryNode" />
-              <item name="storage" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -538,7 +395,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -553,11 +410,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/backend/contribution" />
       <recent name="$PROJECT_DIR$/resources/views/backend/application" />
       <recent name="$PROJECT_DIR$/resources/lang/sk" />
       <recent name="$PROJECT_DIR$/../../../xamppfiles/htdocs/Projects/ssgg/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/public/css" />
       <recent name="$PROJECT_DIR$/resources/views/backend/cms" />
@@ -605,7 +464,14 @@
       <workItem from="1551966213798" duration="5531000" />
       <workItem from="1552071129525" duration="196000" />
       <workItem from="1552114364011" duration="15888000" />
-      <workItem from="1552162764398" duration="5299000" />
+      <workItem from="1552162764398" duration="5463000" />
+      <workItem from="1552294320903" duration="4246000" />
+      <workItem from="1552559216067" duration="8639000" />
+      <workItem from="1553170435897" duration="6570000" />
+      <workItem from="1553200278714" duration="500000" />
+      <workItem from="1553783499565" duration="565000" />
+      <workItem from="1553889663588" duration="31519000" />
+      <workItem from="1554220270269" duration="3292000" />
     </task>
     <task id="LOCAL-00001" summary="16.2">
       <created>1550340038450</created>
@@ -656,11 +522,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552146869174</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="9.3.2019&#10;Frontend contribution and commenting.">
+      <created>1552168729941</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1552168729941</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130928000" />
+    <option name="totallyTimeSpent" value="186423000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -673,12 +546,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49638554" visible="true" weight="0.20600858" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49518073" visible="true" weight="0.22603719" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" sideWeight="0.5036145" side_tool="true" weight="0.20314735" />
+      <window_info id="Favorites" order="3" sideWeight="0.5048193" side_tool="true" weight="0.20886981" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32916668" />
@@ -690,14 +562,14 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28674698" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.32891566" />
       <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.3297568" />
-      <window_info anchor="right" id="Database" order="4" weight="0.19098713" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.23748212" />
+      <window_info anchor="right" id="Database" order="4" weight="0.20600858" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -713,351 +585,394 @@
     <MESSAGE value="23.2" />
     <MESSAGE value="24.2 My application beginnings" />
     <MESSAGE value="9.3.2019&#10;&#10;image upload, participants and contributions on frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="9.3.2019&#10;&#10;image upload, participants and contributions on frontend" />
+    <MESSAGE value="9.3.2019&#10;Frontend contribution and commenting." />
+    <option name="LAST_COMMIT_MESSAGE" value="9.3.2019&#10;Frontend contribution and commenting." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/css/style.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/argon.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/test.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2367">
-          <caret line="48" column="10" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="48" selection-end-column="10" />
+        <state relative-caret-position="648">
+          <caret line="76" column="36" lean-forward="true" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/TestController.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_31_075733_create_reviews_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+        <state relative-caret-position="300">
+          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/color_scheme.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/animate.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/conference/edit.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Role.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="736" column="33" selection-start-line="736" selection-start-column="33" selection-end-line="736" selection-end-column="33" />
+        <state relative-caret-position="120">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/image_type.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Conference.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/image.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../xamppfiles/htdocs/Projects/ssgg/public/js/jQuery-File-Upload/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/conference/8/conference-2019-802733712.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="53" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sufee-admin-dashboard-master/vendors/jquery/src/.jshintrc">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/jQuery-File-Upload/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/conference/listing.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-988">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/UploadImages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="248" column="32" selection-start-line="248" selection-start-column="32" selection-end-line="248" selection-end-column="32" />
-          <folding>
-            <element signature="e#30#43#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="243">
+          <caret line="36" column="56" selection-start-line="36" selection-end-line="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/ConferenceGallery.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        <state relative-caret-position="450">
+          <caret line="30" column="57" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/user/profile.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Dashboard/DashboardController.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/ConferenceConfiguration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding>
-            <element signature="e#58#84#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="498">
+          <caret line="61" column="57" selection-start-line="61" selection-start-column="57" selection-end-line="61" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/profile/detail.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Application.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-593">
-          <caret line="45" column="26" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="45" selection-end-column="26" />
+        <state relative-caret-position="498">
+          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/admin.style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="707" column="9" selection-start-line="707" selection-start-column="5" selection-end-line="707" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="5" column="49039" selection-start-line="5" selection-start-column="49039" selection-end-line="5" selection-end-column="49039" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/app.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/TestController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/left_menu.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="89" column="129" selection-start-line="89" selection-start-column="129" selection-end-line="89" selection-end-column="129" />
+          <caret line="18" column="62" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="62" />
           <folding>
-            <element signature="e#6291#6317#0#HTML" expanded="true" />
-            <element signature="e#6384#6436#0#HTML" expanded="true" />
-            <element signature="e#6756#6819#0#HTML" expanded="true" />
-            <element signature="e#7147#7215#0#HTML" expanded="true" />
-            <element signature="e#7752#7777#0#HTML" expanded="true" />
-            <element signature="e#7816#7883#0#HTML" expanded="true" />
-            <element signature="e#8157#8182#0#HTML" expanded="true" />
+            <element signature="e#54#82#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/User/ApplicationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="83" column="8" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="8" />
-          <folding>
-            <element signature="e#53#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/application/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2655">
-          <caret line="177" column="111" selection-start-line="177" selection-start-column="111" selection-end-line="177" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/application/add.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="107" column="87" selection-start-line="107" selection-start-column="87" selection-end-line="107" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/applications" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/ConferenceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="259" column="60" selection-start-line="259" selection-start-column="60" selection-end-line="259" selection-end-column="60" />
-          <folding>
-            <element signature="e#54#81#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/components/fixed_95_conference_special_events.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="10" lean-forward="true" selection-end-line="36" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/application/user_application.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1187">
-          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
-          <folding>
-            <element signature="e#4301#4369#0#HTML" expanded="true" />
-            <element signature="e#4456#4524#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/contributions" />
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/cms/content_edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="106" column="73" selection-start-line="106" selection-start-column="73" selection-end-line="106" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Block.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/topnavbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" column="146" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="146" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/cms/content_add.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-805">
-          <caret line="98" column="36" selection-start-line="98" selection-start-column="36" selection-end-line="98" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/backend/conference/detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1130">
-          <caret line="492" column="33" lean-forward="true" selection-start-line="477" selection-start-column="32" selection-end-line="492" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Frontend/ConferencePagesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#49#76#0#PHP" expanded="true" />
-          </folding>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/page_content">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/CMS/ContentController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+        <state relative-caret-position="-521">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_09_205501_create_contribution_comments_table.php">
+    <entry file="file://$PROJECT_DIR$/app/Models/Content.php" />
+    <entry file="file://$PROJECT_DIR$/app/Models/Block.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="44" column="50" selection-start-line="44" selection-start-column="50" selection-end-line="44" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Review.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Contribution.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/ContributionComment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/User/ContributionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="37" column="47" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/components/contribution_detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/layouts/left_menu.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="70" column="64" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/listing.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="e#23#63#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/user/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="5" column="42087" selection-start-line="5" selection-start-column="42087" selection-end-line="5" selection-end-column="42087" />
+          <folding>
+            <element signature="e#65828#66028#2" expanded="true" />
+            <element signature="e#66234#66383#2" expanded="true" />
+            <element signature="e#66882#67028#2" expanded="true" />
+            <element signature="e#67329#67495#1" expanded="true" />
+            <element signature="e#81654#81897#2" expanded="true" />
+            <element signature="e#82722#82971#2" expanded="true" />
+            <element signature="e#110763#110953#2" expanded="true" />
+            <element signature="e#110999#111189#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/reviews">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/components/rejected_table.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/components/comment.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/user_contribution.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="119" column="34" lean-forward="true" selection-start-line="119" selection-start-column="34" selection-end-line="119" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Frontend/ConferencePagesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-647" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/components/fixed_95_conference_special_events.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/components/fixed_94_conference_participants_and_contributions.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-612" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Admin/ContributionsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-177">
+          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+          <folding>
+            <element signature="e#54#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Backend/Review/UserReviewController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
+          <folding>
+            <element signature="e#55#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/components/new_table.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="68" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/user_reviews.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/dashboard/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="117" column="59" selection-start-line="117" selection-start-column="59" selection-end-line="117" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/detail.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="82" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/review/components/accepted_table.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="72" selection-start-line="25" selection-start-column="72" selection-end-line="25" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/contribution_listing_admin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="45" column="47" selection-start-line="45" selection-start-column="47" selection-end-line="45" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/components/reviewer_assign_modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="6" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/roles">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/components/review.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/backend/contribution/contribution_detail_admin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="54" column="25" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/conference">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/conference_config">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/contributions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/pages">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        <state relative-caret-position="693">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#392#427#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/ContributionComment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+    <entry file="uml://DATABASE/b96c36a5-22f2-4588-93f4-6fcf747b0b5b.SCHEMA:ssgg">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>b96c36a5-22f2-4588-93f4-6fcf747b0b5b.SCHEMA:ssgg</OriginalElement>
+          <nodes>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.contribution_comments</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.countries</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.migrations</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.user_roles</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.front_menu</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.page_content</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.user_profiles</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.pages</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.email_messages</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.roles</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.contributions</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.conference_config</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.users</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.applications</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.user_images</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.conference_images</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.reviews</node>
+            <node x="" y="">b96c36a5-22f2-4588-93f4-6fcf747b0b5b.TABLE:ssgg.conference</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="1399.0" y="969.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
-          <folding>
-            <element signature="e#48#74#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Helpers/AjaxExternalController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="114" selection-start-line="19" selection-start-column="114" selection-end-line="19" selection-end-column="114" />
-          <folding>
-            <element signature="e#48#76#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="105" column="34" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/components/fixed_94_conference_participants_and_contributions.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#small#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#section#0;n#!!top" expanded="true" />
-          </folding>
+    <entry file="das://b96c36a5-22f2-4588-93f4-6fcf747b0b5b/schema/ssgg/table/contribution_comments">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

@@ -48,7 +48,12 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('backend.layouts.app', function (){
             $user_data = Profile::where('user_id', Auth::id())->first();
+            $conference = Conference::where('status','!=', 3)->first();
+
             view()->share('user_data', $user_data);
+            if($conference){
+                view()->share('is_conference', $conference);
+            }
         });
 
 

@@ -147,5 +147,9 @@ return [
     'conference_extra_en' => "Anglická verzia",
     'conference_status_change' => "Zmeniť stav",
 
+    'files_add' => 'Pridať súbory',
+    'files_upload' => 'Nahrať súbory',
+    'files_upload_cancel' => 'Zrušiť nahrávanie',
+
 
 ];

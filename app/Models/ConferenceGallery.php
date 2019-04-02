@@ -20,4 +20,14 @@ class ConferenceGallery extends Model
         $image_class->deleteImage('conference', $img_id);
         ConferenceGallery::destroy($img_id);
     }
+
+    public static function getAllTimePhotosCount(){
+        return self::all()->count();
+    }
+
+    //----------------------------------------------------\\
+
+    public function conference(){
+        return $this->belongsTo('App\Models\Conference');
+    }
 }

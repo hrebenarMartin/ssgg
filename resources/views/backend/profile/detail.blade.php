@@ -7,7 +7,7 @@
         <div class="container">
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
-                    @if(Auth::id() == $profile->user_id  || Auth::user()->access_level == 3)<a href="{{ route('user.profile.edit', $profile->user_id) }}" class="btn btn-success">{{ __('form.action_edit_profile') }}</a>@endif
+                    @if(Auth::id() == $profile->user_id  || Auth::user()->access_level == 4)<a href="{{ route('user.profile.edit', $profile->user_id) }}" class="btn btn-success">{{ __('form.action_edit_profile') }}</a>@endif
                     <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
                 </div>
             </div>
@@ -40,6 +40,23 @@
                                         <img class="rounded-circle mx-auto d-block" src="{!! asset('public/images/profiles/'.$profile->id.'/'.$profile->image) !!}" alt="Profile picture" width="200">
                                     @endif
                                     <h4 class="text-sm-center mt-2 mb-1 text-"><strong>{{ $profile->title_before." ".$profile->first_name." ".$profile->middle_name." ".$profile->last_name." ".$profile->title_after }}</strong></h4>
+                                        @if($user->access_level == 4)
+                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
+                                                <strong>{{__('main.superadmin')}}</strong>
+                                            </h4>
+                                        @elseif($user->access_level == 3)
+                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
+                                                <strong>{{__('main.admin')}}</strong>
+                                            </h4>
+                                        @elseif($user->access_level == 2)
+                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
+                                                <strong>{{__('main.reviewer')}}</strong>
+                                            </h4>
+                                        @elseif($user->access_level == 1)
+                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
+                                                <strong>{{__('main.reguser')}}</strong>
+                                            </h4>
+                                        @endif
                                 </div>
                             </div>
                         </div>
@@ -92,7 +109,7 @@
                                     </div>
 
                                     <div class="col-sm-6 text-right">
-                                        <strong>{{ __('form.profile_ico') }} :</strong>
+                                        <strong>{{ __('form.profile_ico') }}:</strong>
                                     </div>
                                     <div class="col-sm-6">
                                         {{ $profile->ico }}

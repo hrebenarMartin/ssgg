@@ -16,4 +16,12 @@ return [
     'cost' => 'cena (za lôžko)',
     'edit' => 'Upraviť',
     'confirm' => 'Potvrdiť',
+
+    'user_zone' => 'Moja zóna',
+    'conference_zone' => 'Konferenčná zóna',
+
+    'superadmin' => 'Super-Administrátor',
+    'admin' => 'Administrátor',
+    'reviewer' => 'Recenzent',
+    'reguser' => 'Užívateľ',
 ];

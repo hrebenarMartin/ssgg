@@ -298,7 +298,7 @@
                                             <img class="img-responsive m-b-sm" src="{!! asset('/images/conference/') . '/'.$data->id .'/sq/' . $img->image !!}">
                                         </a>
                                         <div class="img-overlay">
-                                            <button data-img-button-id="{{$img->id}}" class="btn btn-md btn-danger delete_image_btn"><i class="fa fa-trash-o"></i></button>
+                                            <button data-img-button-id="{{$img->id}}" class="btn btn-md btn-danger delete_image_btn"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
 

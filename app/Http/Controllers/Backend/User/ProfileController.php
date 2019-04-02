@@ -58,6 +58,7 @@ class ProfileController extends Controller
 
         //dd($profile);
         return view('backend.profile.detail')
+            ->with('user', $user)
             ->with('profile', $profile);
     }
 
@@ -183,7 +184,7 @@ class ProfileController extends Controller
 
         $profile->save();
 
-        return redirect()->route('user.profile.show', $id);
+        return redirect()->route('user.profile.show', $profile->user_id);
 
     }
 

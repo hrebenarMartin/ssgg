@@ -148,5 +148,9 @@ return [
     'conference_extra_en' => "English version",
     'conference_status_change' => "Status change",
 
+    'files_add' => 'Add files',
+    'files_upload' => 'Upload files',
+    'files_upload_cancel' => 'Cancel upload',
+
 
 ];

@@ -17,7 +17,7 @@ class AjaxExternalController extends Controller
 
             $contr_id = $request->contr_id;
             $contr = Contribution::find($contr_id);
-            $comments = ContributionComment::join('user_profiles as up', 'contribution_comments.user_id', "=", "up.user_id")->where('contribution_id', $contr_id)->get();
+            $comments = ContributionComment::getContributionComments($contr_id);
 
             return response()->json(['status' => 'OK', 'contribution' => $contr, 'comments' => $comments]);
         }

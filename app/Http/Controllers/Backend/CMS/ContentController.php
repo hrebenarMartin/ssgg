@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend\CMS;
 
-use App\Models\Content;
+use App\Models\Block;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -55,7 +55,7 @@ class ContentController extends Controller
 
         $this->validate($request, $rules);
 
-        $block = new Content();
+        $block = new Block();
 
         $block->title = $request->block_title;
         $block->page_id = $request->block_parent;
@@ -115,7 +115,7 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        $block = Content::find($id);
+        $block = Block::find($id);
         $pages = Page::all();
 
         return view('backend.cms.content_edit')
@@ -141,7 +141,7 @@ class ContentController extends Controller
 
         $this->validate($request, $rules);
 
-        $block = Content::findOrFail($id);
+        $block = Block::findOrFail($id);
 
         $block->title = $request->block_title;
         $block->page_id = $request->block_parent;

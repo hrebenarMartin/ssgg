@@ -36,7 +36,7 @@ Route::get('/', 'Frontend\PagesController@index')->name("index");
 Route::get('/{page}', 'Frontend\PagesController@show')->name('show');
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function (){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function (){
     Route::resource('/user','Backend\User\UserController');
 
     Route::resource('/cms', 'Backend\CMS\PagesController');
@@ -47,7 +47,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/conferences', 'Backend\Admin\ConferenceController');
     Route::post('/conference_upload_images', 'Backend\Admin\ConferenceController@uploadImagesBlueImp')->name('conferences.upload_images');
 
+    Route::resource('/contributions', 'Backend\Admin\ContributionsController');
+    Route::post('/contributions/assign_reviewer/{contribution_id}', 'Backend\Admin\ContributionsController@assignReviewer')->name('contributions.assignReviewer');
+
     Route::get('/test', 'Backend\Admin\TestController@index')->name('test');
+});
+
+Route::group(['prefix' => 'review', 'as' => 'review.', 'middleware' => ['auth']], function () {
+    Route::resource('/myReview', 'Backend\Review\UserReviewController');
+    Route::get('/myReview/accept/{review_id}', 'Backend\Review\UserReviewController@acceptReview')->name('accept');
+    Route::get('/myReview/reject/{review_id}', 'Backend\Review\UserReviewController@rejectReview')->name('reject');
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {

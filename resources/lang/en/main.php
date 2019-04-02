@@ -16,4 +16,12 @@ return [
     'cost' => 'cost (for one bed)',
     'edit' => 'Edit',
     'confirm' => 'Confirm',
+
+    'user_zone' => 'My zone',
+    'conference_zone' => 'Conference zone',
+
+    'superadmin' => 'Super-Administrator',
+    'admin' => 'Administrator',
+    'reviewer' => 'Reviewer',
+    'reguser' => 'User',
 ];

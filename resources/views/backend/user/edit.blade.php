@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', __('titles.user_profile'))
+@section('title', __('titles.user_edit'))
 
 @section('content')
 

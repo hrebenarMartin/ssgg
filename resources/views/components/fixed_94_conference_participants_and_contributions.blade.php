@@ -14,7 +14,7 @@
 
                 @foreach ($dynamic_data->participants as $p)
                     <div class="col-sm-12">
-                        <div class="row">
+                        <div class="row py-3">
                             <div class="col-12 col-sm-3 align-center text-center pb-4">
                                 @if($p->profile->image)
                                     <img
@@ -28,7 +28,7 @@
                                 @if($p->contribution)
                                     <button type="button" class="btn btn-outline-success contribution_modal_open"
                                             data-contribution-id="{{$p->contribution->id}}" data-toggle="modal"
-                                            data-target="#contribution_modal">Príspevok
+                                            data-target="#contribution_modal">{{ __('main.contribution') }}
                                     </button>
                                 @endif
                             </div>
@@ -42,29 +42,30 @@
                                 <h3 id="contribution_title"></h3>
                             </div>
                             <div class="modal-body">
+
+                                <small><h5>{{ __('form.contribution_co_authors') }}:<span id="co_authors"></span></h5></small>
                                 <p id="contribution_abstract"></p>
                                 <hr>
                                 <h4>{{__('main.comments')}}</h4>
                                 <div class="container" id="contribution_comments">
-
-                                    <div class="row bg-secondary p-3" id="comment_wrap">
+                                    <div class="row bg-secondary p-3" id="comment_wrap_template" style="display: none;">
                                         <div class="col-4 col-sm-2">
-                                            @if($p->profile->image)
-                                                <img
-                                                    src="{{asset('public/images/profiles/'.$p->profile->user_id."/".$p->profile->image)}}"
-                                                    class="rounded-circle" width="100%" style="max-width: 50px;">
-                                            @endif
+                                            <img src=""
+                                                 class="rounded-circle" width="100%" style="max-width: 50px;"
+                                                 id="author_picture">
                                         </div>
                                         <div class="col-8 col-sm-10">
-                                            <p><strong>{{$p->profile->first_name." ".$p->profile->last_name}}</strong>
-                                                <br>xx.xx.2019</p>
+                                            <p>
+                                                <small>
+                                                    <strong class="author_name"></strong>
+                                                    <br>
+                                                    <span class="date_added"></span>
+                                                </small>
+                                            </p>
                                         </div>
                                         <div class="col-12">
-                                            Candy powder carrot cake marshmallow cheesecake cotton candy oat cake
-                                            pudding. Bonbon jelly-o tart jelly-o jelly beans carrot cake chocolate.
-                                            Tootsie roll lemon drops sweet roll jelly cake pudding lollipop marzipan
-                                            gummi bears. Chocolate cake cupcake tootsie roll chocolate bar cheesecake
-                                            tart tiramisu.
+                                            <small class="comment_text">
+                                            </small>
                                         </div>
                                     </div>
                                 </div>

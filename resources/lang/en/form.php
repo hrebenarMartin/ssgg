@@ -84,6 +84,10 @@ return [
     'contribution_type' => 'Type',
     'contribution_type1' => 'Presentation',
     'contribution_type2' => 'Poster',
+    'contribution_type3' => 'Informative speech',
+    'contribution_type4' => 'Didactic materials and models workshop',
+    'contribution_type5' => 'Software and teaching application showcase',
+    'contribution_co_authors' => 'Co-author(s)',
     'contribution_choose_type' => 'Choose type...',
     'contribution_abstract' => 'Short abstract',
     'contribution_file' => 'Upload your contribution document',
@@ -152,5 +156,7 @@ return [
     'files_upload' => 'Upload files',
     'files_upload_cancel' => 'Cancel upload',
 
+    'contribution_listing' => 'Contributions list',
+    'contribution_reviewer' => 'Reviewer',
 
 ];

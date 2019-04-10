@@ -26,10 +26,10 @@
                     <thead>
                     <tr class="text-center">
                         <th scope="col">#</th>
-                        <th scope="col">{{ __('form.contribution_author') }}</th>
-                        <th scope="col">{{ __('form.contribution_type') }}</th>
+                        <th scope="col">{{ __('contribution.author') }}</th>
+                        <th scope="col">{{ __('review.rating') }}</th>
                         <th scope="col">{{ __('form.conference_year') }}</th>
-                        <th scope="col">{{ __('form.contribution_rating') }}</th>
+                        <th scope="col">{{ __('review.rating') }}</th>
                         <th scope="col">{{ __('form.contribution_reviewer') }}</th>
                         <th scope="col" style="width:20%;">{{ __('form.actions') }}</th>
                     </tr>

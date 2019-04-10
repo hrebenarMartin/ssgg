@@ -6,6 +6,7 @@ use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class UserReviewController extends Controller
 {
@@ -41,7 +42,7 @@ class UserReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -52,35 +53,50 @@ class UserReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $review = Review::find($id);
 
-        return view('backend.review.detail')
-            ->with('review', $review)
-            ->with('contribution', $review->contribution);
+        if ((Auth::user()->roles()->where('role_id', 4)->first() and Auth::id() == $review->reviewer->id) or
+            Auth::user()->roles()->where('role_id', 1)->first()) {
+            return view('backend.review.detail')
+                ->with('review', $review)
+                ->with('contribution', $review->contribution);
+        } else {
+            return redirect()->back()
+                ->with("message", "You do not have permission to access that module")
+                ->with("message_type", "danger");
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        return view('backend.review.edit')
-            ->with('review', Review::find($id));
+        $review = Review::find($id);
+        if ((Auth::user()->roles()->where('role_id', 4)->first() and Auth::id() == $review->reviewer->id) or
+            Auth::user()->roles()->where('role_id', 1)->first()) {
+            return view('backend.review.edit')
+                ->with('review', $review);
+        } else {
+            return redirect()->back()
+                ->with("message", "You do not have permission to access that module")
+                ->with("message_type", "danger");
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -101,7 +117,7 @@ class UserReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -109,10 +125,11 @@ class UserReviewController extends Controller
         //
     }
 
-    public function acceptReview($id){
+    public function acceptReview($id)
+    {
         $review = Review::find($id);
 
-        if($review->reviewer->id != Auth::id()){
+        if ($review->reviewer->id != Auth::id()) {
             return redirect()->route('review.myReview.index')
                 ->with('message', 'This review has not been assigned to you')
                 ->with('message_type', 'danger');
@@ -122,18 +139,19 @@ class UserReviewController extends Controller
 
         $review->save();
 
-        if($review->reviever != Auth::id()){
+        if ($review->reviever != Auth::id()) {
             return redirect()->route('review.myReview.index')
-                ->with('message', 'You accepted review #'.$review->id)
+                ->with('message', 'You accepted review #' . $review->id)
                 ->with('message_type', 'success');
         }
 
     }
 
-    public function rejectReview($id){
+    public function rejectReview($id)
+    {
         $review = Review::find($id);
 
-        if($review->reviewer->id != Auth::id()){
+        if ($review->reviewer->id != Auth::id()) {
             return redirect()->back()
                 ->with('message', 'This review has not been assigned to you')
                 ->with('message_type', 'danger');
@@ -143,9 +161,9 @@ class UserReviewController extends Controller
 
         $review->save();
 
-        if($review->reviever != Auth::id()){
+        if ($review->reviever != Auth::id()) {
             return redirect()->back()
-                ->with('message', 'You accepted review #'.$review->id)
+                ->with('message', 'You accepted review #' . $review->id)
                 ->with('message_type', 'success');
         }
 

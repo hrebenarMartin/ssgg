@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', __('review.detail'))
+@section('title', __('titles.review_detail'))
 
 @section('content')
 
@@ -49,7 +49,7 @@
                                     <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
                                     <i class="fa fa-check" style="color: #fff;"></i>
                                 </span>
-                                        &nbsp; <b>{{$review->rating}}</b>/5 &nbsp;Approved
+                                        &nbsp; <b>{{$review->rating}}</b>/5 &nbsp;{{ __('review.approved') }}
                                         <a href="{{ route('review.myReview.edit', $review->id) }}"
                                            class="btn btn-success pull-right"><i
                                                 class="fa fa-edit"></i> {{ __('main.edit') }}
@@ -61,7 +61,7 @@
                                     <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
                                     <i class="fa fa-times" style="color: #fff;"></i>
                                 </span>
-                                        &nbsp;Not Approved
+                                        &nbsp;{{ __('review.not_approved') }}
                                         <a href="{{ route('review.myReview.edit', $review->id) }}"
                                            class="btn btn-success pull-right"><i
                                                 class="fa fa-edit"></i> {{ __('main.edit') }}
@@ -73,7 +73,7 @@
                                     <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
                                     <i class="fa fa-minus" style="color: #fff;"></i>
                                 </span>
-                                        &nbsp;Not Rated
+                                        &nbsp;{{ __('review.in_progress') }}
                                         <a href="{{ route('review.myReview.edit', $review->id) }}"
                                            class="btn btn-success pull-right"><i
                                                 class="fa fa-edit"></i> {{ __('main.edit') }}

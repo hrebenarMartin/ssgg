@@ -14,4 +14,6 @@ return [
     'conf_participants' => 'Participants',
     'conf_contributions' => 'Contributions',
     'conf_stats' => 'Stats',
+
+    'review' => 'My Reviews',
 ];

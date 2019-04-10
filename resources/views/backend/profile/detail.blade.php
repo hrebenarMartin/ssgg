@@ -37,7 +37,7 @@
                                             <img class="mx-auto d-block" src="{!! asset('images/placeholders/user_o.png') !!}" alt="Profile picture" width="200">
                                         @endif
                                     @else
-                                        <img class="rounded-circle mx-auto d-block" src="{!! asset('public/images/profiles/'.$profile->id.'/'.$profile->image) !!}" alt="Profile picture" width="200">
+                                        <img class="rounded-circle mx-auto d-block" src="{!! asset('public/images/profiles/'.$profile->user_id.'/'.$profile->image) !!}" alt="Profile picture" width="200">
                                     @endif
                                     <h4 class="text-sm-center mt-2 mb-1 text-"><strong>{{ $profile->title_before." ".$profile->first_name." ".$profile->middle_name." ".$profile->last_name." ".$profile->title_after }}</strong></h4>
                                         @if($user->access_level == 4)

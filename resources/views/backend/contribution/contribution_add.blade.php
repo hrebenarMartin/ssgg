@@ -36,11 +36,14 @@
                         <div class="col-4 text-right">
                             <label for="type" class="col-form-label">{{ __('form.contribution_type') }}</label>
                         </div>
-                        <div class="col-2">
+                        <div class="col-4">
                             <select id="type" name="type" class="form-control" required>
                                 <option value="" selected disabled>{{ __('form.contribution_choose_type') }}</option>
                                 <option value="1">{{ __('form.contribution_type1') }}</option>
                                 <option value="2">{{ __('form.contribution_type2') }}</option>
+                                <option value="3">{{ __('form.contribution_type3') }}</option>
+                                <option value="4">{{ __('form.contribution_type4') }}</option>
+                                <option value="5">{{ __('form.contribution_type5') }}</option>
                             </select>
                         </div>
                     </div>
@@ -51,6 +54,15 @@
                         </div>
                         <div class="col-6">
                             <textarea type="text" id="abstract" name="abstract" class="form-control" required rows="6">{{ old('abstract') }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-4 text-right">
+                            <label for="co_authors" class="col-form-label">{{ __('form.contribution_co_authors') }}</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="co_authors" name="co_authors" class="form-control" value="{{ old('co_authors') }}">
                         </div>
                     </div>
 

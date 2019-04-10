@@ -38,7 +38,7 @@
         <hr>
         <div class="row">
             <div class="col col-6">
-                <h3>Pages</h3>
+                <h3>{{ __('titles.pages') }}</h3>
             </div>
             <div class="col col-6">
                 <div class="d-flex flex-row-reverse">

@@ -45,6 +45,11 @@ class Conference extends Model
     }
 
     public function gallery(){
-        return $this->hasMany('App\Models\ConferenceGallery');
+        return $this->hasMany('App\Models\ConferenceGallery', 'item_id');
+    }
+
+    public function country(){
+        return $this->hasOne('App\Models\Country', 'id' ,'address_country');
     }
 }
+

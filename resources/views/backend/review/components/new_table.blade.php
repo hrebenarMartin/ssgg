@@ -1,10 +1,10 @@
-<h3>New reviews</h3>
+<h3>{{ __('review.new_reviews') }}</h3>
 <table class="table table-striped" id="new_table">
     <thead>
     <tr class="text-center">
         <th scope="col">#</th>
-        <th scope="col">{{ __('review.contribution_title') }}</th>
-        <th scope="col">{{ __('review.contribution_author') }}</th>
+        <th scope="col">{{ __('form.contribution_title') }}</th>
+        <th scope="col">{{ __('contribution.author') }}</th>
         <th scope="col"></th>
     </tr>
     </thead>

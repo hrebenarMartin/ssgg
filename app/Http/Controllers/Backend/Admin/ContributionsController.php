@@ -6,7 +6,6 @@ use App\Models\Contribution;
 use App\Models\ContributionComment;
 use App\Models\Review;
 use App\User;
-use function foo\func;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

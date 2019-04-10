@@ -24,4 +24,11 @@ return [
     'admin' => 'Administrator',
     'reviewer' => 'Reviewer',
     'reguser' => 'User',
+
+    'archive_list' => 'List of conferences',
+    'cancel' => 'Cancel',
+    'contribution' => 'Contribution',
+    'comments' => 'Comments',
+    'review_zone' => 'Review Zone',
+    'delete' => "Delete",
 ];

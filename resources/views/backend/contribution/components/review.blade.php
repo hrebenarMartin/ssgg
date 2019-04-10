@@ -6,7 +6,7 @@
                                     <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
                                     <i class="fa fa-check" style="color: #fff;"></i>
                                 </span>
-                &nbsp; <b>{{$contribution->review->rating}}</b>/5 &nbsp;Approved
+                &nbsp; <b>{{$contribution->review->rating}}</b>/5 &nbsp;{{__('review.approved')}}
 
                 @elseif($contribution->review->approved == -1)
                     <h3 class="text-danger">
@@ -14,7 +14,7 @@
                                     <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
                                     <i class="fa fa-times" style="color: #fff;"></i>
                                 </span>
-                        &nbsp;Not Approved
+                        &nbsp;{{ __('review.not_approved') }}
 
                         @else
                             <h3 class="text-muted">
@@ -22,7 +22,7 @@
                                     <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
                                     <i class="fa fa-minus" style="color: #fff;"></i>
                                 </span>
-                                &nbsp;Not Rated
+                                &nbsp;{{ __('review.in_progress') }}
 
                                 @endif
                                 @if($contribution->review->reviewer->id == Auth::id() or Auth::user()->roles()->where('role_id', 1)->first())

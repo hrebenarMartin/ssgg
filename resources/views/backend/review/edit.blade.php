@@ -18,7 +18,7 @@
 
         <div class="card">
             <div class="card-header">
-                <strong class="card-title">{{__('form.user_edit')}}</strong>
+                <strong class="card-title">{{__('form.review_edit')}}</strong>
             </div>
             <div class="card-body">
                 <form id="review_edit_form" method="POST" action="{{route('review.myReview.update', $review->id)}}">

@@ -82,7 +82,7 @@ class ContentController extends Controller
             $block->content_en = "";
         }
 
-        $blocks_before_count = Content::where('page_id', $request->block_parent)->count();
+        $blocks_before_count = Block::where('page_id', $request->block_parent)->count();
 
         $block->rank = $blocks_before_count + 1;
 
@@ -100,7 +100,7 @@ class ContentController extends Controller
      */
     public function show($page_id)
     {
-        $blocks = Content::where('page_id', $page_id)->orderBy('rank')->get();
+        $blocks = Block::where('page_id', $page_id)->orderBy('rank')->get();
 
         return view('backend.cms.content_listing')
             ->with('blocks', $blocks)

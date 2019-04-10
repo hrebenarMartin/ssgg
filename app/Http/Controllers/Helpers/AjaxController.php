@@ -73,7 +73,7 @@ class AjaxController extends Controller
         }
 
         else if(isset($request->action) && strcmp($request->action, "delete_conference_image") == 0 ){
-            Log::info("Ajax call - delete conference image -> ".$request->image_id);
+            Log::info("Ajax call - delete conference image -> #".$request->image_id);
 
             $img_id = $request->image_id;
 
@@ -83,7 +83,7 @@ class AjaxController extends Controller
         }
 
         else if(isset($request->action) && strcmp($request->action, "save_contribution_comment") == 0 ){
-            Log::info("Ajax call - save comment for contribution -> ".$request->contr_id);
+            Log::info("Ajax call - save comment for contribution -> #".$request->contr_id);
 
             $comment = new ContributionComment();
 
@@ -93,7 +93,7 @@ class AjaxController extends Controller
 
             $comment->save();
 
-            return response()->json(['status' => 'OK', 'comment_id' => $comment->id]);
+            return response()->json(['status' => 'OK', 'comment' => $comment , 'author' => Auth::user()->profile]);
         }
 
     }

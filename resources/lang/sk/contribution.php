@@ -14,4 +14,8 @@ return [
     'download_document' => "Stiahnuť dokument",
     'contribution_file' => "Dokument",
 
+    'author' => 'Autor',
+    'review' => 'Recenzný posudok',
+    'myContribution' => "Môj príspevok"
+
 ];

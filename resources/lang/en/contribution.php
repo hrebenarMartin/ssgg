@@ -14,4 +14,8 @@ return [
     'download_document' => "Download document",
     'contribution_file' => "Document file",
 
+    'author' => 'Author',
+    'review' => 'Review',
+    'myContribution' => "My contribution details"
+
 ];

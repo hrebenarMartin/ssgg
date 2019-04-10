@@ -24,8 +24,7 @@ class ContributionComment extends Model
                 'up.middle_name',
                 'up.last_name',
                 'up.title_before',
-                'up.title_after',
-                'up.updated_at as comment_added')
+                'up.title_after')
             ->where('contribution_id', $contr_id)
             ->get();
     }

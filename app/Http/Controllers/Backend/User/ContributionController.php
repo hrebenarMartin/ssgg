@@ -83,6 +83,7 @@ class ContributionController extends Controller
         $contribution->user_id = Auth::id();
         $contribution->title = $request->title;
         $contribution->type = $request->type;
+        $contribution->co_authors = $request->co_authors;
         $contribution->abstract = $request->abstract;
         $contribution->conference_id = Conference::where('status', 1)->first()->id;
 
@@ -168,6 +169,7 @@ class ContributionController extends Controller
         $contribution->title = $request->title;
         $contribution->type = $request->type;
         $contribution->abstract = $request->abstract;
+        $contribution->co_authors = $request->co_authors;
 
         if ($request->hasFile('file')) {
             if (!$request->file('file')->isValid()) {

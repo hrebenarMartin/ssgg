@@ -9,6 +9,15 @@
 
 <div class="row" style="padding-top: 1em">
     <div class="col-2">
+        <strong>{{ __('form.contribution_co_authors') }}:</strong>
+    </div>
+    <div class="col-10">
+        {{ $contribution->co_authors }}
+    </div>
+</div>
+
+<div class="row" style="padding-top: 1em">
+    <div class="col-2">
         <strong>{{ __('form.contribution_type') }}:</strong>
     </div>
     <div class="col-10">

@@ -32,17 +32,20 @@ Route::get('/konferencia', 'Frontend\ConferencePagesController@index')->name('co
 Route::get("/konferencia/{page}", 'Frontend\ConferencePagesController@show')->name('conference.show');
 Route::get("/konferencia/zbornik_download/{year}", 'Frontend\ConferencePagesController@proceedingsDownload')->name('conference.proceedings_download');
 
+Route::get('/archiv/{rocnik}', 'Frontend\PagesController@archiveEntry')->name('archive.show');
+
 Route::get('/', 'Frontend\PagesController@index')->name("index");
 Route::get('/{page}', 'Frontend\PagesController@show')->name('show');
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function (){
-    Route::resource('/user','Backend\User\UserController');
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function (){
 
-    Route::resource('/cms', 'Backend\CMS\PagesController');
-    Route::resource('/cms/content', 'Backend\CMS\ContentController');
-    Route::get('/cms/content/create/{page_id}', 'Backend\CMS\ContentController@createForPage')->name('content.createForPage');
-    Route::resource('/cms/front_menu', 'Backend\CMS\FrontMenuController');
+    Route::resource('/user','Backend\User\UserController')->middleware("admin");
+
+    Route::resource('/cms', 'Backend\CMS\PagesController')->middleware("admin");
+    Route::resource('/cms/content', 'Backend\CMS\ContentController')->middleware("admin");
+    Route::get('/cms/content/create/{page_id}', 'Backend\CMS\ContentController@createForPage')->name('content.createForPage')->middleware("admin");
+    Route::resource('/cms/front_menu', 'Backend\CMS\FrontMenuController')->middleware("admin");
 
     Route::resource('/conferences', 'Backend\Admin\ConferenceController');
     Route::post('/conference_upload_images', 'Backend\Admin\ConferenceController@uploadImagesBlueImp')->name('conferences.upload_images');
@@ -50,7 +53,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::resource('/contributions', 'Backend\Admin\ContributionsController');
     Route::post('/contributions/assign_reviewer/{contribution_id}', 'Backend\Admin\ContributionsController@assignReviewer')->name('contributions.assignReviewer');
 
-    Route::get('/test', 'Backend\Admin\TestController@index')->name('test');
+    Route::get('/test', 'Backend\Admin\TestController@index')->name('test')->middleware("admin");
 });
 
 Route::group(['prefix' => 'review', 'as' => 'review.', 'middleware' => ['auth']], function () {

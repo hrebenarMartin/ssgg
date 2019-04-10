@@ -28,6 +28,8 @@
                 @include('components.fixed_95_conference_special_events')
             @elseif($block->fixed_id == 94)
                 @include('components.fixed_94_conference_participants_and_contributions')
+            @elseif($block->fixed_id == 59)
+                @include('components.fixed_59_scg_archive_list')
             @endif
         @elseif($block->type == 3)
             @if(App::isLocale('en'))
@@ -56,7 +58,7 @@
 
 
 @section('page_scripts')
-    @if(isset($dynamic_data))
+    @if(isset($dynamic_data) and isset($dynamic_data->conference))
         <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
                 async defer></script>
 
@@ -85,7 +87,7 @@
             $().ready(function () {
                 $('.contribution_modal_open').click(function () {
                     var contr_id = $(this).data('contribution-id');
-                    console.log(contr_id);
+                    //console.log(contr_id);
                     $.ajax({
                         type: 'POST',
                         url: '/ajax-ext',
@@ -96,13 +98,30 @@
                         dataType: 'json',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function (data) {
-                            console.log(data);
+                            //console.log(data);
                             if (data.status == 'OK') {
                                 $('#contribution_id').val(contr_id);
                                 $('#contribution_title').html(data.contribution["title"]);
-                                $('#contribution_abstract').html(data.contribution["abstract"])
+                                $('#contribution_abstract').html(data.contribution["abstract"]);
+                                $('#co_authors').html(data.contribution["co_authors"]);
                                 data.comments.forEach(function (e) {
-                                    console.log(e);
+                                    //console.log(e);
+                                    let comm = $("#comment_wrap_template").clone();
+
+                                    comm.attr('id', "");
+                                    if (e.prof_img != "") {
+                                        comm.find('#author_picture').attr('src', "/public/images/profiles/" + e.user_id + "/" + e.prof_img)
+                                    } else {
+                                        comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
+                                    }
+                                    comm.find(".author_name").text(e.first_name + " " + e.last_name);
+                                    comm.find(".date_added").text("xx.yy.2019");
+                                    comm.find(".comment_text").text(e.comment);
+
+                                    $("#contribution_comments").append(comm);
+                                    comm.show(function () {
+                                        $(this).animate(500)
+                                    });
                                 })
                             }
                         }
@@ -113,7 +132,7 @@
                     var contr_id = $('#contribution_id').val();
                     var comment_text = $('#comment_text').val();
 
-                    if ($('#comment_text').val().length < 1){
+                    if ($('#comment_text').val().length < 1) {
                         $('#comment_text_hint').show();
                         return
                     }
@@ -129,8 +148,25 @@
                         dataType: 'json',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function (data) {
-                            console.log(data);
+                            //console.log(data);
                             if (data.status == 'OK') {
+                                let comm = $("#comment_wrap_template").clone();
+
+                                comm.attr('id', "");
+                                if (data.author.image != "") {
+                                    comm.find('#author_picture').attr('src', "/public/images/profiles/" + data.author.user_id + "/" + data.author.image)
+                                } else {
+                                    comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
+                                }
+                                comm.find(".author_name").text(data.author.first_name + " " + data.author.last_name);
+                                comm.find(".date_added").text("xx.yy.2019");
+                                comm.find(".comment_text").text(data.comment.comment);
+
+                                $("#contribution_comments").append(comm);
+                                comm.show(function () {
+                                    $(this).animate(500)
+                                });
+
                                 $('#comment_text').val("");
                             }
                         }

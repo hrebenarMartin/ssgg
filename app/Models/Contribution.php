@@ -47,6 +47,7 @@ class Contribution extends Model
             ->join('conference as conf', 'contributions.conference_id', '=', 'conf.id')
             ->select('contributions.*', 'up.first_name as author_first_name',
                 'up.last_name as author_last_name', 'conf.year as conference_year')
+            ->orderByDesc('conf.year')
             ->get();
 
         return $res;

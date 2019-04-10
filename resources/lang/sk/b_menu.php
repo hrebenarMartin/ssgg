@@ -14,4 +14,6 @@ return [
     'conf_participants' => 'Účastníci',
     'conf_contributions' => 'Príspevky',
     'conf_stats' => 'Štatistiky',
+
+    'review' => 'Moje recenzie',
 ];

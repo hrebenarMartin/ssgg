@@ -107,7 +107,7 @@
                         @endif
                     @else
                         <img class="rounded-circle mx-auto d-block"
-                             src="{!! asset('public/images/profiles/'.$profile->id.'/'.$profile->image) !!}"
+                             src="{!! asset('public/images/profiles/'.$profile->user_id.'/'.$profile->image) !!}"
                              alt="Profile picture" width="200">
                     @endif
                     <p></p>

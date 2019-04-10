@@ -76,7 +76,7 @@
                                 <img class="user-avatar rounded-circle" src="{!! asset('images/placeholders/user_o.png') !!}" alt="User Avatar">
                             @endif
                         @else
-                            <img class="user-avatar rounded-circle" src="{!! asset('public/images/profiles/'.$user_data->id.'/'.$user_data->image) !!}" alt="User Avatar">
+                            <img class="user-avatar rounded-circle" src="{!! asset('public/images/profiles/'.$user_data->user_id.'/'.$user_data->image) !!}" alt="User Avatar">
                         @endif
                     </a>
                     <div class="user-menu dropdown-menu">

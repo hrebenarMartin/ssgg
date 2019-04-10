@@ -24,4 +24,12 @@ return [
     'admin' => 'Administrátor',
     'reviewer' => 'Recenzent',
     'reguser' => 'Užívateľ',
+
+    'archive_list' => 'Zoznam konferencíí',
+    'cancel' => 'Zrušiť',
+    'contribution' => 'Príspevok',
+    'comments' => 'Komentáre',
+    'review_zone' => 'Review Zóna',
+    'delete' => "Zmazať",
+
 ];

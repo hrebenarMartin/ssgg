@@ -88,7 +88,7 @@
                     @else
                         <div class="row">
                             <div class="col-6">
-                                <h2>My contribution details</h2>
+                                <h2>{{ __('contribution.myContribution') }}</h2>
                             </div>
                             <div class="col-6 text-right">
                                 <a href="{{ route('user.myContribution.edit', $contribution->id) }}"

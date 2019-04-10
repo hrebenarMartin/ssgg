@@ -4,7 +4,8 @@
             <a class="navbar-brand mr-lg-5" href="{{route('index')}}">
                 <img src="{{asset('images/logo_sq.png')}}">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                    aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse" id="navbar_global">
@@ -16,7 +17,9 @@
                             </a>
                         </div>
                         <div class="col-6 collapse-close">
-                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                    data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                    aria-label="Toggle navigation">
                                 <span></span>
                                 <span></span>
                             </button>
@@ -38,7 +41,8 @@
                     @if(isset($conference) and $module == 1)
                         <li class="nav-item dropdown">
                             <a href="{{route('conference.index')}}" class="nav-link" role="button">
-                                <span class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
+                                <span
+                                    class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
                             </a>
                         </li>
                     @endif
@@ -61,12 +65,16 @@
                     @if($user)
                         <li class="nav-item d-none d-lg-block ml-lg-4">
                             <a href="#!" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();" target="_blank" class="btn btn-neutral btn-icon">
+                                    document.getElementById('logout-form').submit();" target="_blank"
+                               class="btn btn-neutral btn-icon">
                                 <span class="nav-link-inner--text">{{__('main.logout')}}</span>
                             </a>
                         </li>
                         <li>
-                            <img src="{{asset('public/images/profiles/'.$user->id."/".$user->profile->image)}}" class="rounded-circle" width="50">
+                            @if($user->profile->image)
+                                <img src="{{asset('public/images/profiles/'.$user->id."/".$user->profile->image)}}"
+                                     class="rounded-circle" width="50">
+                            @endif
                         </li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

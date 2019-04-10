@@ -29,10 +29,10 @@
             <td>
                 <a href="{{ route('review.myReview.show', $i->id) }}"
                    class="btn btn-primary btn-sm listing_controls pull-right">
-                    <i class="fa fa-search"></i>
+                    <i class="fa fa-fw fa-search"></i>
                 </a>
                 <a href="{{ route('review.myReview.edit', $i->id) }}"
-                   class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
+                   class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-fw fa-edit"></i></a>
             </td>
         </tr>
     @endforeach

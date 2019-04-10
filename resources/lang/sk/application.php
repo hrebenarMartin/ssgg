@@ -12,6 +12,6 @@ return [
     'editing_application' => "Úprava mojej prihlášky",
     'myApplication' => "Moja Prihláška",
     'status_1' => "Nepotvrdená",
-    'status_2' => "Platba nebola prijatá",
-    'status_3' => "Platba prijatá",
+    'status_2' => "Nezaplatená",
+    'status_3' => "Zaplatená",
 ];

@@ -58,14 +58,16 @@
                                     @endif
                                 </div>
                                 <div class="col-12" style="margin-top: 1.5em">
-                                    <button type="button" class="btn btn-danger pull-right"><i
-                                            class="fa fa-trash"></i> {{__('main.delete')}}</button>
-                                    <a href="{{route('user.application.edit', $appl->id)}}"
-                                       class="btn btn-success pull-right" style="margin: 0 0.5em"><i
-                                            class="fa fa-edit"></i> {{__('main.edit')}}</a>
-                                    <button type="button" class="btn btn-primary pull-right" data-toggle="modal"
-                                            data-target="#confirm_modal"><i
-                                            class="fa fa-check-circle"></i> {{__('main.confirm')}}</button>
+                                    @if($appl->status == 1)
+                                        <button type="button" class="btn btn-danger pull-right"><i
+                                                class="fa fa-trash"></i> {{__('main.delete')}}</button>
+                                        <a href="{{route('user.application.edit', $appl->id)}}"
+                                           class="btn btn-success pull-right" style="margin: 0 0.5em"><i
+                                                class="fa fa-edit"></i> {{__('main.edit')}}</a>
+                                        <button type="button" class="btn btn-primary pull-right" data-toggle="modal"
+                                                data-target="#confirm_modal"><i
+                                                class="fa fa-check-circle"></i> {{__('main.confirm')}}</button>
+                                    @endif
                                 </div>
                                 <div class="modal animated fadeInDown" tabindex="-1" role="dialog" id="confirm_modal">
                                     <div class="modal-dialog modal-lg animate fadeInDown">
@@ -125,7 +127,8 @@
                                                                 <li>Názov účtu: xxxxxxxxxxxxxxxx</li>
                                                                 <li>Číslo účtu: xxxxxxxxxx</li>
                                                                 <li>Kód banky: xxxx</li>
-                                                                <li>Variabilný symbol: [[ USER Variable symbol here ]]</li>
+                                                                <li>Variabilný symbol: [[ USER Variable symbol here ]]
+                                                                </li>
                                                                 <li>IČ: xxxxxxxxx</li>
                                                                 <li>SWIFT: xxxxxxxxxx</li>
                                                                 <li>IBAN: SKxxxx000000xxxxxxxxxxxx</li>
@@ -140,7 +143,9 @@
                                                             <ul>
                                                                 <li>Potvrďte svoju voľbu zeleným tlačidlom dole</li>
                                                                 <li>Detaily k platbe vám budú prístupné aj naďalej</li>
-                                                                <li>Stav zaplatenia vašej prihlášky nájdete vo vašej prihláške a budeme vás informovať aj mailom</li>
+                                                                <li>Stav zaplatenia vašej prihlášky nájdete vo vašej
+                                                                    prihláške a budeme vás informovať aj mailom
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>

@@ -9,7 +9,7 @@
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
                     <a href="{{ route('review.myReview.show', $review->id) }}" class="btn btn-primary"><i
-                            class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                            class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                 </div>
             </div>
         </div>
@@ -37,30 +37,30 @@
                         <div class="col-7">
                             <button type="button" class="btn btn-danger rating_change" data-rating="1">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-star" data-fa-transform="grow-12"></i>
+                                    <i class="fa fa-fw fa-star" data-fa-transform="grow-12"></i>
                                     <span class="fa-layers-text" style="color: #000;">1</span>
                                 </span>
                             </button>
                             <button type="button" class="btn btn-warning rating_change" data-rating="2">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-star" data-fa-transform="grow-12"></i>
+                                    <i class="fa fa-fw fa-star" data-fa-transform="grow-12"></i>
                                     <span class="fa-layers-text" style="color: #000;">2</span>
                                 </span></button>
                             <button type="button" class="btn btn-info rating_change" data-rating="3">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-star" data-fa-transform="grow-12"></i>
+                                    <i class="fa fa-fw fa-star" data-fa-transform="grow-12"></i>
                                     <span class="fa-layers-text" style="color: #000;">3</span>
                                 </span>
                             </button>
                             <button type="button" class="btn btn-primary rating_change" data-rating="4">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-star" data-fa-transform="grow-12"></i>
+                                    <i class="fa fa-fw fa-star" data-fa-transform="grow-12"></i>
                                     <span class="fa-layers-text" style="color: #000;">4</span>
                                 </span>
                             </button>
                             <button type="button" class="btn btn-success rating_change" data-rating="5">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-star" data-fa-transform="grow-12"></i>
+                                    <i class="fa fa-fw fa-star" data-fa-transform="grow-12"></i>
                                     <span class="fa-layers-text" style="color: #000;">5</span>
                                 </span>
                             </button>

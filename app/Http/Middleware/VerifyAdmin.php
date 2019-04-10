@@ -21,6 +21,6 @@ class VerifyAdmin
         }
 
         //TODO redirect to page with info about no access pertmission
-        return redirect()->route('index');
+        return redirect()->back()->with("message", "Access denied")->with("message_type", "danger");
     }
 }

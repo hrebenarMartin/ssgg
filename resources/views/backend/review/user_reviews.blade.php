@@ -10,7 +10,7 @@
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
                     <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i
-                            class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
+                            class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
                 </div>
             </div>
         </div>

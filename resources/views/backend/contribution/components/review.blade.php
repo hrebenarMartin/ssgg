@@ -3,24 +3,24 @@
         @if($contribution->review->approved == 1)
             <h3 class="text-success">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
-                                    <i class="fa fa-check" style="color: #fff;"></i>
+                                    <i class="fa fa-fw fa-certificate" data-fa-transform="grow-16"></i>
+                                    <i class="fa fa-fw fa-check" style="color: #fff;"></i>
                                 </span>
                 &nbsp; <b>{{$contribution->review->rating}}</b>/5 &nbsp;{{__('review.approved')}}
 
                 @elseif($contribution->review->approved == -1)
                     <h3 class="text-danger">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
-                                    <i class="fa fa-times" style="color: #fff;"></i>
+                                    <i class="fa fa-fw fa-certificate" data-fa-transform="grow-16"></i>
+                                    <i class="fa fa-fw fa-times" style="color: #fff;"></i>
                                 </span>
                         &nbsp;{{ __('review.not_approved') }}
 
                         @else
                             <h3 class="text-muted">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
-                                    <i class="fa fa-minus" style="color: #fff;"></i>
+                                    <i class="fa fa-fw fa-certificate" data-fa-transform="grow-16"></i>
+                                    <i class="fa fa-fw fa-minus" style="color: #fff;"></i>
                                 </span>
                                 &nbsp;{{ __('review.in_progress') }}
 
@@ -28,7 +28,7 @@
                                 @if($contribution->review->reviewer->id == Auth::id() or Auth::user()->roles()->where('role_id', 1)->first())
                                     <a href="{{ route('review.myReview.edit', $contribution->review->id) }}"
                                        class="btn btn-success pull-right"><i
-                                            class="fa fa-edit"></i> {{ __('main.edit') }}
+                                            class="fa fa-fw fa-edit"></i> {{ __('main.edit') }}
                                     </a>
                                 @endif
                             </h3>

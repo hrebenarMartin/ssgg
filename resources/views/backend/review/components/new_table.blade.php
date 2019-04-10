@@ -18,13 +18,13 @@
             <td>
                 <a href="{{ route('review.myReview.show', $i->id) }}"
                    class="btn btn-primary btn-sm listing_controls pull-right">
-                    <i class="fa fa-search"></i>
+                    <i class="fa fa-fw fa-search"></i>
                 </a>
                 <a href="{{ route('review.accept', $i->id) }}" class="btn btn-success btn-sm listing_controls pull-right">
-                    <i class="fa fa-check"></i> {{ __('review.accept') }}
+                    <i class="fa fa-fw fa-check"></i> {{ __('review.accept') }}
                 </a>
                 <a href="{{ route('review.reject', $i->id) }}" class="btn btn-danger btn-sm listing_controls pull-right">
-                    <i class="fa fa-times"></i> {{ __('review.reject') }}
+                    <i class="fa fa-fw fa-times"></i> {{ __('review.reject') }}
                 </a>
             </td>
         </tr>

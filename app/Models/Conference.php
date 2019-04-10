@@ -51,5 +51,9 @@ class Conference extends Model
     public function country(){
         return $this->hasOne('App\Models\Country', 'id' ,'address_country');
     }
+
+    public function applications(){
+        return $this->hasMany('App\Models\Application');
+    }
 }
 

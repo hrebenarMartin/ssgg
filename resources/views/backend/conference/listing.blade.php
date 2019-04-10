@@ -10,7 +10,7 @@
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
                     <a href="{{ route('admin.conferences.create') }}" class="btn btn-success">{{ __('form.action_create_conference') }}</a>
-                    <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
+                    <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
                 </div>
             </div>
         </div>
@@ -40,31 +40,31 @@
                             <td>{{ $conference->year }}</td>
                             <td>
                                 <span id="conf_stat_{{$conference->id}}" class="badge @if($conference->status == 1) badge-success @elseif($conference->status == 2) badge-danger @else badge-primary @endif">
-                                    <i class="fa @if($conference->status == 1) fa-check-circle @elseif($conference->status == 2) fa-minus-circle @else fa-download @endif"></i>
+                                    <i class="fa fa-fw @if($conference->status == 1) fa-check-circle @elseif($conference->status == 2) fa-minus-circle @else fa-download @endif"></i>
                                 </span>
                             </td>
                             <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference_start)->format('d M,Y')." - ".\Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference_end)->format('d M,Y') }}</td>
                             <th>
                                 <a href="#!" class="conf_stat_change" data-id="1" data-conf="{{$conference->id}}">
-                                    <span class="badge badge-success"><i class="fa fa-check-circle"></i></span>
+                                    <span class="badge badge-success"><i class="fa fa-fw fa-check-circle"></i></span>
                                 </a>
                                 <a href="#!" class="conf_stat_change" data-id="2" data-conf="{{$conference->id}}">
-                                    <span class="badge badge-danger"><i class="fa fa-minus-circle"></i></span>
+                                    <span class="badge badge-danger"><i class="fa fa-fw fa-minus-circle"></i></span>
                                 </a>
                                 <a href="#!" class="conf_stat_change" data-id="3" data-conf="{{$conference->id}}">
-                                    <span class="badge badge-primary"><i class="fa fa-download"></i></span>
+                                    <span class="badge badge-primary"><i class="fa fa-fw fa-download"></i></span>
                                 </a>
                             </th>
                             <td>
-                                <a href="#!" data-item-id="{{ $conference->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-times"></i></a>
+                                <a href="#!" data-item-id="{{ $conference->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-fw fa-times"></i></a>
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['admin.conferences.destroy', $conference->id ],
                                         'id' => 'item-del-'. $conference->id  ])
                                     }}
                                 {{ Form::hidden('conference_id', $conference->id) }}
                                 {{ Form::close() }}
 
-                                <a href="{{ route('admin.conferences.edit', $conference->id) }}" class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
-                                <a href="{{ route('admin.conferences.show', $conference->id) }}" class="btn btn-primary btn-sm listing_controls pull-right"><i class="fa fa-search"></i></a>
+                                <a href="{{ route('admin.conferences.edit', $conference->id) }}" class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-fw fa-edit"></i></a>
+                                <a href="{{ route('admin.conferences.show', $conference->id) }}" class="btn btn-primary btn-sm listing_controls pull-right"><i class="fa fa-fw fa-search"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -117,17 +117,17 @@
                             let conf_stat_span = $('#conf_stat_'+conf);
                             if(tmp == 1){
                                 conf_stat_span.attr('class', 'badge badge-success');
-                                conf_stat_span.find('i').attr('class', 'fa fa-check-circle');
+                                conf_stat_span.find('i').attr('class', 'fa fa-fw fa-check-circle');
                                 toastr.success("Status changed to OPEN")
                             }
                             else if(tmp == 2){
                                 conf_stat_span.attr('class', 'badge badge-danger');
-                                conf_stat_span.find('i').attr('class', 'fa fa-minus-circle');
+                                conf_stat_span.find('i').attr('class', 'fa fa-fw fa-minus-circle');
                                 toastr.success("Status changed to CLOSED")
                             }
                             else{
                                 conf_stat_span.attr('class', 'badge badge-primary');
-                                conf_stat_span.find('i').attr('class', 'fa fa-download');
+                                conf_stat_span.find('i').attr('class', 'fa fa-fw fa-download');
                                 toastr.success("Status changed to ARCHIVED")
                             }
                         }

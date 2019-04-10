@@ -10,13 +10,13 @@
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
                     <a href="{{ route('review.myReview.index') }}" class="btn btn-primary"><i
-                            class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                            class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                     @if(!$review->accepted)
                         <a href="{{ route('review.accept', $review->id) }}" class="btn btn-success">
-                            <i class="fa fa-check"></i>
+                            <i class="fa fa-fw fa-check"></i>
                         </a>
                         <a href="{{ route('review.reject', $review->id) }}" class="btn btn-danger">
-                            <i class="fa fa-times"></i>
+                            <i class="fa fa-fw fa-times"></i>
                         </a>
                     @endif
                 </div>
@@ -46,37 +46,37 @@
                                 @if($review->approved == 1)
                                     <h3 class="text-success">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
-                                    <i class="fa fa-check" style="color: #fff;"></i>
+                                    <i class="fa fa-fw fa-certificate" data-fa-transform="grow-16"></i>
+                                    <i class="fa fa-fw fa-check" style="color: #fff;"></i>
                                 </span>
                                         &nbsp; <b>{{$review->rating}}</b>/5 &nbsp;{{ __('review.approved') }}
                                         <a href="{{ route('review.myReview.edit', $review->id) }}"
                                            class="btn btn-success pull-right"><i
-                                                class="fa fa-edit"></i> {{ __('main.edit') }}
+                                                class="fa fa-fw fa-edit"></i> {{ __('main.edit') }}
                                         </a>
                                     </h3>
                                 @elseif($review->approved == -1)
                                     <h3 class="text-danger">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
-                                    <i class="fa fa-times" style="color: #fff;"></i>
+                                    <i class="fa fa-fw fa-certificate" data-fa-transform="grow-16"></i>
+                                    <i class="fa fa-fw fa-times" style="color: #fff;"></i>
                                 </span>
                                         &nbsp;{{ __('review.not_approved') }}
                                         <a href="{{ route('review.myReview.edit', $review->id) }}"
                                            class="btn btn-success pull-right"><i
-                                                class="fa fa-edit"></i> {{ __('main.edit') }}
+                                                class="fa fa-fw fa-edit"></i> {{ __('main.edit') }}
                                         </a>
                                     </h3>
                                 @else
                                     <h3 class="text-muted">
                                 <span class="fa-layers fa-fw">
-                                    <i class="fa fa-certificate" data-fa-transform="grow-16"></i>
-                                    <i class="fa fa-minus" style="color: #fff;"></i>
+                                    <i class="fa fa-fw fa-certificate" data-fa-transform="grow-16"></i>
+                                    <i class="fa fa-fw fa-minus" style="color: #fff;"></i>
                                 </span>
                                         &nbsp;{{ __('review.in_progress') }}
                                         <a href="{{ route('review.myReview.edit', $review->id) }}"
                                            class="btn btn-success pull-right"><i
-                                                class="fa fa-edit"></i> {{ __('main.edit') }}
+                                                class="fa fa-fw fa-edit"></i> {{ __('main.edit') }}
                                         </a>
                                     </h3>
                                 @endif

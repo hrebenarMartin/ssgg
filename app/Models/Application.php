@@ -59,4 +59,8 @@ class Application extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+    public function conference(){
+        return $this->belongsTo('App\Models\Conference');
+    }
 }

@@ -38,9 +38,9 @@ Route::get('/', 'Frontend\PagesController@index')->name("index");
 Route::get('/{page}', 'Frontend\PagesController@show')->name('show');
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function (){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
 
-    Route::resource('/user','Backend\User\UserController')->middleware("admin");
+    Route::resource('/user', 'Backend\User\UserController')->middleware("admin");
 
     Route::resource('/cms', 'Backend\CMS\PagesController')->middleware("admin");
     Route::resource('/cms/content', 'Backend\CMS\ContentController')->middleware("admin");
@@ -48,6 +48,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/cms/front_menu', 'Backend\CMS\FrontMenuController')->middleware("admin");
 
     Route::resource('/conferences', 'Backend\Admin\ConferenceController');
+    Route::get('/conferences/{id}/participants', 'Backend\Admin\ConferenceController@conferenceParticipants')->name('conferences.conference_participants');
+    Route::get('/conferences/{cid}/participants/{aid}/confirm', 'Backend\Admin\ApplicationsController@confirmApplication')->name('conferences.conference_participants.confirm');
+    Route::get('/conferences/{cid}/participants/{aid}/confirm-payment', 'Backend\Admin\ApplicationsController@confirmApplicationPayment')->name('conferences.conference_participants.confirm_payment');
+    Route::get('/conferences/{cid}/participants/{aid}/', 'Backend\Admin\ApplicationsController@show')->name('conferences.conference_participants.show');
+    Route::get('/conferences/{id}/contributions', 'Backend\Admin\ConferenceController@conferenceContributions')->name('conferences.conference_contributions');
+    Route::get('/conferences/{id}/statistics', 'Backend\Admin\ConferenceController@conferenceStatistics')->name('conferences.conference_statistics');
+
     Route::post('/conference_upload_images', 'Backend\Admin\ConferenceController@uploadImagesBlueImp')->name('conferences.upload_images');
 
     Route::resource('/contributions', 'Backend\Admin\ContributionsController');

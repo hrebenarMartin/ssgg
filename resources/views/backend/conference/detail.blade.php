@@ -18,10 +18,19 @@
         <div class="container">
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
-                    <a href="{{ route('admin.conferences.edit', $data->id) }}"
-                       class="btn btn-success">{{ __('form.action_edit_conference') }}</a>
-                    <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
-                            class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Admin tools
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{route('admin.conferences.review_form.index', $data->id)}}">{{__('conference.review_form')}}</a>
+                        </div>
+                        <a href="{{ route('admin.conferences.edit', $data->id) }}"
+                           class="btn btn-success">{{ __('form.action_edit_conference') }}</a>
+                        <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
+                                class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -183,23 +192,28 @@
                                 <div class="row pt-2">
                                     <ul class="col-11 ml-5">
                                         @if($config->accom_1 == 1)
-                                            <li><p><strong>{{__('form.conference_room1')}}:</strong> {{__('main.cost')}}
+                                            <li><p><strong>{{__('form.conference_room1')}}
+                                                        :</strong> {{__('main.cost')}}
                                                     <strong><u>{{$config->accom_1_price}} €</u></strong></p></li>
                                         @endif
                                         @if($config->accom_2 == 1)
-                                            <li><p><strong>{{__('form.conference_room2')}}:</strong> {{__('main.cost')}}
+                                            <li><p><strong>{{__('form.conference_room2')}}
+                                                        :</strong> {{__('main.cost')}}
                                                     <strong><u>{{$config->accom_2_price}} €</u></strong></p></li>
                                         @endif
                                         @if($config->accom_3 == 1)
-                                            <li><p><strong>{{__('form.conference_room3')}}:</strong> {{__('main.cost')}}
+                                            <li><p><strong>{{__('form.conference_room3')}}
+                                                        :</strong> {{__('main.cost')}}
                                                     <strong><u>{{$config->accom_3_price}} €</u></strong></p></li>
                                         @endif
                                         @if($config->accom_4 == 1)
-                                            <li><p><strong>{{__('form.conference_room4')}}:</strong> {{__('main.cost')}}
+                                            <li><p><strong>{{__('form.conference_room4')}}
+                                                        :</strong> {{__('main.cost')}}
                                                     <strong><u>{{$config->accom_4_price}} €</u></strong></p></li>
                                         @endif
                                         @if($config->accom_5 == 1)
-                                            <li><p><strong>{{__('form.conference_room5')}}:</strong> {{__('main.cost')}}
+                                            <li><p><strong>{{__('form.conference_room5')}}
+                                                        :</strong> {{__('main.cost')}}
                                                     <strong><u>{{$config->accom_5_price}} €</u></strong></p></li>
                                         @endif
                                     </ul>
@@ -247,12 +261,13 @@
                 <div class="row pt-3 pd-3">
                     <div class="col-12">
                         <strong><h2 class="mb-4">{{ __('form.conference_gallery') }}</h2></strong>
-                        <form id="fileupload" action="{{ route('admin.conferences.upload_images') }}" method="POST" enctype="multipart/form-data">
+                        <form id="fileupload" action="{{ route('admin.conferences.upload_images') }}" method="POST"
+                              enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" name="conference_id" value="{{$data->id}}">
 
-                        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                             <div class="row fileupload-buttonbar">
                                 <div class="col-lg-7">
                                     <!-- The fileinput-button span is used to style the file input field as button -->
@@ -276,7 +291,8 @@
                                 <!-- The global progress state -->
                                 <div class="col-lg-5 fileupload-progress">
                                     <!-- The global progress bar -->
-                                    <div class="progress progress-striped active" role="progressbar" aria-valuemin="0"
+                                    <div class="progress progress-striped active" role="progressbar"
+                                         aria-valuemin="0"
                                          aria-valuemax="100">
                                         <div class="progress-bar progress-bar-success" style="width:0%;"></div>
                                     </div>
@@ -294,11 +310,15 @@
                             @if(isset($gallery))
                                 @foreach($gallery as $img)
                                     <div class="col-xs-12 col-sm-6 col-md-3 " id="list">
-                                        <a href="{{asset('/images/conference/') . '/'.$data->id .'/large/' . $img->image}}" data-gallery>
-                                            <img class="img-responsive m-b-sm" src="{!! asset('/images/conference/') . '/'.$data->id .'/sq/' . $img->image !!}">
+                                        <a href="{{asset('/images/conference/') . '/'.$data->id .'/large/' . $img->image}}"
+                                           data-gallery>
+                                            <img class="img-responsive m-b-sm"
+                                                 src="{!! asset('/images/conference/') . '/'.$data->id .'/sq/' . $img->image !!}">
                                         </a>
                                         <div class="img-overlay">
-                                            <button data-img-button-id="{{$img->id}}" class="btn btn-md btn-danger delete_image_btn"><i class="fa fa-trash"></i></button>
+                                            <button data-img-button-id="{{$img->id}}"
+                                                    class="btn btn-md btn-danger delete_image_btn"><i
+                                                    class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
 
@@ -332,7 +352,7 @@
             position: absolute;
             top: 0;
             bottom: 100%;
-            left: Calc( 100% - 53px ) ;
+            left: Calc(100% - 53px);
             right: 0;
             max-width: 10%;
             text-align: left;
@@ -367,7 +387,8 @@
         <link rel="stylesheet" href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload-noscript.css') !!}">
     </noscript>
     <noscript>
-        <link rel="stylesheet" href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css') !!}">
+        <link rel="stylesheet"
+              href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css') !!}">
     </noscript>
 @stop
 
@@ -535,6 +556,10 @@
     </tr>
 {% } %}
 
+
+
+
+
     </script>
 
     <!-- The template to display files available for download -->
@@ -579,6 +604,10 @@
         </td>
     </tr>
 {% } %}
-</script>
+
+
+
+
+    </script>
 
 @stop

@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::get('/conferences/{cid}/participants/{aid}/', 'Backend\Admin\ApplicationsController@show')->name('conferences.conference_participants.show');
     Route::get('/conferences/{id}/contributions', 'Backend\Admin\ConferenceController@conferenceContributions')->name('conferences.conference_contributions');
     Route::get('/conferences/{id}/statistics', 'Backend\Admin\ConferenceController@conferenceStatistics')->name('conferences.conference_statistics');
+    Route::get('/conferences/{id}/review_form', 'Backend\Admin\ConferenceReviewFormController@index')->name('conferences.review_form.index');
 
     Route::post('/conference_upload_images', 'Backend\Admin\ConferenceController@uploadImagesBlueImp')->name('conferences.upload_images');
 

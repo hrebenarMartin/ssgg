@@ -25,6 +25,31 @@
                     @csrf
                     {{method_field('PUT')}}
 
+                    @for ($i = 1; $i < 11; $i++)
+                        @if($form['question_'.$i."_sk"])
+                            <div class="row form-group">
+                                <div class="col-4 text-right">
+                                    <label for="question_{{$i}}_a"
+                                           class="col-form-label">{{ App::getLocale() == 'en' ? $form['question_'.$i."_en"] : $form['question_'.$i."_sk"] }}
+                                        :</label>
+                                </div>
+                                <div class="col-7">
+                                    @if($form['question_'.$i."_type"] == 1)
+                                        <textarea id="question_{{$i}}_a" name="question_{{$i}}_a" class="form-control"
+                                                  rows="6"
+                                                  required>{{ $form_fill['answer_'.$i] }}</textarea>
+                                    @elseif($form['question_'.$i."_type"] == 2)
+                                        <input type="checkbox" id="question_{{$i}}_a" name="question_{{$i}}_a"
+                                               value="1" @if($form_fill['answer_'.$i] == "1") checked @endif>
+                                    @else
+                                        ??? - {{$form['question_'.$i."_type"]}}
+                                    @endif
+                                </div>
+                            </div>
+                        @endif
+                    @endfor
+                    <hr>
+
                     <div class="row form-group">
                         <div class="col-4 text-right">
                             <label for="rating_val" class="col-form-label">{{ __('review.rating') }}:</label>
@@ -81,16 +106,18 @@
                             </select>
                         </div>
                     </div>
-
                     <div class="row form-group">
                         <div class="col-4 text-right">
-                            <label for="comment" class="col-form-label">{{__('review.review')}}:</label>
+                            <label for="conclusion"
+                                   class="col-form-label">{{ App::getLocale() == 'en' ? $form->question_conclusion_en : $form->question_conclusion_sk}}
+                                :</label>
                         </div>
                         <div class="col-7">
-                            <textarea id="review" name="review" class="form-control" rows="6"
-                                      required>{{$review->review}}</textarea>
+                            <textarea id="conclusion" name="conclusion" class="form-control" rows="6"
+                                      required>{{ $form_fill->conclusion }}</textarea>
                         </div>
                     </div>
+
                 </form>
             </div>
             <div class="card-footer">
@@ -114,9 +141,9 @@
 
             $('#review_edit_form').validate({
                 rules: {
-                   rating_val: "required",
-                   approval: "required",
-                   review: "required",
+                    rating_val: "required",
+                    approval: "required",
+                    review: "required",
                 }
             })
 

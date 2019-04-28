@@ -150,7 +150,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Program</strong>
+                                <strong class="card-title">{{ __('form.conference_programme') }}</strong>
                             </div>
                             <div class="card-body ml-3">
                                 @if(App::getLocale() == 'en') {!! \Illuminate\Mail\Markdown::parse($data->schedule_en) !!}
@@ -162,7 +162,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Kofigurácia</strong>
+                                <strong class="card-title">{{ __('form.conference_config') }}</strong>
                             </div>
                             <div class="card-body">
                                 <h3>{{__('form.conference_food')}}</h3>

@@ -366,4 +366,21 @@ class ApplicationController extends Controller
     {
         //
     }
+
+    public function confirm(){
+        $conference = Conference::where('status', 1)->first();
+        //dd($conference);
+        if(!$conference){
+            session()->put('message', "No active conference at the moment");
+            session()->put('message_type', "danger");
+            return view('backend.application.user_application')
+                ->with('no_conference', true);
+        }
+        $appl = Application::where('user_id', Auth::id())->where('conference_id', $conference->id)->first();
+        $appl->status = 2;
+
+        $appl->save();
+
+        return redirect()->back();
+    }
 }

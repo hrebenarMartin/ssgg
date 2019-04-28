@@ -31,6 +31,8 @@
 
     <link rel="stylesheet" href="{!! asset('backend/css/custom.css') !!}">
 
+    <link rel="stylesheet" href="{!! asset('css/animate.css') !!}">
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     @yield('page_css')
     <title>@yield('title') - SSGG Admin</title>

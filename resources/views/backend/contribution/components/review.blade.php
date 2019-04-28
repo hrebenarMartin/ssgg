@@ -25,7 +25,7 @@
                                 &nbsp;{{ __('review.in_progress') }}
 
                                 @endif
-                                @if($contribution->review->reviewer->id == Auth::id() or Auth::user()->roles()->where('role_id', 1)->first())
+                                @if(($contribution->review->reviewer->id == Auth::id() or Auth::user()->roles()->where('role_id', 1)->first()) and $contribution->review->form_fill)
                                     <a href="{{ route('review.myReview.edit', $contribution->review->id) }}"
                                        class="btn btn-success pull-right"><i
                                             class="fa fa-fw fa-edit"></i> {{ __('main.edit') }}
@@ -40,13 +40,43 @@
                 class="rounded-circle" width="100%" style="max-width: 50px;">
         @endif
     </div>
-    <div class="col-8 col-sm-10">
+    <div class="col-8 col-sm-11">
         <p>
             <strong>{{$contribution->review->reviewer->profile->first_name." ".$contribution->review->reviewer->profile->last_name}}</strong>
             <br>{{\Carbon\Carbon::createFromFormat("Y-m-d H:i:s", $contribution->review->reviewer->profile->updated_at)->format('d M, Y')}}
         </p>
     </div>
     <div class="col-12">
-        {{$contribution->review->review}}
+        @for ($i = 1; $i < 11; $i++)
+            @if($contribution->review->form_fill and $contribution->review->form_fill->form["question_".$i."_sk"])
+                <div class="row p-1">
+                    <div class="col-2">
+                        <small>{{ App::getLocale() == 'en' ? $contribution->review->form_fill->form["question_".$i."_en"] : $contribution->review->form_fill->form["question_".$i."_sk"] }}</small>
+                    </div>
+                    <div class="col-10">
+                        @if($contribution->review->form_fill->form["question_".$i."_type"] == 2)
+                            @if($contribution->review->form_fill["answer_".$i] == "1")
+                                {{__('main.yes')}}
+                            @else
+                                {{__('main.no')}}
+                            @endif
+                        @else
+                            {{ $contribution->review->form_fill["answer_".$i] }}
+                        @endif
+                    </div>
+                </div>
+            @endif
+        @endfor
+
+        @if($contribution->review->form_fill)
+            <div class="row p-1">
+                <div class="col-2">
+                    <small>{{ App::getLocale() == 'en' ? $contribution->review->form_fill->form["question_conclusion_en"] : $contribution->review->form_fill->form["question_conclusion_sk"] }}</small>
+                </div>
+                <div class="col-10">
+                    {{ $contribution->review->form_fill["conclusion"] }}
+                </div>
+            </div>
+        @endif
     </div>
 @endif

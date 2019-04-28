@@ -24,4 +24,12 @@ class Review extends Model
     public function contribution(){
         return $this->belongsTo('App\Models\Contribution');
     }
+
+    public function form_fill(){
+        return $this->hasOne('App\Models\ReviewFormFill', 'id', 'form_fill_id');
+    }
+
+    public function assigner(){
+        return $this->belongsTo('App\User', 'assigned_by');
+    }
 }

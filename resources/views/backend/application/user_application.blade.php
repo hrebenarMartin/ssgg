@@ -152,7 +152,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <a href="#!" class="btn btn-success">Budem platiť prevodom</a>
+                                                <a href="{{route('user.application.confirm')}}" class="btn btn-success">Budem platiť prevodom</a>
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">
                                                     Zrušiť
                                                 </button>

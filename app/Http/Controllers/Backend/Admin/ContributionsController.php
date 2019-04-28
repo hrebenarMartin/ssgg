@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Backend\Admin;
 
 use App\Models\Contribution;
 use App\Models\ContributionComment;
+use App\Models\EmailMessage;
 use App\Models\Review;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ContributionsController extends Controller
 {
@@ -39,7 +41,7 @@ class ContributionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,7 +52,7 @@ class ContributionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,11 +64,11 @@ class ContributionsController extends Controller
         $contribution_author = $contribution->author->profile;
         $comments = $contribution->comments;
 
-        $reviewers = User::whereHas('roles', function($query){
+        $reviewers = User::whereHas('roles', function ($query) {
             $query->where('role_id', '=', 4);
         })->get();
 
-        foreach ($reviewers as $r){
+        foreach ($reviewers as $r) {
             $r->profile = User::find($r->id)->profile;
         }
 
@@ -81,7 +83,7 @@ class ContributionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -92,8 +94,8 @@ class ContributionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -104,7 +106,7 @@ class ContributionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -112,19 +114,33 @@ class ContributionsController extends Controller
         //
     }
 
-    public function assignReviewer(Request $request, $contribution_id){
+    public function assignReviewer(Request $request, $contribution_id)
+    {
 
-        $old_review = Contribution::find($contribution_id)->review;
+        $contribution = Contribution::find($contribution_id);
+        $old_review = $contribution->review;
 
-        if($old_review){
+        if ($old_review) {
             $old_review->delete();
         }
 
         $review = new Review();
         $review->user_id = $request->rev;
         $review->contribution_id = $contribution_id;
+        $review->assigned_by = Auth::id();
+
         $review->save();
 
-        return redirect()->route('admin.contributions.show',$contribution_id);
+        //TODO add email
+        {
+            $recipients[] = $review->reviewer->email;
+            $subject = __('email.review_assigned_subject');
+            $module = "Review-assign";
+            $data = ["reviewer" => $review->user_id];
+
+            EmailMessage::addMailToQueue($recipients, $subject, $module, $data);
+        }
+
+        return redirect()->route('admin.contributions.show', $contribution_id);
     }
 }

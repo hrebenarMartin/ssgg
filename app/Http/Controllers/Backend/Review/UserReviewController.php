@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Review;
 
+use App\Models\EmailMessage;
 use App\Models\Review;
+use App\Models\ReviewFormFill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +44,7 @@ class UserReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,7 +55,7 @@ class UserReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,7 +77,7 @@ class UserReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -84,7 +86,9 @@ class UserReviewController extends Controller
         if ((Auth::user()->roles()->where('role_id', 4)->first() and Auth::id() == $review->reviewer->id) or
             Auth::user()->roles()->where('role_id', 1)->first()) {
             return view('backend.review.edit')
-                ->with('review', $review);
+                ->with('review', $review)
+                ->with('form_fill', $review->form_fill)
+                ->with('form', $review->form_fill->form);
         } else {
             return redirect()->back()
                 ->with("message", "You do not have permission to access that module")
@@ -95,19 +99,40 @@ class UserReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $review = Review::find($id);
+        $fill = $review->form_fill;
+
+        //dd($fill);
+
+        for ($i = 1; $i <= 10; $i++) {
+            $fill["answer_" . $i] = $request['question_' . $i . '_a'];
+        }
+
+        $fill->conclusion = $request->conclusion;
+
+        $fill->save();
 
         $review->rating = $request->rating_val;
         $review->approved = $request->approval;
         $review->review = $request->review;
 
         $review->save();
+
+        //add email for contr author
+        {
+            $recipients[] = $review->contribution->author->email;
+            $subject = __('email.review_updated_subject');
+            $module = "Review-updated";
+            $data = ["contribution_author" => $review->contribution->author->profile->id];
+
+            EmailMessage::addMailToQueue($recipients, $subject, $module, $data);
+        }
 
         return redirect()->route('review.myReview.show', $id)
             ->with('message', 'Review successfully updated')
@@ -117,7 +142,7 @@ class UserReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -135,9 +160,29 @@ class UserReviewController extends Controller
                 ->with('message_type', 'danger');
         }
 
+
+        $form_fill = new ReviewFormFill();
+
+        $form_fill->review_id = $id;
+        $form_fill->form_id = $review->contribution->conference->review_form->id;
+
+        $form_fill->save();
+
         $review->accepted = 1;
 
+        $review->form_fill_id = $form_fill->id;
+
         $review->save();
+
+        //add email for contr author
+        {
+            $recipients[] = $review->contribution->author->email;
+            $subject = __('email.review_accepted_subject');
+            $module = "Review-accepted";
+            $data = ["contribution_author" => $review->contribution->author->profile->id];
+
+            EmailMessage::addMailToQueue($recipients, $subject, $module, $data);
+        }
 
         if ($review->reviever != Auth::id()) {
             return redirect()->route('review.myReview.index')
@@ -160,6 +205,16 @@ class UserReviewController extends Controller
         $review->accepted = -1;
 
         $review->save();
+
+        //add email for admin
+        {
+            $recipients[] = $review->assigner->email;
+            $subject = __('email.review_rejected_subject');
+            $module = "Review-rejected";
+            $data = ["review_assigned_by" => $review->assigned_by, 'reviewer' => $review->reviewer->id];
+
+            EmailMessage::addMailToQueue($recipients, $subject, $module, $data);
+        }
 
         if ($review->reviever != Auth::id()) {
             return redirect()->back()

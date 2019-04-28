@@ -94,8 +94,34 @@
                                     <br>{{\Carbon\Carbon::createFromFormat("Y-m-d H:i:s", $review->reviewer->profile->updated_at)->format('d M, Y')}}
                                 </p>
                             </div>
-                            <div class="col-12">
-                                {{$review->review}}
+                        </div>
+                        @for ($i = 1; $i < 11; $i++)
+                            @if($review->form_fill->form["question_".$i."_sk"])
+                                <div class="row p-1">
+                                    <div class="col-2">
+                                        <small>{{ App::getLocale() == 'en' ? $review->form_fill->form["question_".$i."_en"] : $review->form_fill->form["question_".$i."_sk"] }}</small>
+                                    </div>
+                                    <div class="col-10">
+                                        @if($review->form_fill->form["question_".$i."_type"] == 2)
+                                            @if($review->form_fill["answer_".$i] == "1")
+                                                {{__('main.yes')}}
+                                            @else
+                                                {{__('main.no')}}
+                                            @endif
+                                        @else
+                                            {{ $review->form_fill["answer_".$i] }}
+                                        @endif
+                                    </div>
+                                </div>
+                            @endif
+                        @endfor
+
+                        <div class="row p-1">
+                            <div class="col-2">
+                                <small>{{ App::getLocale() == 'en' ? $review->form_fill->form["question_conclusion_en"] : $review->form_fill->form["question_conclusion_sk"] }}</small>
+                            </div>
+                            <div class="col-10">
+                                {{ $review->form_fill["conclusion"] }}
                             </div>
                         </div>
                     </div>

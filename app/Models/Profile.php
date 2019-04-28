@@ -27,4 +27,8 @@ class Profile extends Model
         'phone',
         'image',
     ];
+
+    protected function user(){
+        return $this->belongsTo('App\User', "user_id", "id");
+    }
 }

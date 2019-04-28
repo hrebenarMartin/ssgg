@@ -79,6 +79,7 @@ class ConferencePagesController extends Controller
             $p->contribution = Contribution::where('user_id', $p->user_id)->where('conference_id', $conference->id)->first();
             $dynamic_data->participants->put($p->id, $p);
         }
+
         return view('page')
             ->with('page', $page)
             ->with('data', $page_blocks)

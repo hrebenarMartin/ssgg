@@ -16,11 +16,20 @@ class TestController extends Controller
     public function index(){
 
 
-        dd(Auth::user()->roles()->where('role_id', 1)->first());
+        //dd(Auth::user()->roles()->where('role_id', 1)->first());
 
-//        $em = new EmailMessage();
+//        $r[] = "hrebenar.martin1@gmail.com";
+//        $r[] = "m.hrebenar365@gmail.com";
+//        $s = "Test subject";
+//        $m = "Test";
+//        $d = ["Data"=>"test data"];
 //
-//        $em->sendWaitingEmails();
+//        //EmailMessage::addTestMail();
+//        EmailMessage::addMailToQueue($r, $s, $m, $d);
+
+        $em = new EmailMessage();
+
+        $em->sendWaitingEmails();
 
         return view('backend.test');
     }

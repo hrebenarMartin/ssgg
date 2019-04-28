@@ -55,5 +55,9 @@ class Conference extends Model
     public function applications(){
         return $this->hasMany('App\Models\Application');
     }
+
+    public function review_form(){
+        return $this->hasOne('App\Models\ReviewForm', 'conference_id');
+    }
 }
 

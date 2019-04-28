@@ -90,7 +90,7 @@
                     //console.log(contr_id);
                     $.ajax({
                         type: 'POST',
-                        url: '/ajax-ext',
+                        url: '/Projects/ssgg/ajax-ext',
                         data: {
                             action: 'get_contribution_and_comments',
                             contr_id: contr_id
@@ -110,9 +110,11 @@
 
                                     comm.attr('id', "");
                                     if (e.prof_img != "") {
-                                        comm.find('#author_picture').attr('src', "/public/images/profiles/" + e.user_id + "/" + e.prof_img)
+                                        //comm.find('#author_picture').attr('src', "/public/images/profiles/" + e.user_id + "/" + e.prof_img)
+                                        comm.find('#author_picture').attr('src', "{{asset("public/images/profiles/")}}/" + e.user_id + "/" + e.prof_img)
                                     } else {
-                                        comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
+                                        //comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
+                                        comm.find('#author_picture').attr('src', "{{asset("public/images/placeholders/user_o.png")}}");
                                     }
                                     comm.find(".author_name").text(e.first_name + " " + e.last_name);
                                     comm.find(".date_added").text("xx.yy.2019");
@@ -139,7 +141,8 @@
                     $('#comment_text_hint').hide();
                     $.ajax({
                         type: 'POST',
-                        url: '/ajax',
+                        //url: '/ajax',
+                        url: '/Projects/ssgg/ajax',
                         data: {
                             action: 'save_contribution_comment',
                             contr_id: contr_id,
@@ -154,9 +157,11 @@
 
                                 comm.attr('id', "");
                                 if (data.author.image != "") {
-                                    comm.find('#author_picture').attr('src', "/public/images/profiles/" + data.author.user_id + "/" + data.author.image)
+                                    //comm.find('#author_picture').attr('src', "/public/images/profiles/" + data.author.user_id + "/" + data.author.image)
+                                    comm.find('#author_picture').attr('src', "{{asset("public/images/profiles/")}}/" + data.author.user_id + "/" + data.author.image)
                                 } else {
-                                    comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
+                                    //comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
+                                    comm.find('#author_picture').attr('src', "{{asset("public/images/placeholders/user_o.png")}}");
                                 }
                                 comm.find(".author_name").text(data.author.first_name + " " + data.author.last_name);
                                 comm.find(".date_added").text("xx.yy.2019");

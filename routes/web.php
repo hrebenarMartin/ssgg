@@ -55,11 +55,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::get('/conferences/{id}/contributions', 'Backend\Admin\ConferenceController@conferenceContributions')->name('conferences.conference_contributions');
     Route::get('/conferences/{id}/statistics', 'Backend\Admin\ConferenceController@conferenceStatistics')->name('conferences.conference_statistics');
     Route::get('/conferences/{id}/review_form', 'Backend\Admin\ConferenceReviewFormController@index')->name('conferences.review_form.index');
+    Route::post('/conferences/{id}/review_form', 'Backend\Admin\ConferenceReviewFormController@store')->name('conferences.review_form.store');
+    Route::put('/conferences/{id}/review_form', 'Backend\Admin\ConferenceReviewFormController@update')->name('conferences.review_form.update');
 
     Route::post('/conference_upload_images', 'Backend\Admin\ConferenceController@uploadImagesBlueImp')->name('conferences.upload_images');
 
     Route::resource('/contributions', 'Backend\Admin\ContributionsController');
     Route::post('/contributions/assign_reviewer/{contribution_id}', 'Backend\Admin\ContributionsController@assignReviewer')->name('contributions.assignReviewer');
+
+    Route::resource('/email-queue', 'Backend\Admin\EmailQueueController')->middleware('admin');
 
     Route::get('/test', 'Backend\Admin\TestController@index')->name('test')->middleware("admin");
 });
@@ -77,4 +81,5 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], fu
     Route::get('/myContribution/download_template/{id}', 'Backend\User\ContributionController@downloadTemplate')->name('myContribution.download_template');
 
     Route::resource('/application', 'Backend\User\ApplicationController');
+    Route::get('/application/confirm', 'Backend\User\ApplicationController@confirm')->name('application.confirm');
 });

@@ -19,7 +19,18 @@
                     <div class="card-header text-center">
                         <h2>{{__('main.login_card')}}</h2>
                     </div>
+                    @if(session()->has('errors'))
+                        <div class="col-12">
+                            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                                {{ session()->get('errors')->get('email')[0] }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    @endif
                     <div class="card-body px-lg-5 py-lg-5">
+
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
 

@@ -109,3 +109,29 @@
         </div>
     </div>
 @stop
+
+@section('scripts')
+    <script>
+
+        $(document).ready(function () {
+
+            $('.delete-alert').click(function (e) {
+                var id = $(e.currentTarget).attr("data-item-id");
+                swal({
+                    title: "DANGER ZONE! Are you sure you want to proceed?",
+                    text: "Email will be deleted from queue.",
+                    icon: "error",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            document.getElementById('item-del-' + id).submit();
+                        }
+                    });
+            });
+
+        })
+
+    </script>
+@stop

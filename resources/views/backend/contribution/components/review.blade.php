@@ -25,7 +25,7 @@
                                 &nbsp;{{ __('review.in_progress') }}
 
                                 @endif
-                                @if(($contribution->review->reviewer->id == Auth::id() or Auth::user()->roles()->where('role_id', 1)->first()) and $contribution->review->form_fill)
+                                @if(($contribution->review->reviewer->id == Auth::id() or Auth::user()->roles()->where('role_id', 1)->first()) and $contribution->review->form_fill and \Carbon\Carbon::createFromFormat("Y-m-d H:i:s",$contribution->conference->review_form->fill_until) >= \Carbon\Carbon::now())
                                     <a href="{{ route('review.myReview.edit', $contribution->review->id) }}"
                                        class="btn btn-success pull-right"><i
                                             class="fa fa-fw fa-edit"></i> {{ __('main.edit') }}

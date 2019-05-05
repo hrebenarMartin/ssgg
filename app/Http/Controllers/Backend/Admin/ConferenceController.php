@@ -69,7 +69,7 @@ class ConferenceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -215,36 +215,537 @@ class ConferenceController extends Controller
         $config->save();
 
         //Základné stránky s blokmi a odkazy sa vygenerujú automaticky
-        $page = new Page();
 
-        $page->module = 2;
-        $page->title = $conf->year;
-        $page->title_second = $conf->year;
-        $page->alias = $conf->year;
-        $page->description = $conf->title_sk;
+        //Main page generate
+        {
+            $page = new Page();
+            $page->module = 2;
+            $page->title = $conf->year;
+            $page->title_second = $conf->year;
+            $page->alias = $conf->year;
+            $page->description = $conf->title_sk;
+            $page->conference_id = $conf->id;
+            $page->save();
 
-        $page->save();
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = $conf->year . " Home";
+            $block->type = 4; //Fixed
+            $block->fixed_id = 99; //Conference first block
+            $block->rank = 0;
+            $block->conference_id = $conf->id;
+            $block->save();
 
-        $block = new Block();
-        $block->page_id = $page->id;
-        $block->title = $conf->year . " Home";
-        $block->type = 4; //Fixed
-        $block->fixed_id = 99; //Conference first block
-        $block->rank = 0;
-        $block->conference_id = $conf->id;
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Karty";
+            $block->type = 3;
+            $block->fixed_id = 0;
+            $block->content = '<section class="section section-lg pt-lg-0 mt--200">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="row row-grid">
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <div class="card-body py-5 text-center">
+                                    <h3 class="text-primary text-uppercase">Viac info</h3>
+                                    <a href="#viac" class="btn btn-primary mt-4">Klik</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <div class="card-body py-5 text-center">
+                                    <h3 class="text-success text-uppercase">Účastníci a príspevky</h3>
+                                    <a href="/konferencia/ucastnici-prispevky" class="btn btn-success mt-4">Tu</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <div class="card-body py-5 text-center">
+                                    <h3 class="text-danger text-uppercase">Galéria</h3>
+                                    <a href="#" class="btn btn-danger mt-4">Sem</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>';
+            $block->content_en = '<section class="section section-lg pt-lg-0 mt--200">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="row row-grid">
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <div class="card-body py-5 text-center">
+                                    <h3 class="text-primary text-uppercase">Viac info</h3>
+                                    <a href="#viac" class="btn btn-primary mt-4">Klik</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <div class="card-body py-5 text-center">
+                                    <h3 class="text-success text-uppercase">Účastníci a príspevky</h3>
+                                    <a href="/konferencia/ucastnici-prispevky" class="btn btn-success mt-4">Tu</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card card-lift--hover shadow border-0">
+                                <div class="card-body py-5 text-center">
+                                    <h3 class="text-danger text-uppercase">Galéria</h3>
+                                    <a href="#" class="btn btn-danger mt-4">Sem</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>';
+            $block->rank = 1;
+            $block->conference_id = $conf->id;
+            $block->save();
 
-        $block->save();
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Uvod";
+            $block->type = 3;
+            $block->fixed_id = 0;
+            $block->content = '<section class="section section-lg" id="viac">
+    <div class="container shape-container d-flex align-items-center py-md">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 text-center pb-3">
+                    <h3 class="display-4">Slovenská spoločnosť pre Geometriu a grafiku<br>a<br>Česká společnost pro geometrii a grafiku</h3>
+                </div>
+                <div class="row aling-items-center py-3">
+                    <p>Vás srdečne pozývajú na už [[poradie]] ročník súbežne organizovaných konferencií v Českej a Slovenskej republike: </p>
+                </div>
+                <div class="col-lg-10 text-center pt-3">
+                    <h2 class="display-3">39. konferencia o geometrii a grafike<br>'.$conf->volume.' Sympózium o počítačovej geometrii SCG´'.$conf->year.'</h2>
+                </div>
+                <div class="col-lg-10 text-center pt-3">
+                    <a href="#dalej"><h2 class="display-3 animated infinite heartBeat"><i class="fa fa-fw fa-chevron-down"></i></h2></a>
+                </div>
+            </div>
+        </div>
+    </div>';
+            $block->content_en = '<section class="section section-lg" id="viac">
+    <div class="container shape-container d-flex align-items-center py-md">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 text-center pb-3">
+                    <h3 class="display-4">Slovenská spoločnosť pre Geometriu a grafiku<br>a<br>Česká společnost pro geometrii a grafiku</h3>
+                </div>
+                <div class="row aling-items-center py-3">
+                    <p>Vás srdečne pozývajú na už [[poradie]] ročník súbežne organizovaných konferencií v Českej a Slovenskej republike: </p>
+                </div>
+                <div class="col-lg-10 text-center pt-3">
+                    <h2 class="display-3">[[poradie]] konferencia o geometrii a grafike<br>'.$conf->volume.' Sympózium o počítačovej geometrii SCG´'.$conf->year.'</h2>
+                </div>
+                <div class="col-lg-10 text-center pt-3">
+                    <a href="#dalej"><h2 class="display-3 animated infinite heartBeat"><i class="fa fa-fw fa-chevron-down"></i></h2></a>
+                </div>
+            </div>
+        </div>
+    </div>';
+            $block->rank = 2;
+            $block->conference_id = $conf->id;
+            $block->save();
 
-        $menu = new FrontMenu();
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Programove zameranie a výbor";
+            $block->type = 3;
+            $block->fixed_id = 0;
+            $block->content = '<div class="section section-sm" id="dalej">
+    <div class="container shape-container d-flex">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-10">
+                    <h3 class="py-2">Programové zameranie</h3>
+                    <ul>
+                        <li>nové technológie a stratégie vo výučbe geometrie</li>
+                        <li>geometria a jej aplikácie vo vede, technike a umení</li>
+                        <li>geometrické modelovanie</li>
+                    </ul>
+                    <br>
+                    <p>Vítané sú všetky príspevky týkajúce sa metodiky výučby 
+                    geometrie, referáty a prednášky zo všetkých oblastí geometrie a 
+                    jej aplikácií v technických a vedných disciplínach. 
+                    Svoje príspevky môžu účastníci sympózia prezentovať 
+                    aj formou posterov, na výstavke modelov, prípadne ukážkami 
+                    didaktických materiálov alebo predvádzaním počítačových programov 
+                    počas celého trvania sympózia.</p>
+                    <br>
+                    <br>
+                    <h3 class="py-2">Programový výbor</h3>
+                    <ul>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>';
+            $block->content_en = '<div class="section section-sm" id="dalej">
+    <div class="container shape-container d-flex">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-10">
+                    <h3 class="py-2">Programové zameranie</h3>
+                    <ul>
+                        <li>nové technológie a stratégie vo výučbe geometrie</li>
+                        <li>geometria a jej aplikácie vo vede, technike a umení</li>
+                        <li>geometrické modelovanie</li>
+                    </ul>
+                    <br>
+                    <p>Vítané sú všetky príspevky týkajúce sa metodiky výučby 
+                    geometrie, referáty a prednášky zo všetkých oblastí geometrie a 
+                    jej aplikácií v technických a vedných disciplínach. 
+                    Svoje príspevky môžu účastníci sympózia prezentovať 
+                    aj formou posterov, na výstavke modelov, prípadne ukážkami 
+                    didaktických materiálov alebo predvádzaním počítačových programov 
+                    počas celého trvania sympózia.</p>
+                    <br>
+                    <br>
+                    <h3 class="py-2">Programový výbor</h3>
+                    <ul>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>Priezvisko Meno, Univerzita, Mesto, Štát</li>
+                        <li>...</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>';
+            $block->rank = 3;
+            $block->conference_id = $conf->id;
+            $block->save();
 
-        $menu->name_sk = "Hlavná stránka";
-        $menu->name_en = "Main page";
-        $menu->route = "/konferencia";
-        $menu->rank = 0;
-        $menu->module = 2;
-        $menu->conference_id = $conf->id;
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Termín, miesto konania a poplatky";
+            $block->type = 3;
+            $block->fixed_id = 0;
+            $block->content = '<div class="section section-sm" id="dalej">
+    <div class="container shape-container d-flex">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-10">
+                    <h3 class="py-2">Termín a miesto konania</h3>
+                    <ul>
+                        <li>'.Carbon::createFromFormat("Y-m-d", $conf->conference_start)->format("d,M Y").'</li>
+                        <li>'.$conf->address_place.'</li>
+                        <li>'.$conf->address_city.'</li>
+                        <li><a href="/konferencia/miesto-konania">Klikni pre viac informácií</a></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <h3 class="py-2">Prihlášky a registračný poplatok</h3>
+                    <ul>
+                        <li>Všetky potrebné údaje nádjete v sekcii [Názov sekcie] po prihlásení do systému</li>
+                        <li><a href="/dashboard">Prihlásenie/Registrácia do systému</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>';
+            $block->content_en = '<div class="section section-sm" id="dalej">
+    <div class="container shape-container d-flex">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-sm-10">
+                    <h3 class="py-2">Termín a miesto konania</h3>
+                    <ul>
+                        <li>'.Carbon::createFromFormat("Y-m-d", $conf->conference_start)->format("d,M Y").'</li>
+                        <li>'.$conf->address_place.'</li>
+                        <li>'.$conf->address_city.'</li>
+                        <li><a href="/konferencia/miesto-konania">Klikni pre viac informácií</a></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <h3 class="py-2">Prihlášky a registračný poplatok</h3>
+                    <ul>
+                        <li>Všetky potrebné údaje nádjete v sekcii [Názov sekcie] po prihlásení do systému</li>
+                        <li><a href="/dashboard">Prihlásenie/Registrácia do systému</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>';
+            $block->rank = 4;
+            $block->conference_id = $conf->id;
+            $block->save();
 
-        $menu->save();
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Program konferencie";
+            $block->type = 4;
+            $block->fixed_id = 98;
+            $block->rank = 5;
+            $block->conference_id = $conf->id;
+            $block->save();
+        }
+
+        //Page venue
+        {
+            $page = new Page();
+            $page->module = 2;
+            $page->title = "Miesto konania";
+            $page->title_second = "Venue";
+            $page->alias = "miesto-konania";
+            $page->description = $conf->title_sk;
+            $page->conference_id = $conf->id;
+            $page->save();
+
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Hlavička";
+            $block->type = 3;
+            $block->fixed_id = 0;
+            $block->content = '<section class="section section-lg section-hero section-shaped pb-5">
+    <!-- Background circles -->
+    <div class="shape shape-style-1 shape-primary">
+        <span class="span-150 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-2s slower"></span>
+        <span class="span-50 animated pulse infinite delay-4s slow"></span>
+        <span class="span-75 animated pulse infinite delay-2s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+        <span class="span-75 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-2s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+
+    </div>
+    <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 text-white">Detaily, ktoré musíte poznať</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>';
+            $block->content_en = '<section class="section section-lg section-hero section-shaped pb-5">
+    <!-- Background circles -->
+    <div class="shape shape-style-1 shape-primary">
+        <span class="span-150 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-2s slower"></span>
+        <span class="span-50 animated pulse infinite delay-4s slow"></span>
+        <span class="span-75 animated pulse infinite delay-2s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+        <span class="span-75 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-2s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+
+    </div>
+    <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 text-white">Must know details</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>';
+            $block->rank = 0;
+            $block->conference_id = $conf->id;
+            $block->save();
+
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Lokácia";
+            $block->type = 4;
+            $block->fixed_id = 97;
+            $block->rank = 1;
+            $block->conference_id = $conf->id;
+            $block->save();
+
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Lokácia";
+            $block->type = 4;
+            $block->fixed_id = 96;
+            $block->rank = 2;
+            $block->conference_id = $conf->id;
+            $block->save();
+
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Lokácia";
+            $block->type = 4;
+            $block->fixed_id = 95;
+            $block->rank = 3;
+            $block->conference_id = $conf->id;
+            $block->save();
+        }
+
+        //Page Participants and Contributions
+        {
+            $page = new Page();
+            $page->module = 2;
+            $page->title = "Účatníci a príspevky";
+            $page->title_second = "Participants and Contributions";
+            $page->alias = "ucastnici-prispevky";
+            $page->description = $conf->title_sk;
+            $page->conference_id = $conf->id;
+            $page->save();
+
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Hlavička";
+            $block->type = 3;
+            $block->fixed_id = 0;
+            $block->content = '<section class="section section-lg section-hero section-shaped pb-5">
+    <!-- Background circles -->
+    <div class="shape shape-style-1 shape-primary">
+        <span class="span-150 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-2s slower"></span>
+        <span class="span-50 animated pulse infinite delay-4s slow"></span>
+        <span class="span-75 animated pulse infinite delay-2s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+        <span class="span-75 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-2s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+
+    </div>
+    <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 text-white">Účastníci a príspevky</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>';
+            $block->content_en = '<section class="section section-lg section-hero section-shaped pb-5">
+    <!-- Background circles -->
+    <div class="shape shape-style-1 shape-primary">
+        <span class="span-150 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-2s slower"></span>
+        <span class="span-50 animated pulse infinite delay-4s slow"></span>
+        <span class="span-75 animated pulse infinite delay-2s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+        <span class="span-75 animated pulse infinite delay-1s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-2s slow"></span>
+        <span class="span-50 animated pulse infinite delay-5s slow"></span>
+        <span class="span-100 animated pulse infinite delay-3s slow"></span>
+
+    </div>
+    <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-2 text-white">Participants and Contributions</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</section>';
+            $block->rank = 0;
+            $block->conference_id = $conf->id;
+            $block->save();
+
+            $block = new Block();
+            $block->page_id = $page->id;
+            $block->title = "Zoznam účastníkov a príspevky";
+            $block->type = 4;
+            $block->fixed_id = 94;
+            $block->rank = 1;
+            $block->conference_id = $conf->id;
+            $block->save();
+        }
+
+        //Page gallery
+        {
+
+        }
+
+        //Base Menu items
+        {
+            $menu = new FrontMenu();
+
+            $menu->name_sk = "Hlavná stránka";
+            $menu->name_en = "Main page";
+            $menu->route = "/konferencia";
+            $menu->rank = 0;
+            $menu->module = 2;
+            $menu->conference_id = $conf->id;
+
+            $menu->save();
+
+            $menu = new FrontMenu();
+
+            $menu->name_sk = "Miesto konania";
+            $menu->name_en = "Venue";
+            $menu->route = "/konferencia/miesto-konania";
+            $menu->rank = 1;
+            $menu->module = 2;
+            $menu->conference_id = $conf->id;
+
+            $menu->save();
+
+            $menu = new FrontMenu();
+
+            $menu->name_sk = "Účastníci a príspevky";
+            $menu->name_en = "Participants and Contributions";
+            $menu->route = "/konferencia/ucastnici-prispevky";
+            $menu->rank = 2;
+            $menu->module = 2;
+            $menu->conference_id = $conf->id;
+
+            $menu->save();
+        }
         //----------------------------------------------------------
 
         return redirect()->route('admin.conferences.index')
@@ -255,7 +756,7 @@ class ConferenceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -282,7 +783,7 @@ class ConferenceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -305,8 +806,8 @@ class ConferenceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -514,7 +1015,7 @@ class ConferenceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -529,7 +1030,7 @@ class ConferenceController extends Controller
 
         Contribution::destroyContributionsOfConference($id);
 
-        ConferenceConfiguration::destroyConfigOfConference($id);
+        //ConferenceConfiguration::destroyConfigOfConference($id);
 
         Conference::destroy($id);
 
@@ -579,7 +1080,11 @@ class ConferenceController extends Controller
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
-        dd("NYI");
+
+        $contributions = Contribution::getListDetail($conference->id);
+
+        return view('backend.contribution.contribution_listing_admin')
+            ->with('contributions',$contributions);
     }
 
     public function conferenceStatistics($cid)
@@ -588,7 +1093,75 @@ class ConferenceController extends Controller
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
-        dd("NYI");
+
+        $stats = collect();
+        $stats->contributions_all = $conference->contributions()->count();
+        $stats->contributions = DB::table('contributions')->select(DB::raw("type, count(*) as count"))
+            ->groupBy('type')
+            ->where('conference_id', $conference->id)
+            ->get();
+
+        $stats->reviews = 0;
+        $stats->reviews_approved = 0;
+        $stats->reviews_not_approved = 0;
+        $stats->reviews_avg_score = 0;
+
+        foreach ($conference->contributions as $cc) {
+            $rev = $cc->review;
+            if ($rev and $rev->accepted == 1) {
+                $stats->reviews += 1;
+                if ($rev->approved == 1) {
+                    $stats->reviews_approved += 1;
+                } else {
+                    $stats->reviews_not_approved += 1;
+                }
+                $stats->reviews_avg_score += $rev->rating;
+            }
+        }
+        if ($stats->reviews > 0) {
+            $stats->reviews_avg_score /= $stats->reviews;
+        }
+
+        $appl_conf = $conference->applications()->where('status', '>', 1)->get();
+
+        $stats->applications_all = $conference->applications()->count();
+        $stats->applications_confirmed = $conference->applications()->where('status', '>', 1)->get()->count();
+        $stats->applications_paid = $conference->applications()->where('status', 3)->get()->count();
+        $stats->applications_more = collect();
+        for ($i = 1; $i <= 5; $i++) {
+            $stats->applications_more['d' . $i . 'b'] = 0;
+            $stats->applications_more['d' . $i . 'l'] = 0;
+            $stats->applications_more['d' . $i . 'd'] = 0;
+            $stats->applications_more['accom' . $i] = 0;
+        }
+        $stats->applications_more['special_1'] = 0;
+        $stats->applications_more['special_2'] = 0;
+        $stats->applications_more['special_3'] = 0;
+        $stats->applications_more['accom98'] = 0;
+        $stats->applications_more['accom99'] = 0;
+
+        foreach ($appl_conf as $a) {
+            for ($i = 1; $i <= 5; $i++) {
+                $stats->applications_more['d' . $i . 'b'] += $a['day' . $i . '_breakfast'];
+                $stats->applications_more['d' . $i . 'l'] += $a['day' . $i . '_lunch'];
+                $stats->applications_more['d' . $i . 'd'] += $a['day' . $i . '_dinner'];
+                $stats->applications_more['accom' . $i] += $a['accom_' . $i];
+            }
+            $stats->applications_more['special_1'] += $a->special_1;
+            $stats->applications_more['special_2'] += $a->special_2;
+            $stats->applications_more['special_3'] += $a->special_3;
+            $stats->applications_more['accom98'] += $a->accom_98;
+            $stats->applications_more['accom99'] += $a->accom_99;
+        }
+
+        //dd($stats);
+
+        $conference_config = $conference->config;
+
+        return view('backend.conference.stats')
+            ->with('stats', $stats)
+            ->with('conference', $conference)
+            ->with('config', $conference_config);
     }
 
 }

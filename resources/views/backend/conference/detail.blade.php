@@ -29,7 +29,7 @@
                         <a href="{{ route('admin.conferences.edit', $data->id) }}"
                            class="btn btn-success">{{ __('form.action_edit_conference') }}</a>
                         <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
-                                class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                                class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                                 <span id="proc_file_span">
                                     <a href="{{route('conference.proceedings_download', $data->year)}}"
                                        class="btn btn-outline-primary">{{__('contribution.download_document')}}</a>
-                                    <a href="#!" id="del_proc_file" class="text-danger"><i class="fa fa-times"></i></a>
+                                    <a href="#!" id="del_proc_file" class="text-danger"><i class="fa fa-fw fa-times"></i></a>
                                 </span>
                             </p>
                         @else
@@ -176,13 +176,13 @@
                                                     ( {{\Carbon\Carbon::createFromFormat('Y-m-d', $data->conference_start)->addDays(($i-1))->format('d M,Y')}}
                                                     ):</strong>
                                                 <br>&nbsp; &nbsp; &nbsp;<strong><i
-                                                        class="fa @if($config["day".intval($i)."_breakfast"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_breakfast')}}
+                                                        class="fa fa-fw @if($config["day".intval($i)."_breakfast"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_breakfast')}}
                                                 </strong>
                                                 <br>&nbsp; &nbsp; &nbsp;<strong><i
-                                                        class="fa @if($config["day".intval($i)."_lunch"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_lunch')}}
+                                                        class="fa fa-fw @if($config["day".intval($i)."_lunch"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_lunch')}}
                                                 </strong>
                                                 <br>&nbsp; &nbsp; &nbsp;<strong><i
-                                                        class="fa @if($config["day".intval($i)."_dinner"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_dinner')}}
+                                                        class="fa fa-fw @if($config["day".intval($i)."_dinner"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_dinner')}}
                                                 </strong>
                                             </p>
                                         </div>
@@ -318,7 +318,7 @@
                                         <div class="img-overlay">
                                             <button data-img-button-id="{{$img->id}}"
                                                     class="btn btn-md btn-danger delete_image_btn"><i
-                                                    class="fa fa-trash"></i></button>
+                                                    class="fa fa-fw fa-trash"></i></button>
                                         </div>
                                     </div>
 

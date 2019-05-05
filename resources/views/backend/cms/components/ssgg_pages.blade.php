@@ -22,7 +22,7 @@
                             <td>{{ $page->title }}</td>
                             <td>{{ $page->alias }}</td>
                             <td>
-                                <a href="#!" data-item-id="{{ $page->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash-o"></i></a>
+                                <a href="#!" data-item-id="{{ $page->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash"></i></a>
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['admin.cms.destroy', $page->id ],
                                     'id' => 'item-del-'. $page->id  ])
                                 }}

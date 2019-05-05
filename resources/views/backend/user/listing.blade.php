@@ -25,9 +25,9 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">{{ __('form.user_name') }}</th>
-                        <th scope="col">{{ __('form.user_email') }}</th>
-                        <th scope="col">{{ __('form.user_access') }}</th>
+                        <th scope="col">{{ __('form.profile_first_name') }}</th>
+                        <th scope="col">{{ __('form.email') }}</th>
+                        <th scope="col">{{ __('form.roles') }}</th>
                         <th scope="col" class="text-right">{{ __('form.actions') }}</th>
                     </tr>
                     </thead>
@@ -38,15 +38,15 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                @if($user->access_level == 4)
-                                    {{__('main.superadmin')}}
-                                @elseif($user->access_level == 3)
-                                    {{__('main.admin')}}
-                                @elseif($user->access_level == 2)
-                                    {{__('main.reviewer')}}
-                                @elseif($user->access_level == 1)
-                                    {{__('main.reguser')}}
-                                @endif
+                                @foreach(App\User::find($user->id)->roles as $r)
+                                    @if($r->id == 1)
+                                        {{__('main.superadmin')}} |
+                                    @elseif($r->id == 3)
+                                       {{__('main.admin')}} |
+                                    @elseif($r->id == 4)
+                                        {{__('main.reviewer')}} |
+                                    @endif
+                                @endforeach {{__('main.reguser')}}
                             </td>
                             <td>
                                 <a href="#" class="btn btn-danger btn-sm listing_controls pull-right"><i

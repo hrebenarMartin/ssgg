@@ -364,12 +364,15 @@ class ApplicationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Application::destroy($id);
+        return redirect()
+            ->route('user.application.index')
+            ->with('message', 'Deleted')
+            ->with('message_type', "success");
     }
 
     public function confirm(){
         $conference = Conference::where('status', 1)->first();
-        //dd($conference);
         if(!$conference){
             session()->put('message', "No active conference at the moment");
             session()->put('message_type', "danger");
@@ -381,6 +384,9 @@ class ApplicationController extends Controller
 
         $appl->save();
 
-        return redirect()->back();
+        return redirect()
+            ->route('user.application.index')
+            ->with('message', 'Confirmed')
+            ->with('message_type', "success");
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\User;
 
+use App\Models\Application;
 use App\Models\Conference;
 use App\Models\Contribution;
 use App\Models\ContributionComment;
@@ -19,8 +20,6 @@ class ContributionController extends Controller
      */
     public function index()
     {
-        $has_contribution = Contribution::where('user_id', Auth::id())->count() == 1;
-
         $conference = Conference::where('status', 1)->first();
 
         if (!$conference) {
@@ -28,14 +27,28 @@ class ContributionController extends Controller
                 ->with('no_conference', true);
         }
 
+        $application = Application::where('user_id', Auth::id())->where('conference_id', $conference->id)->where('status', '>', 2)->first();
+
+        if(!$application){
+            return view('backend.contribution.user_contribution')
+                ->with('no_application', true);
+        }
+
+        $has_contribution = Contribution::where('user_id', Auth::id())->where('conference_id', $conference->id)->count() == 1;
+
         $contrib_deadline = Conference::where('status', 1)->first()->registration_end;
 
         if ($has_contribution == 0) return view('backend.contribution.user_contribution')
             ->with('no_contribution', $has_contribution)
             ->with('deadline', $contrib_deadline);
         else {
-            $contribution = Contribution::where('user_id', Auth::id())->first();
-            $comments = $contribution->comments;
+            $contribution = Contribution::where('user_id', Auth::id())->where('conference_id', $conference->id)->first();
+            if($contribution){
+                $comments = $contribution->comments;
+            }
+            else {
+                $comments = collect();
+            }
             return view('backend.contribution.user_contribution')
                 ->with('contribution', $contribution)
                 ->with('deadline', $contrib_deadline)
@@ -50,7 +63,7 @@ class ContributionController extends Controller
      */
     public function create()
     {
-        if (Contribution::where('user_id', Auth::id())->count() > 0) {
+        if (Contribution::where('user_id', Auth::id())->where('conference_id', Conference::where('status', 1)->first()->id)->count() > 0) {
             return redirect()->route('user.myContribution.index')
                 ->with('message', 'You can upload only one contribution')
                 ->with('message_type', 'danger');

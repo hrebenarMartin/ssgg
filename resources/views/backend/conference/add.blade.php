@@ -508,8 +508,7 @@
 
 @section('scripts')
 
-    <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
-            async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap" defer></script>
 
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/bootstrap-markdown.js') !!}"></script>
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/markdown.js') !!}"></script>
@@ -587,6 +586,8 @@
         }
 
         $().ready(function () {
+            //initMap();
+
             adjustDates();
 
             $('#form_conference_add').validate({
@@ -676,7 +677,11 @@
             r_end.setFullYear(tmp.getFullYear());
             r_end.setMonth(tmp.getMonth());
             r_end.setDate(tmp.getDate()+1);
-            
+
+            if (isNaN(r_end.valueOf())){
+                return;
+            }
+
             $('#reg_end').attr({
                 "min" : r_end.toISOString().split('T')[0]
             });
@@ -686,7 +691,11 @@
             c_start.setFullYear(tmp.getFullYear());
             c_start.setMonth(tmp.getMonth());
             c_start.setDate(tmp.getDate()+1);
-            
+
+            if (isNaN(c_start.valueOf())){
+                return;
+            }
+
             $('#conf_start').attr({
                 "min" : c_start.toISOString().split('T')[0]
             });
@@ -700,6 +709,13 @@
             c_end_max.setFullYear(tmp.getFullYear());
             c_end_max.setMonth(tmp.getMonth());
             c_end_max.setDate(tmp.getDate()+4);
+
+            if (isNaN(c_end_max.valueOf())){
+                return;
+            }
+            if (isNaN(c_end_min.valueOf())){
+                return;
+            }
 
             $('#conf_end').attr({
                 "min" : c_end_min.toISOString().split('T')[0],

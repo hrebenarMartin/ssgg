@@ -9,6 +9,7 @@ return [
     'forgot_pass' => 'Forgot your password?',
     'create_account' => 'Create an account',
     'remember_me' => 'Remember me',
+    'Logout' => "Log Out",
     'logout' => "Log Out",
     'language_change' => 'Change language',
     'when' => 'When',
@@ -31,4 +32,12 @@ return [
     'comments' => 'Comments',
     'review_zone' => 'Review Zone',
     'delete' => "Delete",
+    'password' => "Password",
+    'password_check' => "Password repeat",
+    'close' => "Close",
+    'yes' => "Yes",
+    'no' => "No",
+
+    'comment' => "Comments",
+    'comment_submit' => "Send comment",
 ];

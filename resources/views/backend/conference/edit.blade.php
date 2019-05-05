@@ -9,7 +9,7 @@
         <div class="container">
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
-                    <a href="{{ route('admin.conferences.show', $data->id) }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                    <a href="{{ route('admin.conferences.show', $data->id) }}" class="btn btn-primary"><i class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                 </div>
             </div>
         </div>
@@ -179,7 +179,7 @@
 
                     <div class="row mb-3">
                         <div class="col col-sm-12 text-center">
-                            <button type="button" class="btn btn-primary" id="copy_schedule_button"><i class="fa fa-copy"></i> Copy Slovak schedule</button>
+                            <button type="button" class="btn btn-primary" id="copy_schedule_button"><i class="fa fa-fw fa-copy"></i> Copy Slovak schedule</button>
                         </div>
                     </div>
 
@@ -517,6 +517,8 @@
 @endsection
 
 @section('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
+            async defer></script>
 
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/bootstrap-markdown.js') !!}"></script>
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/markdown.js') !!}"></script>
@@ -732,8 +734,5 @@
         }
 
     </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
-            async defer></script>
 
 @stop

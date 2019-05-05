@@ -41,14 +41,19 @@ class Contribution extends Model
         return self::all()->count();
     }
 
-    public static function getListDetail()
+    public static function getListDetail($cid = 0)
     {
-        $res = self::join('user_profiles as up', 'up.user_id', '=', 'contributions.user_id')
+        $query = self::join('user_profiles as up', 'up.user_id', '=', 'contributions.user_id')
             ->join('conference as conf', 'contributions.conference_id', '=', 'conf.id')
             ->select('contributions.*', 'up.first_name as author_first_name',
                 'up.last_name as author_last_name', 'conf.year as conference_year')
-            ->orderByDesc('conf.year')
-            ->get();
+            ->orderByDesc('conf.year');
+
+        if($cid > 0){
+            $query->where('contributions.conference_id', $cid);
+        }
+
+        $res = $query->get();
 
         return $res;
     }

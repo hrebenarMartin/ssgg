@@ -16,4 +16,6 @@ return [
     'conf_stats' => 'Stats',
 
     'review' => 'My Reviews',
+
+    'email_queue' => "Email Queue",
 ];

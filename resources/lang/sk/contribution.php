@@ -16,6 +16,18 @@ return [
 
     'author' => 'Autor',
     'review' => 'Recenzný posudok',
-    'myContribution' => "Môj príspevok"
+    'myContribution' => "Môj príspevok",
+
+    'detail_admin' => "Detail príspevku(Admin)",
+
+    'reviewer_not_assigned' => "Recenzent zatiaľ nebol pridelený",
+    'assign_now' => "Prideliť recenzenta",
+    'assign_reviewer' => "Prideliť recenzenta",
+    'reviewer' => "Recenzent",
+    'review_invite' => "Poslať pozvánku",
+    'reviewer_no_response' => "Recenzent zatiaľ nereagoval",
+    'reviewer_not_accepted' => "Recenzent odmietol recenzovať tento príspevok",
+
+    'deadline_passed' => "Pridávanie príspevku už nie je možné"
 
 ];

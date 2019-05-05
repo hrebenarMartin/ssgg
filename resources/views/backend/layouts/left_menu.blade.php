@@ -1,5 +1,3 @@
-<!-- Left Panel -->
-
 <aside id="left-panel" class="left-panel">
     <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -29,7 +27,7 @@
                 </li>
 
                 @if(Auth::user()->roles()->where('role_id', 1)->first())
-                    <h3 class="menu-title">Admin</h3><!-- /.admin-title -->
+                    <h3 class="menu-title">Admin</h3>
                     <li>
                         <a href="{{ route('admin.cms.index') }}"><i
                                     class="menu-icon fa fa-wrench"></i>{{ __('b_menu.cms') }}</a>
@@ -64,10 +62,12 @@
                                     class="menu-icon fa fa-user-friends"></i>{{__('b_menu.conf_participants')}}</a>
                     </li>
                     <li>
-                        <a href="#!"><i class="menu-icon far fa-copy"></i>{{__('b_menu.conf_contributions')}}</a>
+                        <a href="{{ route('admin.conferences.conference_contributions', $is_conference->id) }}"><i
+                                    class="menu-icon far fa-copy"></i>{{__('b_menu.conf_contributions')}}</a>
                     </li>
                     <li>
-                        <a href="#!"><i class="menu-icon fa fa-info-circle"></i>{{__('b_menu.conf_stats')}}</a>
+                        <a href="{{route('admin.conferences.conference_statistics', $is_conference->id)}}"><i
+                                    class="menu-icon fa fa-info-circle"></i>{{__('b_menu.conf_stats')}}</a>
                     </li>
                 @endif
 
@@ -80,7 +80,7 @@
                     </li>
                 @endif
 
-                <h3 class="menu-title">{{__('main.user_zone')}}</h3><!-- /.menu-title -->
+                <h3 class="menu-title">{{__('main.user_zone')}}</h3>
                 <li>
                     <a href="{{ route('user.profile.show', Auth::id()) }}"> <i
                                 class="menu-icon fa fa-id-card"></i>{{ __('b_menu.profile') }}</a>
@@ -94,8 +94,8 @@
                                 class="menu-icon fa fa-id-badge"></i>{{ __('b_menu.user_application') }}</a>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
     </nav>
-</aside><!-- /#left-panel -->
+</aside>
 
-<!-- Left Panel -->
+

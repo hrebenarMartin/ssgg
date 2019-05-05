@@ -90,7 +90,8 @@
                     //console.log(contr_id);
                     $.ajax({
                         type: 'POST',
-                        url: '/Projects/ssgg/ajax-ext',
+                        url: '/ajax-ext',
+                        //url: '/Projects/ssgg/ajax-ext',
                         data: {
                             action: 'get_contribution_and_comments',
                             contr_id: contr_id
@@ -141,8 +142,8 @@
                     $('#comment_text_hint').hide();
                     $.ajax({
                         type: 'POST',
-                        //url: '/ajax',
-                        url: '/Projects/ssgg/ajax',
+                        url: '/ajax',
+                        //url: '/Projects/ssgg/ajax',
                         data: {
                             action: 'save_contribution_comment',
                             contr_id: contr_id,

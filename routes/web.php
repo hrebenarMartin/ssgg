@@ -24,6 +24,9 @@ Auth::routes();
 Route::post('/ajax', 'Helpers\AjaxController@main')->name('ajax');
 Route::post('/ajax-ext', 'Helpers\AjaxExternalController@main')->name('ajax_ext');
 
+Route::get('/cron', 'Backend\EmailSenderController@cron')->middleware("auth")->name('cron');
+Route::get('/e55252b69c7a68861c2bf80d2506324f', 'Backend\EmailSenderController@cron');
+
 Route::resource('/dashboard', 'Backend\Dashboard\DashboardController');
 
 Route::get('/set_locale/{locale}', 'Helpers\LocaleController@setLocale')->name('set_locale');
@@ -81,5 +84,10 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], fu
     Route::get('/myContribution/download_template/{id}', 'Backend\User\ContributionController@downloadTemplate')->name('myContribution.download_template');
 
     Route::resource('/application', 'Backend\User\ApplicationController');
-    Route::get('/application/confirm', 'Backend\User\ApplicationController@confirm')->name('application.confirm');
+    Route::get('/application-confirm', 'Backend\User\ApplicationController@confirm')->name('application.confirm');
+});
+
+
+Route::group(['prefix' => 'pp', 'as' => 'pp.'], function (){
+   Route::get('/~hrebenar', 'PP\PersonalPageController@hrebenar');
 });

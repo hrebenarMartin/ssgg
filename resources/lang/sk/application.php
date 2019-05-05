@@ -14,4 +14,9 @@ return [
     'status_1' => "Nepotvrdená",
     'status_2' => "Nezaplatená",
     'status_3' => "Zaplatená",
+    'not_confirmed' => "Nepotvrdené prihlášky",
+    'confirmed' => "Potvrdené prihlášky",
+    'status' => "Status",
+    'confirmed_status' => "Potvrdená",
+
 ];

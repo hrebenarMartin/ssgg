@@ -46,6 +46,11 @@ class ApplicationsController extends Controller
         dump($appl->user->profile);
         dd($appl->user->profile->first_name);*/
 
-        return view('backend.application.detail')->with('appl', $appl);
+        $conference = Conference::find($cid);
+
+        return view('backend.application.detail')
+            ->with('appl', $appl)
+            ->with('conference', $conference)
+            ->with('config', $conference->config);
     }
 }

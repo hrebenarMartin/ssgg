@@ -16,4 +16,6 @@ return [
     'conf_stats' => 'Štatistiky',
 
     'review' => 'Moje recenzie',
+
+    'email_queue' => "Email fronta",
 ];

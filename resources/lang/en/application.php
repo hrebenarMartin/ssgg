@@ -14,4 +14,9 @@ return [
     'status_1' => "Not confirmed",
     'status_2' => "Payment not recieved",
     'status_3' => "Payment recieved",
+    'not_confirmed' => "Not confirmed applications",
+    'confirmed' => "Confirmed applications",
+    'status' => "Status",
+    'confirmed_status' => "Confirmed",
+
 ];

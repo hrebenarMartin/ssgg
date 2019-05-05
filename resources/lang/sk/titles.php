@@ -30,4 +30,7 @@ return [
     'pages' => "Stránky",
     'user_edit' => "Úprava užívateľa",
     'user_add' => "Pridať nového uživateľa",
+
+    'conference_review_form_edit' => "Upraviť nastanevia recenzií",
+    'conference_review_form_add' => "Nastaviť recenzie pre konferenciu",
 ];

@@ -22,7 +22,7 @@
                             <td>{{ $menu->name_sk }}</td>
                             <td>{{ $menu->route }}</td>
                             <td>
-                                <a href="#!" data-item-id="{{ $menu->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash-o"></i></a>
+                                <a href="#!" data-item-id="{{ $menu->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash"></i></a>
                                 {{ Form::open(['method' => 'DELETE', 'route' => ['admin.front_menu.destroy', $menu->id ],
                                     'id' => 'item-del-'. $menu->id  ])
                                 }}

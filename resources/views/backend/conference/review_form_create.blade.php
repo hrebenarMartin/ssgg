@@ -11,7 +11,7 @@
                 <div class="p-1">
                     <div class="dropdown">
                         <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
-                                class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                                class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                                 <input name="q_{{$i}}_sk" id="q_{{$i}}_sk" class="form-control" value="" @if($i==1) required @endif>
                             </div>
                             {{--<div class="col-sm-1">
-                                <button class="btn btn-primary"><i class="fa fa-copy"></i> > EN</button>
+                                <button class="btn btn-primary"><i class="fa fa-fw fa-copy"></i> > EN</button>
                             </div>--}}
                             <div class="col-sm-4">
                                 <label for="q_{{$i}}_en" class="col-form-label">{{__('form.review_form_question_en')}}</label>
@@ -67,7 +67,7 @@
                                 <input name="q_{{$i}}_en" id="q_{{$i}}_en" class="form-control" value="" @if($i==1) required @endif>
                             </div>
                             {{--<div class="col-sm-1">
-                                <button class="btn btn-primary"><i class="fa fa-copy"></i> > SK</button>
+                                <button class="btn btn-primary"><i class="fa fa-fw fa-copy"></i> > SK</button>
                             </div>--}}
                             <div class="col-sm-4">
                                 <label for="q_{{$i}}_t" class="col-form-label">{{__('form.review_form_question_type')}}</label>
@@ -77,7 +77,9 @@
                                     <option value="" selected disabled>...</option>
                                     <option value="1">{{ __('form.review_form_input_type_1') }}</option>
                                     <option value="2">{{ __('form.review_form_input_type_2') }}</option>
+{{--
                                     <option value="3">{{ __('form.review_form_input_type_3') }}</option>
+--}}
                                 </select>
                             </div>
                         </div>

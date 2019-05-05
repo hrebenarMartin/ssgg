@@ -31,4 +31,6 @@ return [
     'user_edit' => "User edit",
     'user_add' => "User add",
 
+    'conference_review_form_edit' => "Review form edit",
+    'conference_review_form_add' => "Review form create",
 ];

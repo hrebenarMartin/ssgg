@@ -2,7 +2,7 @@
     <div class="col-1">
         @if($c->author->profile->image)
             <img
-                src="{{asset('public/images/profiles/'.$c->author->profile->id."/".$c->author->profile->image)}}"
+                src="{{asset('public/images/profiles/'.$c->author->profile->user_id."/".$c->author->profile->image)}}"
                 class="rounded-circle" width="100%" style="max-width: 50px;">
         @endif
     </div>

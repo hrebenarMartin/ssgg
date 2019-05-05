@@ -15,6 +15,7 @@ return [
     'action_create_menu' => 'Vytvoriť menu záznam',
     'action_create_conference' => 'Vytvoriť konferenciu',
     'action_edit_conference' => 'Upraviť konferenciu',
+    'action_user_create' => 'Pridať užívateľa',
 
     'cms_pages_ssgg' => 'Stránky SSGG',
     'cms_pages_conference' => 'Stránky konferencie',
@@ -27,6 +28,7 @@ return [
     'cms_page_description' => 'Popis',
     'cms_page_add_form' => 'Vytváranie novej stránky',
     'cms_page_edit_form' => 'Editácia stránky',
+    'cms_page_module' => 'Modul',
     'cms_page_module_choose' => 'Zvoľte modul...',
     'cms_page_module_conference' => 'Konferencia',
 
@@ -150,10 +152,23 @@ return [
     'conference_extra_sk' => "Slovenská verzia",
     'conference_extra_en' => "Anglická verzia",
     'conference_status_change' => "Zmeniť stav",
+    'conference_participants_listing' => "Úšastníci a prihlášky",
 
     'files_add' => 'Pridať súbory',
     'files_upload' => 'Nahrať súbory',
     'files_upload_cancel' => 'Zrušiť nahrávanie',
 
+    'contribution_listing' => 'Zoznam príspevkov',
+    'contribution_reviewer' => 'Recenzent',
+
+    'user_listing' => "Zoznam používateľov",
+    'user_edit' => 'Upraviť užívateľa',
+
+    'review_edit' => "Upraviť recenziu",
+    'review_add' => "Pridať recenziu",
+
+    'application_user' => "Prihlášku podal",
+
+    'conference_participants_application' => "Prihláška na konferenciu",
 
 ];

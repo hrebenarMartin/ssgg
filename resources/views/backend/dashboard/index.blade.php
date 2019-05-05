@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="col-sm-12 mb-4 animated fadeIn" >
+    <div class="col-sm-12 mb-4 animated fadeIn">
         <div class="card-group">
             <div class="card col-lg-2 col-md-6 no-padding bg-flat-color-1">
                 <div class="card-body">
@@ -153,7 +153,7 @@
                         <li class="list-group-item bg-primary">
                             <a href="{{ route('admin.conferences.conference_statistics', $conference->id) }}"
                                class="text-light">
-                                <i class="fa fa-info fa-fw"></i> {{__('stats.stats')}}
+                                <i class="fa fa-info fa-fw"></i> {{__('b_menu.conf_stats')}}
                             </a>
                         </li>
                     @endif

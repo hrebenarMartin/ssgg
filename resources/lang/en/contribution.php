@@ -16,6 +16,18 @@ return [
 
     'author' => 'Author',
     'review' => 'Review',
-    'myContribution' => "My contribution details"
+    'myContribution' => "My contribution details",
+
+    'detail_admin' => "Contribution detail(Admin)",
+
+    'reviewer_not_assigned' => "Reviewer hasn't been assigned yet",
+    'assign_now' => "Assing now",
+    'assign_reviewer' => "Assign reviewer",
+    'reviewer' => "Reviewer",
+    'review_invite' => "Send invitation",
+    'reviewer_no_response' => "Reviewer hasn't yet react to invitation",
+    'reviewer_not_accepted' => "Reviewer has refused to review this contribution",
+
+    'deadline_passed' => "Deadline for contribution has passed",
 
 ];

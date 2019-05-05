@@ -55,9 +55,9 @@
                             </div>
                             <div class="col col-md-3">
                                 <select class="form-control" id="menu_module" name="menu_module" required>
-                                    <option value="" disabled selected>Choose module...</option>
+                                    <option value="" disabled selected>{{ __('form.cms_page_module_choose') }}</option>
                                     <option value="1" @if(old('page_module') == 1) selected @endif >SSGG</option>
-                                    @if(isset($conference_id))<option value="2" @if(old('page_module') == 2) selected @endif >Conference</option>@endif
+                                    @if(isset($conference_id))<option value="2" @if(old('page_module') == 2) selected @endif >{{__('b_menu.conference')}}</option>@endif
                                 </select>
                             </div>
                         </div>

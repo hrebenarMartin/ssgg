@@ -11,7 +11,7 @@
                 <div class="p-1">
                     <div class="dropdown">
                         <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
-                                class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                                class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                             <label for="fill_until" class="col-form-label">{{__('form.review_form_fill_until')}}</label>
                         </div>
                         <div class="col-sm-4">
-                            <input name="fill_until" type="date" id="fill_until" class="form-control" value="" required>
+                            <input name="fill_until" type="date" id="fill_until" class="form-control" value="{{\Carbon\Carbon::createFromFormat("Y-m-d H:i:s", $data->fill_until)->format("Y-m-d")}}" required>
                         </div>
                     </div>
 
@@ -59,7 +59,7 @@
                                 <input name="q_{{$i}}_sk" id="q_{{$i}}_sk" class="form-control" value="{{$data["question_".$i."_sk"]}}" @if($i==1) required @endif>
                             </div>
                            {{-- <div class="col-sm-1">
-                                <button class="btn btn-primary"><i class="fa fa-copy"></i> > EN</button>
+                                <button class="btn btn-primary"><i class="fa fa-fw fa-copy"></i> > EN</button>
                             </div>--}}
                             <div class="col-sm-4">
                                 <label for="q_{{$i}}_en" class="col-form-label">{{__('form.review_form_question_en')}}</label>
@@ -68,7 +68,7 @@
                                 <input name="q_{{$i}}_en" id="q_{{$i}}_en" class="form-control" value="{{$data["question_".$i."_en"]}}" @if($i==1) required @endif>
                             </div>
                             {{--<div class="col-sm-1">
-                                <button class="btn btn-primary"><i class="fa fa-copy"></i> > SK</button>
+                                <button class="btn btn-primary"><i class="fa fa-fw fa-copy"></i> > SK</button>
                             </div>--}}
                             <div class="col-sm-4">
                                 <label for="q_{{$i}}_t" class="col-form-label">{{__('form.review_form_question_type')}}</label>
@@ -78,7 +78,9 @@
                                     <option value="" selected disabled>...</option>
                                     <option value="1" @if($data["question_".$i."_type"] == 1) selected @endif>{{ __('form.review_form_input_type_1') }}</option>
                                     <option value="2" @if($data["question_".$i."_type"] == 2) selected @endif>{{ __('form.review_form_input_type_2') }}</option>
+{{--
                                     <option value="3" @if($data["question_".$i."_type"] == 3) selected @endif>{{ __('form.review_form_input_type_3') }}</option>
+--}}
                                 </select>
                             </div>
                         </div>

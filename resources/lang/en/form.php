@@ -15,6 +15,7 @@ return [
     'action_create_menu' => 'Create menu option',
     'action_create_conference' => 'Create conference',
     'action_edit_conference' => 'Edit conference',
+    'action_user_create' => 'Add user',
 
     'cms_pages_ssgg' => 'SSGG Pages',
     'cms_pages_conference' => 'Conference Pages',
@@ -151,6 +152,7 @@ return [
     'conference_extra_sk' => "Slovak version",
     'conference_extra_en' => "English version",
     'conference_status_change' => "Status change",
+    'conference_participants_listing' => "Conference participants and applications",
 
     'files_add' => 'Add files',
     'files_upload' => 'Upload files',
@@ -158,5 +160,27 @@ return [
 
     'contribution_listing' => 'Contributions list',
     'contribution_reviewer' => 'Reviewer',
+
+    'user_listing' => "User list",
+    'user_edit' => 'Edit user',
+
+    'review_edit' => "Edit review",
+    'review_add' => "Add review",
+
+    'application_user' => "Application user",
+
+    'review_form_opened' => "Reviews opened",
+    'review_form_fill_until' => "Review fill until date",
+    'review_form_question' => "Question",
+    'review_form_question_sk' => 'Question (Slovak)',
+    'review_form_question_en' => 'Question (English)',
+    'review_form_question_type' => "Field type",
+    'review_form_conclusion_sk' => "Conclusion question (Slovak)",
+    'review_form_conclusion_en' => "Conclusion question (English)",
+    'review_form_input_type_1' => "Text answer",
+    'review_form_input_type_2' => "Checkbox",
+    'review_form_input_type_3' => "",
+
+    'conference_participants_application' => "Conference application",
 
 ];

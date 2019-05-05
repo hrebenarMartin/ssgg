@@ -39,7 +39,7 @@
                                 <td>{{ $block->type }}</td>
                                 <td>{{ substr($block->content,0, 250) }}...</td>
                                 <td>
-                                    <a href="#!" data-item-id="{{ $block->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash-o"></i></a>
+                                    <a href="#!" data-item-id="{{ $block->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash"></i></a>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['admin.content.destroy', $block->id ],
                                         'id' => 'item-del-'. $block->id  ])
                                     }}

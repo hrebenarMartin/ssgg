@@ -9,6 +9,7 @@ return [
     'forgot_pass' => 'Zabudli ste heslo?',
     'create_account' => 'Vytvorte si účet',
     'remember_me' => 'Zapamätať si prihlásenie',
+    'Logout' => "Odhlásiť sa",
     'logout' => "Odhlásiť sa",
     'language_change' => 'Zmena jazyka',
     'when' => 'Kedy',
@@ -31,5 +32,12 @@ return [
     'comments' => 'Komentáre',
     'review_zone' => 'Review Zóna',
     'delete' => "Zmazať",
+    'password' => "Heslo",
+    'password_check' => "Heslo znovu",
+    'close' => "Zatvoriť",
+    'yes' => "Áno",
+    'no' => "Nie",
 
+    'comment' => "Komentáre",
+    'comment_submit' => "Odoslať komentár",
 ];

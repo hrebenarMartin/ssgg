@@ -37,7 +37,7 @@ class Conference extends Model
     //----------------------------------------------------\\
 
     public function contributions(){
-        return $this->hasMany('App\Models\Contributions');
+        return $this->hasMany('App\Models\Contribution');
     }
 
     public function config(){

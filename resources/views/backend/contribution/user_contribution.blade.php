@@ -9,7 +9,7 @@
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
                     <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i
-                            class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
+                                class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
                 </div>
             </div>
         </div>
@@ -23,8 +23,23 @@
             @if(isset($no_conference))
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 text-center">
                             <h2>{{ __('messages.no_conference_in_progress') }}</h2>
+                        </div>
+                    </div>
+                </div>
+            @elseif(isset($no_application))
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <h2>{{ __('messages.no_application_for_conference') }}</h2>
+                        </div>
+                        <div class="col-sm-12">
+                            <hr>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <a href="{{ route('user.application.index') }}"
+                               class="btn btn-primary btn-lg">{{__('application.apply_now')}}</a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +49,7 @@
                         <div class="col-12">
                             <h3>{{ __('contribution.contribution_requirements') }}</h3>
                             <div class="col-12 text-center text-danger" style="padding: 0.5em;">
-                                <u><h2>{{ __('contribution.contribution_deadline', ['date' => $deadline]) }}</h2></u>
+                                <u><h2>{{ __('contribution.contribution_deadline', ['date' => \Carbon\Carbon::createFromFormat("Y-m-d",$deadline)->format("d,M Y")]) }}</h2></u>
                             </div>
                             <div class="col-11 offset-1" style="padding-top: 1em">
                                 <ul>
@@ -79,10 +94,14 @@
 
                     @if(isset($no_contribution))
                         <div class="row">
-                            <div class="col-6 offset-3">
-                                <a href="{{ route('user.myContribution.create') }}"
-                                   class="btn btn-lg btn-block btn-success"
-                                   style="padding: 1em 0">{{ __('contribution.upload') }}</a>
+                            <div class="col-6 offset-3 text-center">
+                                @if(\Carbon\Carbon::createFromFormat("Y-m-d", $deadline) < \Carbon\Carbon::now())
+                                    <button type="button" class="disabled btn btn-danger btn-lg">{{__('contribution.deadline_passed')}}</button>
+                                @else
+                                    <a href="{{ route('user.myContribution.create') }}"
+                                       class="btn btn-lg btn-block btn-success"
+                                       style="padding: 1em 0">{{ __('contribution.upload') }}</a>
+                                @endif
                             </div>
                         </div>
                     @else
@@ -90,22 +109,25 @@
                             <div class="col-6">
                                 <h2>{{ __('contribution.myContribution') }}</h2>
                             </div>
-                            <div class="col-6 text-right">
-                                <a href="{{ route('user.myContribution.edit', $contribution->id) }}"
-                                   class="btn btn-success"><i
-                                        class="far fa-edit"></i> {{ __('titles.edit_contribution') }}</a>
+                            @if(\Carbon\Carbon::createFromFormat("Y-m-d", $deadline) >= \Carbon\Carbon::now())
 
-                               {{--<a href="#!" data-item-id="{{ $contribution->id }}"
-                                   class="btn btn-danger delete-alert"><i
-                                        class="far fa-trash-alt"></i> {{ __('titles.delete_contribution') }}</a>
+                                <div class="col-6 text-right">
+                                    <a href="{{ route('user.myContribution.edit', $contribution->id) }}"
+                                       class="btn btn-success"><i
+                                                class="far fa-edit"></i> {{ __('titles.edit_contribution') }}</a>
 
-                                {{ Form::open(['method' => 'DELETE', 'route' => ['user.myContribution.destroy',$contribution->id ],
-                                    'class' => 'class="btn btn-danger delete-alert hide',
-                                    'id' => 'item-del-'. $contribution->id  ])
-                                }}
-                                {{ Form::hidden('contribution_id', $contribution->id) }}
-                                {{ Form::close() }}--}}
-                            </div>
+                                    {{--<a href="#!" data-item-id="{{ $contribution->id }}"
+                                        class="btn btn-danger delete-alert"><i
+                                             class="far fa-trash-alt"></i> {{ __('titles.delete_contribution') }}</a>
+
+                                     {{ Form::open(['method' => 'DELETE', 'route' => ['user.myContribution.destroy',$contribution->id ],
+                                         'class' => 'class="btn btn-danger delete-alert hide',
+                                         'id' => 'item-del-'. $contribution->id  ])
+                                     }}
+                                     {{ Form::hidden('contribution_id', $contribution->id) }}
+                                     {{ Form::close() }}--}}
+                                </div>
+                            @endif
                         </div>
 
                         <br>

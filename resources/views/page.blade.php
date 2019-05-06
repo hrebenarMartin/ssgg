@@ -7,13 +7,7 @@
     @section('title', "SSGG | ".$page->title)
 @endif
 
-@section('page_css')
-
-@endsection
-
-
 @section('content')
-
     @foreach($data as $block)
         @if($block->type == 4)
             @if($block->fixed_id == 99)
@@ -28,6 +22,8 @@
                 @include('components.fixed_95_conference_special_events')
             @elseif($block->fixed_id == 94)
                 @include('components.fixed_94_conference_participants_and_contributions')
+            @elseif($block->fixed_id == 93)
+                @include('components.fixed_93_conference_gallery')
             @elseif($block->fixed_id == 59)
                 @include('components.fixed_59_scg_archive_list')
             @endif
@@ -53,14 +49,35 @@
         @endif
     @endforeach
 
-
 @endsection
+
+@section('page_css')
+    @if(isset($dynamic_data) and isset($dynamic_data->conference))
+        <!-- blueimp Gallery styles -->
+        <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+        <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+        <link rel="stylesheet" href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload.css') !!}">
+        <link rel="stylesheet" href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload-ui.css') !!}">
+
+        <!-- CSS adjustments for browsers with JavaScript disabled -->
+        <noscript>
+            <link rel="stylesheet" href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload-noscript.css') !!}">
+        </noscript>
+        <noscript>
+            <link rel="stylesheet" href="{!! asset('js/jQuery-File-Upload/css/jquery.fileupload-ui-noscript.css') !!}">
+        </noscript>
+    @endif
+@stop
 
 
 @section('page_scripts')
+
     @if(isset($dynamic_data) and isset($dynamic_data->conference))
         <script src="https://maps.googleapis.com/maps/api/js?key={{env('GMAPS_API')}}&callback=initMap"
                 async defer></script>
+
+        <!-- blueimp Gallery script -->
+        <script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 
         <script>
             var map;

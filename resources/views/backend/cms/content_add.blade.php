@@ -104,6 +104,7 @@
                             <option value="96">Možnosti ubytovania a stravy (#96)</option>
                             <option value="95">Špeciálne udalosti konferencie (#95)</option>
                             <option value="94">Zoznam účastníkov a príspevky (#94)</option>
+                            <option value="93">Galéria (#93)</option>
                             <option value="59">Archív SCG - Zoznam (#59)</option>
                         </select>
                     </div>

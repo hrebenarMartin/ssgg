@@ -1,6 +1,6 @@
 <section class="section section-lg section-hero section-shaped pb-200">
     <!-- Background circles -->
-    <div class="shape shape-style-1 shape-dark">
+    <div class="shape shape-style-1 shape-primary">
         <span class="span-150 animated pulse infinite delay-1s slow"></span>
         <span class="span-50 animated pulse infinite delay-2s slower"></span>
         <span class="span-50 animated pulse infinite delay-4s slow"></span>

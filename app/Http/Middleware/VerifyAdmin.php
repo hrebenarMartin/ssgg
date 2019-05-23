@@ -16,7 +16,7 @@ class VerifyAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->access_level >= 3){
+        if(Auth::user()->roles()->where('role_id', 1)->first()){
             return $next($request);
         }
 

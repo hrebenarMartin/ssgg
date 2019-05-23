@@ -8,7 +8,6 @@ use App\Models\ReviewFormFill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class UserReviewController extends Controller
 {
@@ -29,27 +28,6 @@ class UserReviewController extends Controller
             ->with('accepted', $accepted)
             ->with('rejected', $rejected)
             ->with('new', $new);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -108,8 +86,6 @@ class UserReviewController extends Controller
         $review = Review::find($id);
         $fill = $review->form_fill;
 
-        //dd($fill);
-
         for ($i = 1; $i <= 10; $i++) {
             $fill["answer_" . $i] = $request['question_' . $i . '_a'];
         }
@@ -137,17 +113,6 @@ class UserReviewController extends Controller
         return redirect()->route('review.myReview.show', $id)
             ->with('message', 'Review successfully updated')
             ->with('message_type', 'success');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function acceptReview($id)

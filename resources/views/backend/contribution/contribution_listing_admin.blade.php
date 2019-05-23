@@ -67,8 +67,8 @@
                                 {{ Form::hidden('contribution_id', $c->id) }}
                                 {{ Form::close() }}
 
-                                <a href="{{ route('admin.contributions.edit', $c->id) }}"
-                                   class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
+                               {{-- <a href="{{ route('admin.contributions.edit', $c->id) }}"
+                                   class="btn btn-success btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>--}}
                                 <a href="{{ route('admin.contributions.show', $c->id) }}"
                                    class="btn btn-primary btn-sm listing_controls pull-right"><i
                                         class="fa fa-search"></i></a>

@@ -122,7 +122,7 @@
                 </div>
 
                 <ul class="list-group list-group-flush">
-                    @if(Auth::user()->roles()->where('role_id', 3)->first() and $conference)
+                    @if(Auth::user()->roles()->whereIn('role_id', [3,1])->first()  and $conference)
                         <li class="list-group-item text-center bg-primary" style="margin:0; padding: 0;">
                             <a href="{{route('admin.conferences.show', $conference->id)}}" class="btn btn-primary"
                                style="padding: 1em 0; width: 100%">

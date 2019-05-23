@@ -104,7 +104,6 @@
             $().ready(function () {
                 $('.contribution_modal_open').click(function () {
                     var contr_id = $(this).data('contribution-id');
-                    //console.log(contr_id);
                     $.ajax({
                         type: 'POST',
                         url: '/ajax-ext',
@@ -116,22 +115,18 @@
                         dataType: 'json',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function (data) {
-                            //console.log(data);
                             if (data.status == 'OK') {
                                 $('#contribution_id').val(contr_id);
                                 $('#contribution_title').html(data.contribution["title"]);
                                 $('#contribution_abstract').html(data.contribution["abstract"]);
                                 $('#co_authors').html(data.contribution["co_authors"]);
                                 data.comments.forEach(function (e) {
-                                    //console.log(e);
                                     let comm = $("#comment_wrap_template").clone();
 
                                     comm.attr('id', "");
                                     if (e.prof_img != "") {
-                                        //comm.find('#author_picture').attr('src', "/public/images/profiles/" + e.user_id + "/" + e.prof_img)
                                         comm.find('#author_picture').attr('src', "{{asset("public/images/profiles/")}}/" + e.user_id + "/" + e.prof_img)
                                     } else {
-                                        //comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
                                         comm.find('#author_picture').attr('src', "{{asset("public/images/placeholders/user_o.png")}}");
                                     }
                                     comm.find(".author_name").text(e.first_name + " " + e.last_name);
@@ -169,16 +164,13 @@
                         dataType: 'json',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function (data) {
-                            //console.log(data);
                             if (data.status == 'OK') {
                                 let comm = $("#comment_wrap_template").clone();
 
                                 comm.attr('id', "");
                                 if (data.author.image != "") {
-                                    //comm.find('#author_picture').attr('src', "/public/images/profiles/" + data.author.user_id + "/" + data.author.image)
                                     comm.find('#author_picture').attr('src', "{{asset("public/images/profiles/")}}/" + data.author.user_id + "/" + data.author.image)
                                 } else {
-                                    //comm.find('#author_picture').attr('src', "/public/images/placeholders/user_o.png");
                                     comm.find('#author_picture').attr('src', "{{asset("public/images/placeholders/user_o.png")}}");
                                 }
                                 comm.find(".author_name").text(data.author.first_name + " " + data.author.last_name);

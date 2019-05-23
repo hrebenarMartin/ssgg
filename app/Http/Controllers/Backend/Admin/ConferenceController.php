@@ -329,7 +329,7 @@ class ConferenceController extends Controller
                     <p>Vás srdečne pozývajú na už [[poradie]] ročník súbežne organizovaných konferencií v Českej a Slovenskej republike: </p>
                 </div>
                 <div class="col-lg-10 text-center pt-3">
-                    <h2 class="display-3">39. konferencia o geometrii a grafike<br>'.$conf->volume.' Sympózium o počítačovej geometrii SCG´'.$conf->year.'</h2>
+                    <h2 class="display-3">39. konferencia o geometrii a grafike<br>' . $conf->volume . ' Sympózium o počítačovej geometrii SCG´' . $conf->year . '</h2>
                 </div>
                 <div class="col-lg-10 text-center pt-3">
                     <a href="#dalej"><h2 class="display-3 animated infinite heartBeat"><i class="fa fa-fw fa-chevron-down"></i></h2></a>
@@ -348,7 +348,7 @@ class ConferenceController extends Controller
                     <p>Vás srdečne pozývajú na už [[poradie]] ročník súbežne organizovaných konferencií v Českej a Slovenskej republike: </p>
                 </div>
                 <div class="col-lg-10 text-center pt-3">
-                    <h2 class="display-3">[[poradie]] konferencia o geometrii a grafike<br>'.$conf->volume.' Sympózium o počítačovej geometrii SCG´'.$conf->year.'</h2>
+                    <h2 class="display-3">[[poradie]] konferencia o geometrii a grafike<br>' . $conf->volume . ' Sympózium o počítačovej geometrii SCG´' . $conf->year . '</h2>
                 </div>
                 <div class="col-lg-10 text-center pt-3">
                     <a href="#dalej"><h2 class="display-3 animated infinite heartBeat"><i class="fa fa-fw fa-chevron-down"></i></h2></a>
@@ -449,9 +449,9 @@ class ConferenceController extends Controller
                 <div class="col-sm-10">
                     <h3 class="py-2">Termín a miesto konania</h3>
                     <ul>
-                        <li>'.Carbon::createFromFormat("Y-m-d", $conf->conference_start)->format("d,M Y").'</li>
-                        <li>'.$conf->address_place.'</li>
-                        <li>'.$conf->address_city.'</li>
+                        <li>' . Carbon::createFromFormat("Y-m-d", $conf->conference_start)->format("d,M Y") . '</li>
+                        <li>' . $conf->address_place . '</li>
+                        <li>' . $conf->address_city . '</li>
                         <li><a href="/konferencia/miesto-konania">Klikni pre viac informácií</a></li>
                     </ul>
                     <br>
@@ -473,9 +473,9 @@ class ConferenceController extends Controller
                 <div class="col-sm-10">
                     <h3 class="py-2">Termín a miesto konania</h3>
                     <ul>
-                        <li>'.Carbon::createFromFormat("Y-m-d", $conf->conference_start)->format("d,M Y").'</li>
-                        <li>'.$conf->address_place.'</li>
-                        <li>'.$conf->address_city.'</li>
+                        <li>' . Carbon::createFromFormat("Y-m-d", $conf->conference_start)->format("d,M Y") . '</li>
+                        <li>' . $conf->address_place . '</li>
+                        <li>' . $conf->address_city . '</li>
                         <li><a href="/konferencia/miesto-konania">Klikni pre viac informácií</a></li>
                     </ul>
                     <br>
@@ -1140,7 +1140,6 @@ class ConferenceController extends Controller
         $image_class = new UploadImages();
 
         $files = Input::file('files');
-        $data = [];
 
         $conference_id = intval(Input::get('conference_id'));
 
@@ -1148,9 +1147,7 @@ class ConferenceController extends Controller
 
         $conference_file_name = 'Conference-' . $conference->year . '-';
 
-        $data['conference_id'] = $conference_id;
-
-        $res = $image_class->processImagesBlueImp($files, 'conference', $data['conference_id'], $conference_file_name, $data);
+        $res = $image_class->processImages($files, 'conference', $conference_id, $conference_file_name);
 
         Log::info('upload_blue_imp', ['object' => $res]);
 
@@ -1182,7 +1179,7 @@ class ConferenceController extends Controller
         $contributions = Contribution::getListDetail($conference->id);
 
         return view('backend.contribution.contribution_listing_admin')
-            ->with('contributions',$contributions);
+            ->with('contributions', $contributions);
     }
 
     public function conferenceStatistics($cid)

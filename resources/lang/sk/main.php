@@ -40,4 +40,11 @@ return [
 
     'comment' => "Komentáre",
     'comment_submit' => "Odoslať komentár",
+
+    'reset_pass_1' => "Resetujte si svoje heslo",
+    'reset_pass_help_1' => "Zadajte svoju emailovú adresu, bude vám na ňu zaslaný odkaz na resetovanie hesla.",
+    'reset_pass_2' => "Resetujte si svoje heslo",
+    'reset_pass_help_2' => "Zadajte svoju emailovú adresu a zvoľte si svoje nové heslo.",
+    'reset_pass_send_link' => "Odoslať odkaz",
+    'reset_password' => "Resetovať heslo",
 ];

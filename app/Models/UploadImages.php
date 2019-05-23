@@ -14,145 +14,17 @@ use Intervention\Image\Facades\Image;
 
 class UploadImages extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'path', 'ext', 'module'
     ];
 
-
-    public function procesImage($files, $module, $id, $name)
+    public function processImages($files, $module, $id, $name)
     {
-
-        $image_types = Config::get('image_type.' . $module);
-        // if not defined resolution take default
-        if (!$image_types) {
-            $image_types = Config::get('image_type.default');
-        }
-
-        $module = str_slug(trim($module));
-        $name = str_replace('_', '-', $name);
-        $name = str_slug(str_limit($name, 30, ''));
-
-
-        $filePath = public_path('/images/' . $module . '/' . $id);
-        if (File::isDirectory($filePath) or File::makeDirectory($filePath, 0777, true, true)) ;
-
-        foreach ($files as $file) {
-
-            if (!$file || !$file->isValid()) continue;
-
-            $fileName = $name . '-' . mt_rand();
-            $fileName = strtolower($fileName);
-            $fileExtension = '.' . strtolower($file->getClientOriginalExtension());
-
-            $fileToDb = $fileName . $fileExtension;
-
-            if ($image_types) {
-                foreach ($image_types as $key => $image_type) {
-
-                    //creat file system for images
-                    if (strlen($key) > 0) {
-                        if (File::isDirectory($filePath . '/' . $key) or File::makeDirectory($filePath . '/' . $key, 0777, true, true)) ;
-                    }
-
-                    //na pracu s obrazkom
-                    if (strcmp($image_type['greyscale'], 'yes')) {
-                        $img = Image::make($file);
-                    } else {
-                        $img = Image::make($file)->greyscale()->brightness($image_type['brightness']);
-                    }
-
-                    //ak je povoleny crop
-                    if (strcmp($image_type['crop'], 'no') == 0) {
-                        // prevent possible upsizing
-                        $img->resize($image_type['width'], $image_type['height'], function ($constraint) {
-                            $constraint->aspectRatio();
-                            $constraint->upsize();
-                        });
-                    } else {
-                        // add callback functionality to retain maximal original image size
-                        $img->fit($image_type['width'], $image_type['height'], function ($constraint) {
-                            $constraint->upsize();
-                        });
-                    }
-
-                    // save
-                    $img->save($filePath . '/' . $key . '/' . $fileName . $fileExtension);
-
-                }
-            }
-
-        }
-
-        $this->saveImageToDb($fileToDb, $module, $id);
-
-        return true;
-
-    }
-
-    public function saveImageToDb($file, $module, $id)
-    {
-
-        if (strcmp($module, 'user') == 0) {
-
-            $user = User::findOrFail($id);
-            $user->image = $file;
-            $user->save();
-
-        } elseif (strcmp($module, 'company') == 0) {
-
-            $company = Company::findOrFail($id);
-            $company->image = $file;
-            $company->save();
-
-        } elseif (strcmp($module, 'club') == 0) {
-
-            $club = Club::findOrFail($id);
-            $club->image = $file;
-            $club->save();
-
-        } elseif (strcmp($module, 'event') == 0) {
-
-            $event = Event::findOrFail($id);
-            $event->image = $file;
-            $event->save();
-
-        } elseif (strcmp($module, 'event-type') == 0) {
-
-            DB::table('event_types')->where('id', $id)->update(['image' => $file]);
-
-        } elseif (strcmp($module, 'event-type-text') == 0) {
-
-            DB::table('event_type_text')->where('id', $id)->update(['image' => $file]);
-
-        } elseif (strcmp($module, 'bug-report') == 0) {
-
-            DB::table('bug_reports')->where('id', $id)->update(['image' => $file]);
-        } elseif (strcmp($module, 'blog') == 0) {
-
-            DB::table('blog')->where('id', $id)->update(['image' => $file]);
-        }
-
-        return true;
-
-    }
-
-    public function processImagesBlueImp($files, $module, $id, $name, $data)
-    {
-        $image_types = Config::get('image_type.' . $module);
-        // if not defined resolution take default
-        if (!$image_types) {
-            $image_types = Config::get('image_type.default');
-        }
+        $image_types = Config::get('image_type.default');
 
         $module = str_slug(trim($module));
         $name = str_replace('_', '-', $name);
         $name = str_slug(str_limit($name, 60, ''));
-
 
         $filePath = public_path('/images/' . $module . '/' . $id);
         if (File::isDirectory($filePath) or File::makeDirectory($filePath, 0777, true, true)) ;
@@ -170,72 +42,55 @@ class UploadImages extends Model
             if ($image_types) {
                 foreach ($image_types as $key => $image_type) {
 
-                    //creat file system for images
                     if (strlen($key) > 0) {
-                        if (File::isDirectory($filePath . '/' . $key) or File::makeDirectory($filePath . '/' . $key, 0777, true, true)) ;
+                        if (File::isDirectory($filePath . '/' . $key) or
+                            File::makeDirectory($filePath . '/' . $key, 0777, true, true)) ;
                     }
 
-                    //na pracu s obrazkom
                     if (strcmp($image_type['greyscale'], 'yes')) {
                         $img = Image::make($file);
                     } else {
                         $img = Image::make($file)->greyscale()->brightness($image_type['brightness']);
                     }
 
-                    //ak je povoleny crop
                     if (strcmp($image_type['crop'], 'no') == 0) {
-                        // prevent possible upsizing
                         $img->resize($image_type['width'], $image_type['height'], function ($constraint) {
                             $constraint->aspectRatio();
                             $constraint->upsize();
                         });
                     } else {
-                        // add callback functionality to retain maximal original image size
                         $img->fit($image_type['width'], $image_type['height'], function ($constraint) {
                             $constraint->upsize();
                         });
                     }
 
-                    // save
-                    $img->save($filePath . '/' . $key . '/' . $fileName . $fileExtension);
+                    $img->save($filePath . '/' . $key . '/' . $fileToDb);
                 }
             }
 
-
-            //id	event_id	image	ext	created_at	alt_name
-
-            $data_db['image'] = $fileName . $fileExtension;
+            $data_db['image'] = $fileToDb;
             $data_db['item_id'] = $id;
             $data_db['mime'] = $file->getMimeType();
             $data_db['ext'] = $fileExtension;
             $data_db['alt_name'] = "";
             $data_db['created_at'] = Carbon::now();
 
-            if (strcmp($module, 'conference') == 0) {
-                DB::table('conference_images')->insert($data_db);
-            }
+            DB::table('conference_images')->insert($data_db);
 
             $json[] = array(
-                'name' => $fileName . $fileExtension,
+                'name' => $fileToDb,
                 'size' => $file->getSize(),
                 'type' => $file->getMimeType(),
                 'url' => asset('/images') . '/' . $module . '/' . $id . '/' . $fileToDb,
-                'thumbnailUrl' => asset('/images') . '/' . $module . '/' . $id . '/sq/' . $fileName . $fileExtension,
-                //'deleteType' => 'DELETE',
-                //'deleteUrl' => self::$route.'/deleteFile/'.$filename,
+                'thumbnailUrl' => asset('/images') . '/' . $module . '/' . $id . '/sq/' . $fileToDb,
             );
-
         }
 
-        //$this->saveImageToDb($fileToDb, $module, $id);
-
         return $json;
-
     }
 
     public function deleteImage($module, $id, $id_module = null)
     {
-
         if (strcmp($module, 'user') == 0) {
 
             $user = User::findOrFail($id);
@@ -250,24 +105,16 @@ class UploadImages extends Model
         }
 
         if ($file) {
-
             $path_module = public_path('/images/' . $module . '/' . $id);
 
             File::delete($path_module . '/' . $file);
 
             if (File::isDirectory($path_module)) {
-                //ak existuju podadresare
                 foreach (File::directories($path_module) as $dir) {
                     File::delete($dir . '/' . $file);
                 }
             }
-
             return $path_module . $file;
-
         }
-
-
     }
-
-
 }

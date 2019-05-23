@@ -34,14 +34,14 @@
                 </div>
                 <div class="row form-group">
                     <div class="col-4 text-right">
-                        <label for="access" class="col-form-label">{{__('form.access_level')}}:</label>
+                        <label for="access" class="col-form-label">{{__('form.roles')}}:</label>
                     </div>
                     <div class="col-3">
-                        <select id="access" class="form-control" name="access">
-                            <option value="1" @if($user->access_level == 1) selected @endif>{{__('main.reguser')}}</option>
-                            <option value="2" @if($user->access_level == 2) selected @endif>{{__('main.reviewer')}}</option>
-                            <option value="3" @if($user->access_level == 3) selected @endif>{{__('main.admin')}}</option>
-                            <option value="4" @if($user->access_level == 4) selected @endif>{{__('main.superadmin')}}</option>
+                        <select id="roles" class="form-control chosen-select" name="roles[]" multiple>
+{{--                            <option value="2" @if(isset($roles[2])) selected @endif>{{__('main.reguser')}}</option>--}}
+                            <option value="4" @if(isset($roles[4])) selected @endif>{{__('main.reviewer')}}</option>
+                            <option value="3" @if(isset($roles[3])) selected @endif>{{__('main.admin')}}</option>
+                            <option value="1" @if(isset($roles[1])) selected @endif>{{__('main.superadmin')}}</option>
                         </select>
                     </div>
                 </div>
@@ -72,11 +72,17 @@
 
 @endsection
 
+@section('page_css')
+    <link href="{{asset('backend/css/chosen.min.css')}}" rel="stylesheet">
+@stop
+
 @section('scripts')
+    <script src="{{asset('backend/js/chosen.jquery.min.js')}}"></script>
+
     <script>
 
         $().ready(function () {
-
+            $(".chosen-select").chosen();
             $('#pass_1').keyup(function () {
                if($(this).val().length === 0){
                    $(this).prop('required', false);

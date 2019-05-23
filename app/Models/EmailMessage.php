@@ -34,15 +34,11 @@ class EmailMessage extends Model
         try {
             $emails = $this->getUnsetMails();
 
-            //dd($emails);
-
             foreach ($emails as $mail) {
                 if (strcmp($mail->module, "Test") == 0) {
-                    //$this->sendTestMail($mail);
                     $this->sendMail($mail, 'test');
                 }
                 else if(strcmp($mail->module, "Review-assign") == 0){
-                    //$this->sendReviewAssignMail($mail);
                     $this->sendMail($mail, 'review-assign');
                 }
                 else if(strcmp($mail->module, "Review-accepted") == 0){
@@ -76,7 +72,6 @@ class EmailMessage extends Model
         $data_raw = json_decode($em->data);
 
         $this->content = null;
-
         if(array_key_exists('Data', $data_raw)){
             $this->content['testData'] = $data_raw->Data;
         }
@@ -90,11 +85,8 @@ class EmailMessage extends Model
             $this->content['review_assigned_by'] = User::find($data_raw->review_assigned_by)->profile;
         }
 
-        //dd($this);
-
         $this->send_to = array_unique($emails);
         $this->subject = $em->subject;
-
         try {
             Mail::send(["html" => "email.html." . $template, "text" => "email.text." . $template], ["content" => $this->content],
                 function (Message $message) {
@@ -104,13 +96,11 @@ class EmailMessage extends Model
                         ->subject($this->subject);
 
                 });
-
-            //$em->status = self::EMAIL_SENT;
+            $em->status = self::EMAIL_SENT;
             $em->updated_at = Carbon::now();
-
             $em->save();
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            Log::critical($e->getMessage());
         }
     }
 

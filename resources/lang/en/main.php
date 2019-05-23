@@ -40,4 +40,11 @@ return [
 
     'comment' => "Comments",
     'comment_submit' => "Send comment",
+
+    'reset_pass_1' => "Reset your password",
+    'reset_pass_help_1' => "Enter your email address, you will receive password reset link.",
+    'reset_pass_2' => "Reset your password",
+    'reset_pass_help_2' => "Enter your email and create new password",
+    'reset_pass_send_link' => "Send password reset link",
+    'reset_password' => "Reset password",
 ];

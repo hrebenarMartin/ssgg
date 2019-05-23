@@ -38,7 +38,7 @@
                             @if(!$contribution->review)
                                 <div class="col-12">
                                     {{ __('contribution.reviewer_not_assigned') }}
-                                    @if(Auth::user()->roles()->where('role_id', 3)->first()) –––
+                                    @if(Auth::user()->roles()->where('role_id', 3)->first() and $contribution->conference->status != 3) –––
                                     <button type="button" class="btn btn-primary" data-toggle="modal"
                                             data-target="#assign_reviewer">{{ __('contribution.assign_now') }}</button>
                                     @endif
@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                    @if(!$contribution->review or $contribution->review->accepted == -1)
+                    @if((!$contribution->review or $contribution->review->accepted == -1) and $contribution->conference->status != 3)
                         @include('backend.contribution.components.reviewer_assign_modal')
                     @endif
 

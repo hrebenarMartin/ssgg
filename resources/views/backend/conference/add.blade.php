@@ -548,8 +548,6 @@
         if (datefield.type != "date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
             document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
             document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n')
-        }
-        if (datefield.type != "date"){ //if browser doesn't support input type="date", initialize date picker widget:
             $(document).ready(function() {
                 $('#reg_start').datepicker();
                 $('#conf_start').datepicker();
@@ -586,8 +584,6 @@
         }
 
         $().ready(function () {
-            //initMap();
-
             adjustDates();
 
             $('#form_conference_add').validate({
@@ -620,13 +616,11 @@
                     },
                 },
                 highlight: function (element, errorClass, validClass) {
-                    // Only validation controls
                     if (!$(element).hasClass('novalidation')) {
                         $(element).closest('.form-control').removeClass('is-valid').addClass('is-invalid');
                     }
                 },
                 unhighlight: function (element, errorClass, validClass) {
-                    // Only validation controls
                     if (!$(element).hasClass('novalidation')) {
                         $(element).closest('.form-control').removeClass('is-invalid').addClass('is-valid');
                     }

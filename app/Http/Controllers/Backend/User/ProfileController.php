@@ -12,36 +12,6 @@ use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -56,7 +26,6 @@ class ProfileController extends Controller
         $profile->country = DB::table('countries')->where('id', $profile->address_country)->first();
         $profile->email = $user->email;
 
-        //dd($profile);
         return view('backend.profile.detail')
             ->with('user', $user)
             ->with('profile', $profile);
@@ -186,16 +155,5 @@ class ProfileController extends Controller
 
         return redirect()->route('user.profile.show', $profile->user_id);
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

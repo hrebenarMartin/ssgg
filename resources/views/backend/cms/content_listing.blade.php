@@ -8,8 +8,10 @@
         <div class="container">
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
-                    <a href="{{ route('admin.content.createForPage', $page_id) }}" class="btn btn-success">{{ __('form.action_create_content') }}</a>
-                    <a href="{{ route('admin.cms.index') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                    <a href="{{ route('admin.content.createForPage', $page_id) }}"
+                       class="btn btn-success">{{ __('form.action_create_content') }}</a>
+                    <a href="{{ route('admin.cms.index') }}" class="btn btn-primary"><i
+                                class="fa fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                 </div>
             </div>
         </div>
@@ -39,14 +41,18 @@
                                 <td>{{ $block->type }}</td>
                                 <td>{{ substr($block->content,0, 250) }}...</td>
                                 <td>
-                                    <a href="#!" data-item-id="{{ $block->id }}" class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i class="fa fa-trash"></i></a>
+                                    <a href="#!" data-item-id="{{ $block->id }}"
+                                       class="btn btn-danger btn-sm listing_controls pull-right delete-alert"><i
+                                                class="fa fa-trash"></i></a>
                                     {{ Form::open(['method' => 'DELETE', 'route' => ['admin.content.destroy', $block->id ],
                                         'id' => 'item-del-'. $block->id  ])
                                     }}
                                     {{ Form::hidden('page_id', $block->id) }}
                                     {{ Form::close() }}
 
-                                    <a href="{{ route('admin.content.edit', $block->id) }}" class="btn btn-primary btn-sm listing_controls pull-right"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('admin.content.edit', $block->id) }}"
+                                       class="btn btn-primary btn-sm listing_controls pull-right"><i
+                                                class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -74,8 +80,8 @@
                     dangerMode: true,
                 })
                     .then((willDelete) => {
-                        if(willDelete){
-                            document.getElementById('item-del-'+id).submit();
+                        if (willDelete) {
+                            document.getElementById('item-del-' + id).submit();
                         }
                     });
             });

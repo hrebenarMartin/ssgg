@@ -105,5 +105,6 @@
     <orderEntry type="library" name="canvas-to-blob" level="application" />
     <orderEntry type="library" name="load-image.all" level="application" />
     <orderEntry type="library" name="tmpl" level="application" />
+    <orderEntry type="module" module-name="Me" />
   </component>
 </module>

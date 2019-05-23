@@ -33,4 +33,6 @@ return [
 
     'conference_review_form_edit' => "Review form edit",
     'conference_review_form_add' => "Review form create",
+
+    'my_application_create' => "Fill the application form",
 ];

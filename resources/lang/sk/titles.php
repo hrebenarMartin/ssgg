@@ -33,4 +33,6 @@ return [
 
     'conference_review_form_edit' => "Upraviť nastanevia recenzií",
     'conference_review_form_add' => "Nastaviť recenzie pre konferenciu",
+
+    'my_application_create' => "Vyplniť prihlášku na konferenciu",
 ];

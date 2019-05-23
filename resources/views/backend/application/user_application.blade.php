@@ -259,7 +259,7 @@
                             </div>
                         @else
                             <div class="col-12">
-                                <h2 class="text-danger text-center">{{__('application.no_application')}}</h2>
+                                <h2 class="text-danger text-center">{{__('messages.no_application_for_conference')}}</h2>
                             </div>
                             <div class="col-12 text-center p-5">
                                 <a href="{{route('user.application.create')}}"

@@ -19,4 +19,7 @@ return [
     'status' => "Status",
     'confirmed_status' => "Confirmed",
 
+    'apply_now' => "Apply now",
+    'creating_application' => "Application",
+
 ];

@@ -19,4 +19,6 @@ return [
     'status' => "Status",
     'confirmed_status' => "Potvrdená",
 
+    'apply_now' => "Vyplniť prihlášku",
+    'creating_application' => "Prihláška",
 ];

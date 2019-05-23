@@ -21,11 +21,12 @@
                 <li class="active">
                     <a href="{{ route('index') }}"> <i class="menu-icon fa fa-cube"></i>SSGG</a>
                 </li>
-                <li class="active">
-                    <a href="{{ route('index') }}"> <i
-                                class="menu-icon fa fa-microphone"></i>{{ __('b_menu.conference') }}</a>
-                </li>
-
+                @if(isset($is_conference))
+                    <li class="active">
+                        <a href="{{ route('conference.index') }}"> <i
+                                    class="menu-icon fa fa-microphone"></i>{{ __('b_menu.conference') }}</a>
+                    </li>
+                @endif
                 @if(Auth::user()->roles()->where('role_id', 1)->first())
                     <h3 class="menu-title">Admin</h3>
                     <li>

@@ -859,7 +859,7 @@ class ConferenceController extends Controller
      */
     public function show($id)
     {
-        $conference = Conference::find($id);
+        $conference = Conference::findOrFail($id);
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
@@ -886,7 +886,7 @@ class ConferenceController extends Controller
      */
     public function edit($id)
     {
-        $conference = Conference::find($id);
+        $conference = Conference::findOrFail($id);
 
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
@@ -931,7 +931,7 @@ class ConferenceController extends Controller
 
         $this->validate($request, $rules);
 
-        $conf = Conference::find($id);
+        $conf = Conference::findOrFail($id);
 
         $conf->title_sk = $request->title_sk;
         $conf->title_en = $request->title_en;
@@ -1143,7 +1143,9 @@ class ConferenceController extends Controller
 
         $conference_id = intval(Input::get('conference_id'));
 
-        $conference = Conference::find($conference_id);
+        $conference = Conference::findOrFail($conference_id);
+
+        if(!$conference) abort(404);
 
         $conference_file_name = 'Conference-' . $conference->year . '-';
 
@@ -1157,10 +1159,12 @@ class ConferenceController extends Controller
 
     public function conferenceParticipants($cid)
     {
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
+        if(!$conference) abort(404);
+
         $not_confirmed = $conference->applications()->where('status', 1)->get();
         $confirmed = $conference->applications()->where('status', '>', 1)->get();
 
@@ -1171,10 +1175,12 @@ class ConferenceController extends Controller
 
     public function conferenceContributions($cid)
     {
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
+
+        if(!$conference) abort(404);
 
         $contributions = Contribution::getListDetail($conference->id);
 
@@ -1184,7 +1190,9 @@ class ConferenceController extends Controller
 
     public function conferenceStatistics($cid)
     {
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
+        if(!$conference) abort(404);
+
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }

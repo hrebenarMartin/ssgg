@@ -95,7 +95,7 @@ class PagesController extends Controller
      */
     public function edit($id)
     {
-        $page = Page::find($id);
+        $page = Page::findOrFail($id);
         return view("backend.cms.pages_edit")
             ->with('page',$page);
     }

@@ -27,6 +27,7 @@ class FrontMenuController extends Controller
     public function create()
     {
         $conference = Conference::where('status', '!=', 3)->first();
+
         if(!$conference){
             session(['message'=>__('messages.no_active_conference'), 'message_type' => 'warning']);
             return view("backend.cms.menu_add");
@@ -88,7 +89,7 @@ class FrontMenuController extends Controller
      */
     public function edit($id)
     {
-        $item = FrontMenu::find($id);
+        $item = FrontMenu::findOrFail($id);
 
         return view('backend.cms.menu_edit')
             ->with('data', $item);
@@ -114,7 +115,7 @@ class FrontMenuController extends Controller
 
         $this->validate($request, $rules);
 
-        $item = FrontMenu::find($id);
+        $item = FrontMenu::findOrFail($id);
 
         $item->name_sk = $request->menu_title_sk;
         $item->name_en = $request->menu_title_en;

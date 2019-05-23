@@ -58,7 +58,8 @@ class ContributionsController extends Controller
     public function show($id)
     {
 
-        $contribution = Contribution::find($id);
+        $contribution = Contribution::findOrFail($id);
+        if(!$contribution) abort(404);
 
 
         $contribution_author = $contribution->author->profile;
@@ -69,7 +70,7 @@ class ContributionsController extends Controller
         })->get();
 
         foreach ($reviewers as $r) {
-            $r->profile = User::find($r->id)->profile;
+            $r->profile = User::findOrFail($r->id)->profile;
         }
 
         return view('backend.contribution.contribution_detail_admin')
@@ -117,7 +118,9 @@ class ContributionsController extends Controller
     public function assignReviewer(Request $request, $contribution_id)
     {
 
-        $contribution = Contribution::find($contribution_id);
+        $contribution = Contribution::findOrFail($contribution_id);
+        if(!$contribution) abort(404);
+
         $old_review = $contribution->review;
 
         if ($old_review) {

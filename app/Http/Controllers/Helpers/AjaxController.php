@@ -28,7 +28,7 @@ class AjaxController extends Controller
         if(isset($request->action) && strcmp($request->action, "delete_proceedings_file") == 0 ){
             Log::info("Ajax call - delete proceedings file");
 
-            $conference = Conference::find($request->conf_id);
+            $conference = Conference::findOrFail($request->conf_id);
 
             $file_path = public_path('/files/conference_proceedings/');
 
@@ -54,7 +54,7 @@ class AjaxController extends Controller
 
             if($cstat == 1 and $conference) return response()->json(['status'=>'NOK', 'msg'=>'Only one conference can be opened at once.']);
 
-            $conference = Conference::find($cid);
+            $conference = Conference::findOrFail($cid);
 
             if($cstat == 3){
                 FrontMenu::disableMenuOfConference($cid);

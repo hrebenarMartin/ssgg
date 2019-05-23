@@ -115,7 +115,9 @@ class ContentController extends Controller
      */
     public function edit($id)
     {
-        $block = Block::find($id);
+        $block = Block::findOrFail($id);
+        if(!$block) abort(404);
+
         $pages = Page::all();
 
         return view('backend.cms.content_edit')
@@ -184,6 +186,8 @@ class ContentController extends Controller
      */
     public function destroy($id)
     {
-        dd("NYI");
+        Block::destroy($id);
+
+        return redirect()->back();
     }
 }

@@ -93,7 +93,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $u_roles = $user->roles;
         $user_roles = array();
 
@@ -115,7 +115,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if (!$user) {
             return redirect()->back()->with('message', "Wrong user ID")->with('message_type', "danger");
@@ -159,7 +159,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         $user_contributions = $user->contributions;
 

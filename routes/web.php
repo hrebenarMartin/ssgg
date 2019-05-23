@@ -40,6 +40,7 @@ Route::get('/archiv/{rocnik}', 'Frontend\PagesController@archiveEntry')->name('a
 Route::get('/', 'Frontend\PagesController@index')->name("index");
 Route::get('/{page}', 'Frontend\PagesController@show')->name('show');
 
+Route::get('/404', 'ErrorHandlerController@e_404')->name("e404");
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
 

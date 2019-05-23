@@ -17,7 +17,9 @@ class ConferenceReviewFormController extends Controller
      */
     public function index($cid)
     {
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
+        if(!$conference) abort(404);
+
         $form = null;
         if ($conference->review_form) {
             $form = $conference->review_form;
@@ -110,7 +112,9 @@ class ConferenceReviewFormController extends Controller
     {
         //dd($request);
 
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
+        if(!$conference) abort(404);
+
         $form = $conference->review_form;
 
         for ($i = 1; $i <= 10; $i++){

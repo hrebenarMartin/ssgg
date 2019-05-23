@@ -21,7 +21,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $profile = Profile::where('user_id', $id)->first();
         $profile->country = DB::table('countries')->where('id', $profile->address_country)->first();
         $profile->email = $user->email;
@@ -40,7 +40,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $data = Profile::where('user_id', $id)->first();
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $data->email = $user->email;
         $countries = DB::table('countries')->get();
         return view('backend.profile.edit')

@@ -11,12 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class ApplicationsController extends Controller
 {
     public function confirmApplication($cid, $aid){
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
 
-        $application = Application::find($aid);
+        $application = Application::findOrFail($aid);
 
         $application->status = 2;
         $application->save();
@@ -25,12 +25,12 @@ class ApplicationsController extends Controller
     }
 
     public function confirmApplicationPayment($cid, $aid){
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
         if (!Auth::user()->roles()->where('role_id', 1)->first() and $conference->status == 3) {
             return redirect()->back()->with('message', "Access denied")->with('message_type', "danger");
         }
 
-        $application = Application::find($aid);
+        $application = Application::findOrFail($aid);
 
         $application->status = 3;
         $application->save();
@@ -39,14 +39,13 @@ class ApplicationsController extends Controller
     }
 
     public function show($cid, $aid){
-        $appl = Application::find($aid);
+        $appl = Application::findOrFail($aid);
 
-        /*dump($appl);
-        dump($appl->user);
-        dump($appl->user->profile);
-        dd($appl->user->profile->first_name);*/
+        if(!$appl){
+            abort(404);
+        }
 
-        $conference = Conference::find($cid);
+        $conference = Conference::findOrFail($cid);
 
         return view('backend.application.detail')
             ->with('appl', $appl)

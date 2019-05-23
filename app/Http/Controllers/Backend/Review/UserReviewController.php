@@ -38,7 +38,7 @@ class UserReviewController extends Controller
      */
     public function show($id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
 
         if ((Auth::user()->roles()->where('role_id', 4)->first() and Auth::id() == $review->reviewer->id) or
             Auth::user()->roles()->where('role_id', 1)->first()) {
@@ -60,7 +60,7 @@ class UserReviewController extends Controller
      */
     public function edit($id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
         if ((Auth::user()->roles()->where('role_id', 4)->first() and Auth::id() == $review->reviewer->id) or
             Auth::user()->roles()->where('role_id', 1)->first()) {
             return view('backend.review.edit')
@@ -83,7 +83,7 @@ class UserReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
         $fill = $review->form_fill;
 
         for ($i = 1; $i <= 10; $i++) {
@@ -117,7 +117,7 @@ class UserReviewController extends Controller
 
     public function acceptReview($id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
 
         if ($review->reviewer->id != Auth::id()) {
             return redirect()->route('review.myReview.index')
@@ -159,7 +159,7 @@ class UserReviewController extends Controller
 
     public function rejectReview($id)
     {
-        $review = Review::find($id);
+        $review = Review::findOrFail($id);
 
         if ($review->reviewer->id != Auth::id()) {
             return redirect()->back()

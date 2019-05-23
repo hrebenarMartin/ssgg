@@ -147,7 +147,7 @@ class ContributionController extends Controller
      */
     public function edit($id)
     {
-        $contribution = Contribution::find($id);
+        $contribution = Contribution::findOrFail($id);
 
         if (!$contribution or $contribution->user_id != Auth::id()) return redirect()->route('user.myContribution.index')
             ->with('message', 'Invalid action')
@@ -229,7 +229,7 @@ class ContributionController extends Controller
      */
     public function destroy($id)
     {
-        $contribution = Contribution::find($id);
+        $contribution = Contribution::findOrFail($id);
         if (File::exists(public_path('/files/contributions/') . $contribution->file)) {
             File::delete(public_path('/files/contributions/') . $contribution->file);
         }
@@ -248,7 +248,7 @@ class ContributionController extends Controller
     public function downloadContribution($id)
     {
 
-        $contribution = Contribution::find($id);
+        $contribution = Contribution::findOrFail($id);
         $file = public_path() . "/files/contributions/" . $contribution->file;
 
         $headers = [

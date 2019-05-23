@@ -219,7 +219,7 @@ class ApplicationController extends Controller
         }
 
         //Return back with message if user already have application for ongoing conference
-        if(Application::find($id)->user_id != Auth::id()){
+        if(Application::findOrFail($id)->user_id != Auth::id()){
             return redirect()->route('user.application.index')
                 ->with('message', 'You cant edit application ID '.$id.' because it is not your application')
                 ->with('message_type', 'danger');
@@ -227,7 +227,7 @@ class ApplicationController extends Controller
 
         $conference = Conference::where('status', 1)->first();
         $config = ConferenceConfiguration::where('conference_id', $conference->id)->first();
-        $appl = Application::find($id);
+        $appl = Application::findOrFail($id);
 
         return view('backend.application.edit')
             ->with('conference', $conference)
@@ -245,7 +245,7 @@ class ApplicationController extends Controller
     public function update(Request $request, $id)
     {
         
-        $appl = Application::find($id);
+        $appl = Application::findOrFail($id);
 
         if (!empty($request->day_1_break)) {
             $appl->day1_breakfast = $request->day_1_break;

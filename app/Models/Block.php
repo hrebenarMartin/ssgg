@@ -9,11 +9,19 @@ class Block extends Model
 {
     protected $table = 'page_content';
 
-    public static function getPageBlocks($page_id){
-        $res = DB::table('page_content')
-            ->where('page_id', $page_id)
-            ->get();
 
-        return $res;
+    public static function destroyBlocksOfPage($page_id)
+    {
+        $blocks = self::where('page_id', $page_id)->get();
+        foreach ($blocks as $block){
+            //TODO destroy images as well
+            self::destroy($block->id);
+        }
+    }
+
+    //----------------------------------------------------\\
+
+    public function page(){
+        return $this->belongsTo('App\Models\Page');
     }
 }

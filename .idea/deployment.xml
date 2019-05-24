@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="LocalDevelopment">
+  <component name="PublishConfigData" serverName="hrebenar.tk">
     <serverData>
-      <paths name="LocalDevelopment">
+      <paths name="MBP">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="Projects/ssgg" />
+            <mapping local="$PROJECT_DIR$" web="/ssgg" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="hrebenar.tk">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping local="" />
           </mappings>
         </serverdata>
       </paths>

@@ -2,8 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\Conference;
+use App\Models\ConferenceConfiguration;
+use App\Models\Contribution;
+use App\Models\FrontMenu;
+use App\Models\Profile;
 use App\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,18 +25,37 @@ class AppServiceProvider extends ServiceProvider
     {
 
         view()->composer('layouts.app', function (){
-           $logged_user = Auth::id();
-           $user = User::getUserById($logged_user);
+            $logged_user = Auth::id();
+            $user = User::find($logged_user);
+            if($user) $user->profile = Profile::where('user_id', $user->id)->first();
 
-           $admin_menu_items = DB::table('admin_menu')->get();
+            if(session()->has('module')) $module = session()->pull('module');
+            else $module = 1;
 
-           //dd($logged_user);
-           //dd($admin_menu_items);
+            $front_menu = FrontMenu::where('module', $module)->where('active', 1)->orderBy('rank', 'ASC')->get();
+            $conference = Conference::where('status', 1)->first();
 
-           view()->share('menu_items', $admin_menu_items);
-           view()->share('user', $user);
+            view()->share('menu_items', $front_menu);
+            view()->share('user', $user);
+            view()->share('module', $module);
+
+            //Ak je otvorená konferencia, vložíme do view všetky potrebné dáta
+            if($conference){
+                view()->share('conference', $conference);
+            }
 
         });
+
+        view()->composer('backend.layouts.app', function (){
+            $user_data = Profile::where('user_id', Auth::id())->first();
+            $conference = Conference::where('status','!=', 3)->first();
+
+            view()->share('user_data', $user_data);
+            if($conference){
+                view()->share('is_conference', $conference);
+            }
+        });
+
 
     }
 

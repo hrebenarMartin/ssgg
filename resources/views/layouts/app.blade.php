@@ -7,51 +7,46 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="shortcut icon" href="{!! asset('favicon.ico') !!}">
+
     <title>@yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <meta name="description" content="Start your development with a Design System for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
 
+    <link type="text/css" href="{{asset('css/animate.css')}}" rel="stylesheet">
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <!-- Icons -->
+    <link type="text/css" href="{{asset('vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <!-- Styles -->
-    <link href="{!! asset('css/app.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/w3.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/color_scheme.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="{{asset('css/argon.css')}}" rel="stylesheet">
+
+    <link type="text/css" href="{{asset('flag-icon-css-master/css/flag-icon.min.css')}}" rel="stylesheet">
 
     @yield('page_css')
 </head>
 <body>
-    <div id="app">
-
-        @include('layouts.topnavbar')
-
-        <main class="py-4" id="main-content">
-            @yield('content')
-        </main>
-
-        @include('layouts.footer')
-
+@include('layouts.topnavbar')
+<main>
+    <div class="position-relative">
+        @yield('content')
     </div>
-
+</main>
+@include('layouts.footer')
 </body>
 
     <script src="{!! asset('js/jquery-3.3.1.min.js') !!}"></script>
 
-    <script src="{{ asset('js/uiux.js') }}"></script>
+    <script src="{!! asset('vendor/popper/popper.min.js') !!}"></script>
+    <script src="{!! asset('vendor/bootstrap/bootstrap.min.js') !!}"></script>
+    <script src="{!! asset('vendor/headroom/headroom.min.js') !!}"></script>
+    <!-- Argon JS -->
+    <script src="{!! asset('js/argon.js') !!}?v=1.0.1"></script>
 
+    @yield('page_scripts')
 
-    @yield('scripts')
-
-
-    <script>
-        $(document).ready(function () {
-           adjust();
-        });
-        $(window).resize(adjust());
-    </script>
 
 </html>

@@ -11,33 +11,50 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password', 'access_level',
-    ];
+    protected $table = 'users';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'access_level',
+    ];
 
-    public static function getUserById($id){
+    //----------------------------------------------------\\
 
-        $res = DB::table('users')
-            ->where('id', '=', $id)
-            ->get();
-
-        if($res == null) dd($res);
-
-        return $res;
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role', 'user_roles');
     }
+
+    public function profile()
+    {
+        return $this->hasOne('App\Models\Profile', "user_id", "id");
+    }
+
+    public function contributions()
+    {
+        return $this->hasMany('App\Models\Contribution');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\ContributionComment');
+    }
+
+    public function applications()
+    {
+        return $this->hasMany('App\Models\Application');
+    }
+
 }

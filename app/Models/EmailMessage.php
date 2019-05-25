@@ -29,6 +29,19 @@ class EmailMessage extends Model
         return EmailMessage::orderByDesc("send_time")->get();
     }
 
+    public static function addMailToQueue($recipients, $sub, $module, $data = [])
+    {
+        $em = new self();
+
+        $em->recipients = json_encode($recipients);
+        $em->subject = $sub;
+        $em->status = 0;
+        $em->module = $module;
+        $em->data = json_encode($data);
+
+        $em->save();
+    }
+
     public function sendWaitingEmails()
     {
         try {
@@ -37,17 +50,13 @@ class EmailMessage extends Model
             foreach ($emails as $mail) {
                 if (strcmp($mail->module, "Test") == 0) {
                     $this->sendMail($mail, 'test');
-                }
-                else if(strcmp($mail->module, "Review-assign") == 0){
+                } else if (strcmp($mail->module, "Review-assign") == 0) {
                     $this->sendMail($mail, 'review-assign');
-                }
-                else if(strcmp($mail->module, "Review-accepted") == 0){
+                } else if (strcmp($mail->module, "Review-accepted") == 0) {
                     $this->sendMail($mail, 'review_accepted');
-                }
-                else if(strcmp($mail->module, "Review-rejected") == 0){
+                } else if (strcmp($mail->module, "Review-rejected") == 0) {
                     $this->sendMail($mail, 'review_rejected');
-                }
-                else if(strcmp($mail->module, "Review-updated") == 0){
+                } else if (strcmp($mail->module, "Review-updated") == 0) {
                     $this->sendMail($mail, 'review_updated');
                 }
             }
@@ -65,55 +74,48 @@ class EmailMessage extends Model
             ->get();
     }
 
-    private function sendMail($em, $template){
-        $emails = json_decode($em->recipients);
-        if (!is_array($emails)) $emails = [$emails];
-
-        $data_raw = json_decode($em->data);
-
-        $this->content = null;
-        if(array_key_exists('Data', $data_raw)){
-            $this->content['testData'] = $data_raw->Data;
-        }
-        if(array_key_exists('contribution_author', $data_raw)){
-            $this->content['contribution_author'] = Profile::find($data_raw->contribution_author);
-        }
-        if(array_key_exists('reviewer', $data_raw)){
-            $this->content['reviewer'] = User::find($data_raw->reviewer)->profile;
-        }
-        if(array_key_exists('review_assigned_by', $data_raw)){
-            $this->content['review_assigned_by'] = User::find($data_raw->review_assigned_by)->profile;
-        }
-
-        $this->send_to = array_unique($emails);
-        $this->subject = $em->subject;
+    private function sendMail($em, $template)
+    {
         try {
-            Mail::send(["html" => "email.html." . $template, "text" => "email.text." . $template], ["content" => $this->content],
-                function (Message $message) {
+            $emails = json_decode($em->recipients);
+            if (!is_array($emails)) $emails = [$emails];
 
-                    $message
-                        ->to($this->send_to)
-                        ->subject($this->subject);
+            $data_raw = json_decode($em->data);
 
-                });
-            $em->status = self::EMAIL_SENT;
-            $em->updated_at = Carbon::now();
-            $em->save();
+            $this->content = null;
+            if (array_key_exists('Data', $data_raw)) {
+                $this->content['testData'] = $data_raw->Data;
+            }
+            if (array_key_exists('contribution_author', $data_raw)) {
+                $this->content['contribution_author'] = Profile::find($data_raw->contribution_author);
+            }
+            if (array_key_exists('reviewer', $data_raw)) {
+                $this->content['reviewer'] = User::find($data_raw->reviewer)->profile;
+            }
+            if (array_key_exists('review_assigned_by', $data_raw)) {
+                $this->content['review_assigned_by'] = User::find($data_raw->review_assigned_by)->profile;
+            }
+
+            $this->send_to = array_unique($emails);
+            $this->subject = $em->subject;
+            try {
+                Mail::send(["html" => "email.html." . $template, "text" => "email.text." . $template], ["content" => $this->content],
+                    function (Message $message) {
+
+                        $message
+                            ->to($this->send_to)
+                            ->subject($this->subject);
+
+                    });
+                $em->status = self::EMAIL_SENT;
+                $em->updated_at = Carbon::now();
+                $em->save();
+            } catch (\Exception $e) {
+                Log::critical($e->getMessage());
+            }
         } catch (\Exception $e) {
             Log::critical($e->getMessage());
         }
-    }
-
-    public static function addMailToQueue($recipients, $sub, $module, $data=[]){
-        $em = new self();
-
-        $em->recipients = json_encode($recipients);
-        $em->subject = $sub;
-        $em->status = 0;
-        $em->module = $module;
-        $em->data = json_encode($data);
-
-        $em->save();
     }
 
 }

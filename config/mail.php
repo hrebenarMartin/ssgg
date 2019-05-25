@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME','postmaster@mg.hrebenarm.tk'),
+    'username' => env('MAIL_USERNAME',''),
 
-    'password' => env('MAIL_PASSWORD','SsggProjekt'),
+    'password' => env('MAIL_PASSWORD',''),
 
     /*
     |--------------------------------------------------------------------------

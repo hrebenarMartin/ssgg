@@ -73,7 +73,7 @@ return [
     'profile_street' => 'Ulica',
     'profile_psc' => 'PSČ',
     'profile_title_before' => 'Tituly pred',
-    'profile_title_after' => 'Tituly po',
+    'profile_title_after' => 'Tituly za',
     'profile_select_gender' => 'Zvoľte pohlavie...',
     'profile_gender_m' => 'Muž',
     'profile_gender_f' => 'Žena',
@@ -168,6 +168,20 @@ return [
     'review_add' => "Pridať recenziu",
 
     'application_user' => "Prihlášku podal",
+
+    'review_form_opened' => "Povoliť recenzovanie?",
+    'review_form_fill_until' => "Deadline pre recenzovanie",
+    'review_form_question' => "Otázka",
+    'review_form_question_sk' => 'Otázka (Slovensky)',
+    'review_form_question_en' => 'Otázka (Anglicky)',
+    'review_form_question_type' => "Typ odpovede",
+    'review_form_conclusion_sk' => "Záverečná otázka (Slovensky)",
+    'review_form_conclusion_en' => "Záverečná otázka (Anglicky)",
+    'review_form_input_type_1' => "Textová odpoveď",
+    'review_form_input_type_2' => "Zašktrávacie políčko (Áno/Nie)",
+    'review_form_input_type_3' => "",
+
+    'roles' => "Prístupové práva (Roly)",
 
     'conference_participants_application' => "Prihláška na konferenciu",
 

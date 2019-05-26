@@ -42,7 +42,7 @@
                         <li class="nav-item dropdown">
                             <a href="{{route('conference.index')}}" class="nav-link" role="button">
                                 <span
-                                    class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
+                                        class="nav-link-inner--text">{{ __('main.conference', ['year' => $conference->year]) }}</span>
                             </a>
                         </li>
                     @endif
@@ -63,18 +63,58 @@
                     @endif
 
                     @if($user)
-                        <li class="nav-item d-none d-lg-block ml-lg-4">
-                            <a href="#!" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();" target="_blank"
-                               class="btn btn-neutral btn-icon">
-                                <span class="nav-link-inner--text">{{__('main.logout')}}</span>
-                            </a>
+                        <li class="nav-item d-none d-lg-block ml-lg-4 dropdown">
+                            <button type="button" class="btn btn-neutral" data-toggle="dropdown" data-target="#f_menu" role="button">
+                                <span class="nav-link-inner--text text-primary">Menu</span>
+                            </button>
                         </li>
-                        <li>
-                            @if($user->profile->image)
-                                <img src="{{asset('public/images/profiles/'.$user->id."/".$user->profile->image)}}"
-                                     class="rounded-circle" width="50">
-                            @endif
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+                                @if($user->profile->image)
+                                    <img src="{{asset('public/images/profiles/'.$user->id."/".$user->profile->image)}}"
+                                         class="rounded-circle" width="50">
+                                @else
+                                    @if($user->profile->gender == 'M')
+                                        <img class="rounded-circle"
+                                             src="{!! asset('images/placeholders/user_m.png') !!}"
+                                             alt="Profile picture" width="50">
+                                    @elseif($user->profile->gender == 'F')
+                                        <img class="rounded-circle"
+                                             src="{!! asset('images/placeholders/user_f.png') !!}"
+                                             alt="Profile picture" width="50">
+                                    @else
+                                        <img class="rounded-circle"
+                                             src="{!! asset('images/placeholders/user_o.png') !!}"
+                                             alt="Profile picture" width="50">
+                                    @endif
+                                @endif
+                            </a>
+                            <div class="dropdown-menu" id="f_menu">
+                                <div class="dropdown-menu-inner">
+                                    <a href="{{ route("dashboard.index") }}" class="dropdown-item">
+                                        <div class="media-body">
+                                            <button type="button" class="btn btn-primary btn-icon" style="width: 100%">
+                                                <span class="nav-link-inner--text">{{__('form.action_dashboard')}}</span>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="{{ route("user.profile.show", Auth::id()) }}" class="dropdown-item">
+                                        <div class="media-body">
+                                            <button type="button" class="btn btn-neutral btn-sm" style="width: 100%">
+                                                <span class="nav-link-inner--text">{{__('b_menu.profile')}}</span>
+                                            </button>
+                                        </div>
+                                    </a>
+                                    <a href="#!" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();" target="_blank" class="dropdown-item">
+                                        <div class="media-body">
+                                            <button type="button" class="btn btn-danger btn-sm" style="width: 100%">
+                                                <span class="nav-link-inner--text">{{__('main.logout')}}</span>
+                                            </button>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf

@@ -18,8 +18,22 @@
                             <div class="col-12 col-sm-3 align-center text-center pb-4">
                                 @if($p->profile->image)
                                     <img
-                                        src="{{asset('public/images/profiles/'.$p->profile->user_id."/".$p->profile->image)}}"
-                                        class="rounded-circle" width="100%" style="max-width: 100px;">
+                                            src="{{asset('public/images/profiles/'.$p->profile->user_id."/".$p->profile->image)}}"
+                                            class="rounded-circle" width="100%" style="max-width: 100px;">
+                                @else
+                                    @if($p->profile->gender == 'M')
+                                        <img class="rounded-circle"
+                                             src="{!! asset('images/placeholders/user_m.png') !!}"
+                                             alt="Profile picture" width="100%" style="max-width: 100px;">
+                                    @elseif($p->profile->gender == 'F')
+                                        <img class="rounded-circle"
+                                             src="{!! asset('images/placeholders/user_f.png') !!}"
+                                             alt="Profile picture" width="100%" style="max-width: 100px;">
+                                    @else
+                                        <img class="rounded-circle"
+                                             src="{!! asset('images/placeholders/user_o.png') !!}"
+                                             alt="Profile picture" width="100%" style="max-width: 100px;">
+                                    @endif
                                 @endif
                             </div>
                             <div class="col-12 col-sm-9 text-center text-sm-left">
@@ -29,6 +43,9 @@
                                     <button type="button" class="btn btn-outline-success contribution_modal_open"
                                             data-contribution-id="{{$p->contribution->id}}" data-toggle="modal"
                                             data-target="#contribution_modal">{{ __('main.contribution') }}
+                                    </button>
+                                @else
+                                    <button type="button" class="btn btn-outline-danger">{{ __('main.no_contribution') }}
                                     </button>
                                 @endif
                             </div>
@@ -43,30 +60,32 @@
                             </div>
                             <div class="modal-body">
 
-                                <small><h5>{{ __('form.contribution_co_authors') }}:<span id="co_authors"></span></h5></small>
+                                <small><h5>{{ __('form.contribution_co_authors') }}:<span id="co_authors"></span></h5>
+                                </small>
                                 <p id="contribution_abstract"></p>
                                 <hr>
                                 <h4>{{__('main.comments')}}</h4>
                                 <div class="container" id="contribution_comments">
-                                    <div class="row bg-secondary p-3" id="comment_wrap_template" style="display: none;">
-                                        <div class="col-4 col-sm-2">
-                                            <img src=""
-                                                 class="rounded-circle" width="100%" style="max-width: 50px;"
-                                                 id="author_picture">
-                                        </div>
-                                        <div class="col-8 col-sm-10">
-                                            <p>
-                                                <small>
-                                                    <strong class="author_name"></strong>
-                                                    <br>
-                                                    <span class="date_added"></span>
-                                                </small>
-                                            </p>
-                                        </div>
-                                        <div class="col-12">
-                                            <small class="comment_text">
+
+                                </div>
+                                <div class="row bg-secondary p-3" id="comment_wrap_template" style="display: none;">
+                                    <div class="col-4 col-sm-2">
+                                        <img src=""
+                                             class="rounded-circle" width="100%" style="max-width: 50px;"
+                                             id="author_picture">
+                                    </div>
+                                    <div class="col-8 col-sm-10">
+                                        <p>
+                                            <small>
+                                                <strong class="author_name"></strong>
+                                                <br>
+                                                <span class="date_added"></span>
                                             </small>
-                                        </div>
+                                        </p>
+                                    </div>
+                                    <div class="col-12">
+                                        <small class="comment_text">
+                                        </small>
                                     </div>
                                 </div>
                                 <br>

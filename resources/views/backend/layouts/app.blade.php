@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{!! asset('css/animate.css') !!}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <link rel="stylesheet" href="{{ asset('js/jquery-ui-1.12.1/jquery-ui.css') }}"></link>
 
     @yield('page_css')
 
@@ -56,6 +57,7 @@
             session()->forget(['message','message_type']);
         @endphp
 
+        @include('backend.layouts.page_footer')
     </div>
 </div>
 
@@ -68,7 +70,9 @@
 <script src="{!! asset('backend/vendors/jquery-validation/dist/jquery.validate.js') !!}"></script>
 <script src="{!! asset('backend/js/sweetalert.min.js') !!}"></script>
 <script src="{!! asset('js/toastr.min.js') !!}"></script>
+
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+<script src="{{ asset('js/jquery-ui-1.12.1/jquery-ui.js') }}"></script>
 
 @yield('scripts')
 

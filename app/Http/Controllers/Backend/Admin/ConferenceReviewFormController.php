@@ -24,7 +24,8 @@ class ConferenceReviewFormController extends Controller
         if ($conference->review_form) {
             $form = $conference->review_form;
             return view('backend.conference.review_form_edit')
-                ->with('data', $form);
+                ->with('data', $form)
+                ->with('conference', $conference);
         } else {
             return view('backend.conference.review_form_create')
                 ->with('conference', $conference);

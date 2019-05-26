@@ -514,6 +514,38 @@
     <script src="{!! asset('backend/vendors/bootstrap-markdown/js/markdown.js') !!}"></script>
 
     <script>
+        $(document).ready(function () {
+            //If input type date is not supported initialize jqueryui datepicker
+            var datefield = document.createElement("input");
+
+            datefield.setAttribute("type", "date");
+
+            if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+                $('#birthday').datepicker({
+                    dateFormat: "yy-mm-dd"
+                });
+            }
+            if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+                $(document).ready(function () {
+                    $('#reg_start').datepicker({
+                        dateFormat: "yy-mm-dd"
+                    });
+                    $('#conf_start').datepicker({
+                        dateFormat: "yy-mm-dd"
+                    });
+                    $('#reg_end').datepicker({
+                        dateFormat: "yy-mm-dd"
+                    });
+                    $('#conf_end').datepicker({
+                        dateFormat: "yy-mm-dd"
+                    });
+                });
+            }
+        });
+
+    </script>
+
+    <script>
         var map;
         var marker;
         function initMap() {
@@ -538,22 +570,6 @@
             marker.setPosition(latLng);
             $('#lat').val(marker.position.lat);
             $('#lng').val(marker.position.lng);
-        }
-
-        //If input type date is not supported initialize jqueryui datepicker
-        var datefield = document.createElement("input");
-
-        datefield.setAttribute("type", "date");
-
-        if (datefield.type != "date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
-            document.write('<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />\n')
-            document.write('<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"><\/script>\n')
-            $(document).ready(function() {
-                $('#reg_start').datepicker();
-                $('#conf_start').datepicker();
-                $('#reg_end').datepicker();
-                $('#conf_end').datepicker();
-            });
         }
 
         //Initialize Markdown editor

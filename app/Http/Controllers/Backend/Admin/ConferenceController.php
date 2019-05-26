@@ -1267,4 +1267,14 @@ class ConferenceController extends Controller
             ->with('config', $conference_config);
     }
 
+    public function deleteImages($cid){
+        $uploadImage = new UploadImages();
+        $conference = Conference::findOrFail($cid);
+        
+        foreach ($conference->gallery as $img){
+            $uploadImage->deleteImage("conference", $img->id);
+        }
+
+        return redirect()->route('conference.show', $cid);
+    }
 }

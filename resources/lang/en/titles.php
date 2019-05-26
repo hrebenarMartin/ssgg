@@ -34,5 +34,11 @@ return [
     'conference_review_form_edit' => "Review form edit",
     'conference_review_form_add' => "Review form create",
 
+    'conference_schedule' => "Conference programme",
+    'conference_participants' => "Participants",
+    'application_detail' => "Application detail",
+
+    'profile_not_complete' => "Your profile is not complete, please go to the 'My profile' section and complete it",
+
     'my_application_create' => "Fill the application form",
 ];

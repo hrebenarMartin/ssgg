@@ -150,7 +150,7 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">{{ __('form.conference_programme') }}</strong>
+                                <strong class="card-title">{{ __('titles.conference_schedule') }}</strong>
                             </div>
                             <div class="card-body ml-3">
                                 @if(App::getLocale() == 'en') {!! \Illuminate\Mail\Markdown::parse($data->schedule_en) !!}
@@ -274,7 +274,7 @@
                                     <button type="button" class="btn btn-success fileinput-button">
                                         <i class="glyphicon glyphicon-plus"></i>
                                         <span>{{ __('form.files_add') }}...</span>
-                                        <input type="file" name="files[]" multiple>
+                                        <input type="file" name="files[]" accept="image/*" multiple>
                                     </button>
                                     <button type="submit" class="btn btn-primary start">
                                         <i class="glyphicon glyphicon-upload"></i>
@@ -312,7 +312,7 @@
                                     <div class="col-xs-12 col-sm-6 col-md-3 " id="list">
                                         <a href="{{asset('/images/conference/') . '/'.$data->id .'/large/' . $img->image}}"
                                            data-gallery>
-                                            <img class="img-responsive m-b-sm"
+                                            <img class="img-responsive m-b-sm" style="margin-bottom: 1em"
                                                  src="{!! asset('/images/conference/') . '/'.$data->id .'/sq/' . $img->image !!}">
                                         </a>
                                         <div class="img-overlay">
@@ -321,14 +321,6 @@
                                                     class="fa fa-fw fa-trash"></i></button>
                                         </div>
                                     </div>
-
-
-                                    {{-- Form::open(['method' => 'DELETE', 'route' => ['blog-image.destroy', $img->id ],
-                                                    'class' => 'class="m-l-sm pull-right btn btn-danger btn-xs delete-alert hide',
-                                                    'id' => 'image-delete-'. $img->id  ])
-                                                }}
-                                        {{Form::hidden('image_id', $img->id  )}}
-                                        {{ Form::close() --}}
                                 @endforeach
                             @endif
                         </div>
@@ -352,7 +344,7 @@
             position: absolute;
             top: 0;
             bottom: 100%;
-            left: Calc(100% - 53px);
+            left: Calc(100% - 59px);
             right: 0;
             max-width: 10%;
             text-align: left;
@@ -373,6 +365,10 @@
             font-size: 10px;
             margin: 0;
             padding: 0.25em;
+        }
+
+        .hide{
+            display: none;
         }
 
     </style>
@@ -462,7 +458,7 @@
                         if (willDelete) {
                             $.ajax({
                                 type: 'POST',
-                                url: '/ajax',
+                                url: '{{ route("ajax") }}',
                                 data: {
                                     action: "delete_proceedings_file",
                                     conf_id: {{$data->id}},
@@ -497,7 +493,7 @@
                         if (willDelete) {
                             $.ajax({
                                 type: 'POST',
-                                url: '/ajax',
+                                url: '{{ route("ajax") }}',
                                 data: {
                                     action: 'delete_conference_image',
                                     image_id: id,

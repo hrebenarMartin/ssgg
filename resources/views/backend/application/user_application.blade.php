@@ -73,7 +73,13 @@
                                                     class="fa fa-fw fa-edit"></i> {{__('main.edit')}}</a>
                                         <button type="button" class="btn btn-primary pull-right" data-toggle="modal"
                                                 data-target="#bank_modal"><i
-                                                    class="fa fa-fw fa-check-circle"></i> {{__('main.confirm')}}</button>
+                                                    class="fa fa-fw fa-check-circle"></i> {{__('main.confirm')}}
+                                        </button>
+                                    @elseif($appl->status == 2)
+                                        <button type="button" class="btn btn-success pull-right" data-toggle="modal"
+                                                data-target="#bank_modal"><i
+                                                    class="fa fa-fw fa-money-bill-wave"></i> {{ __('main.bank_transfer_info') }}
+                                        </button>
                                     @endif
                                 </div>
                                 {{--<div class="modal animated fadeInDown" tabindex="-1" role="dialog" id="confirm_modal">
@@ -134,7 +140,9 @@
                                                                 <li>Názov účtu: xxxxxxxxxxxxxxxx</li>
                                                                 <li>Číslo účtu: xxxxxxxxxx</li>
                                                                 <li>Kód banky: xxxx</li>
-                                                                <li>Variabilný symbol: [[ USER Variable symbol here ]]
+                                                                <li>Variabilný
+                                                                    symbol: {{$appl->conference->year}}</small>
+                                                                    <b>{{str_pad($appl->user->id,5,0)}}{{str_pad($appl->id,2,0,STR_PAD_LEFT)}}</b>
                                                                 </li>
                                                                 <li>IČ: xxxxxxxxx</li>
                                                                 <li>SWIFT: xxxxxxxxxx</li>
@@ -158,13 +166,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="modal-footer">
-                                                <a href="{{route('user.application.confirm')}}" class="btn btn-success">Budem
-                                                    platiť prevodom</a>
+                                                @if($appl->status == 1)
+                                                    <a href="{{route('user.application.confirm')}}"
+                                                       class="btn btn-success">{{ __('main.bank_transfer') }}</a>
+                                                @endif
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">
-                                                    Zrušiť
+                                                    {{ __('main.cancel') }}
                                                 </button>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>

@@ -3,7 +3,7 @@
 return [
     'contribution_page' => 'Môj príspevok',
     'contribution_requirements' => "Požiadavky pre nahranie príspevku",
-    'contribution_deadline' => "Svoj príspevok nahrávajte najpozdejšie do :date",
+    'contribution_deadline' => "Svoj príspevok nahrávajte najneskôr do :date",
     'contribution_requirement_1' => "povolené sú len subory vo formáte PDF",
     'contribution_requirement_2' => "<b>nečíslujte strany!</b>",
     'contribution_requirement_3' => "dokument musí mať párny počet strán, max 6. strán",

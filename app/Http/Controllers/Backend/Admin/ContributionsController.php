@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class ContributionsController extends Controller
 {
@@ -112,7 +113,19 @@ class ContributionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contribution = Contribution::findOrFail($id);
+        if (File::exists(public_path('/files/contributions/') . $contribution->file)) {
+            File::delete(public_path('/files/contributions/') . $contribution->file);
+        }
+        $comments = ContributionComment::where('contribution_id', $id)->get();
+        foreach ($comments as $c) {
+            ContributionComment::destroy($c->id);
+        }
+        Contribution::destroy($id);
+
+        return redirect()->back()
+            ->with('message', 'Your contribution was successfully deleted.')
+            ->with('message_type', 'success');
     }
 
     public function assignReviewer(Request $request, $contribution_id)

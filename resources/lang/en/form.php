@@ -181,6 +181,8 @@ return [
     'review_form_input_type_2' => "Checkbox",
     'review_form_input_type_3' => "",
 
+    'roles' => "Access permissions(Roles)",
+
     'conference_participants_application' => "Conference application",
 
 ];

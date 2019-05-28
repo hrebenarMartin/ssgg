@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', __('titles.cms_pages'))
+@section('title', "CMS")
 
 @section('content')
 

@@ -44,7 +44,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -59,7 +59,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -74,7 +74,11 @@ class RegisterController extends Controller
         $profile->user_id = $user->id;
         $n = explode(' ', $data['name']);
         $profile->first_name = $n[0];
-        $profile->last_name = $n[1];
+        if (count($n) == 1) {
+            $profile->last_name = " ";
+        } else {
+            $profile->last_name = $n[1];
+        }
         $profile->save();
 
         return $user;

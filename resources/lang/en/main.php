@@ -47,4 +47,9 @@ return [
     'reset_pass_help_2' => "Enter your email and create new password",
     'reset_pass_send_link' => "Send password reset link",
     'reset_password' => "Reset password",
+
+    'bank_transfer' => "Pay by bank transfer",
+    'bank_transfer_info' => "How to pay?",
+
+    'no_contribution' => "No contribution",
 ];

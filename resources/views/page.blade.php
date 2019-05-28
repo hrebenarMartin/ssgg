@@ -106,7 +106,7 @@
                     var contr_id = $(this).data('contribution-id');
                     $.ajax({
                         type: 'POST',
-                        url: '/ajax-ext',
+                        url: '{{ route("ajax_ext") }}',
                         //url: '/Projects/ssgg/ajax-ext',
                         data: {
                             action: 'get_contribution_and_comments',
@@ -120,6 +120,13 @@
                                 $('#contribution_title').html(data.contribution["title"]);
                                 $('#contribution_abstract').html(data.contribution["abstract"]);
                                 $('#co_authors').html(data.contribution["co_authors"]);
+
+                                //$('#contribution_comments').innerHTML = '';
+                                var myNode = document.getElementById("contribution_comments");
+                                while (myNode.firstChild) {
+                                    myNode.removeChild(myNode.firstChild);
+                                }
+
                                 data.comments.forEach(function (e) {
                                     let comm = $("#comment_wrap_template").clone();
 
@@ -130,7 +137,7 @@
                                         comm.find('#author_picture').attr('src', "{{asset("public/images/placeholders/user_o.png")}}");
                                     }
                                     comm.find(".author_name").text(e.first_name + " " + e.last_name);
-                                    comm.find(".date_added").text("xx.yy.2019");
+                                    comm.find(".date_added").text(e.date);
                                     comm.find(".comment_text").text(e.comment);
 
                                     $("#contribution_comments").append(comm);
@@ -154,7 +161,7 @@
                     $('#comment_text_hint').hide();
                     $.ajax({
                         type: 'POST',
-                        url: '/ajax',
+                        url: '{{ route("ajax") }}',
                         //url: '/Projects/ssgg/ajax',
                         data: {
                             action: 'save_contribution_comment',

@@ -34,5 +34,11 @@ return [
     'conference_review_form_edit' => "Upraviť nastanevia recenzií",
     'conference_review_form_add' => "Nastaviť recenzie pre konferenciu",
 
+    'conference_schedule' => "Program konferencie",
+    'conference_participants' => "Účastníci",
+    'application_detail' => "Prihláška detail",
+
+    'profile_not_complete' => "Váš profil nie je kompletný. Vyplnte si váš profil v sekcii 'Môj profil'",
+
     'my_application_create' => "Vyplniť prihlášku na konferenciu",
 ];

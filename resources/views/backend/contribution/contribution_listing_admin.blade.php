@@ -22,24 +22,25 @@
                 <strong class="card-title">{{ __('form.contribution_listing') }}</strong>
             </div>
             <div class="card-body">
-                <table class="table table-striped">
+                <table class="table table-striped" id="item_table">
                     <thead>
                     <tr class="text-center">
                         <th scope="col">#</th>
                         <th scope="col">{{ __('contribution.author') }}</th>
-                        <th scope="col">{{ __('review.rating') }}</th>
+                        <th scope="col">{{ __('form.contribution_type') }}</th>
                         <th scope="col">{{ __('form.conference_year') }}</th>
                         <th scope="col">{{ __('review.rating') }}</th>
                         <th scope="col">{{ __('form.contribution_reviewer') }}</th>
-                        <th scope="col" style="width:20%;">{{ __('form.actions') }}</th>
+                        <th scope="col">{{ __('form.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($contributions as $c)
                         <tr class="text-center">
-                            <th scope="row">{{ $c->id }}</th>
+                            <th scope="row">{{ substr($c->abstract,0,150) }}...</th>
                             <td>{{ $c->author_first_name." ".$c->author_last_name }}</td>
-                            <td>{{ $c->type == 1 ? __('form.contribution_type1') : __('form.contribution_type2')  }}</td>
+                            <td>{{__('form.contribution_type'.$c->type)}}</td>
+{{--                            <td>{{ $c->type == 1 ? __('form.contribution_type1') : __('form.contribution_type2')  }}</td>--}}
                             <td>{{ $c->conference_year }}</td>
                             <td>{{ $c->review ? $c->review->rating : "-" }}</td>
                             <td>
@@ -51,7 +52,7 @@
                                     @else
                                         <span class="badge badge-success"><i class="fa fa-check"></i></span>
                                     @endif
-                                    {{ $c->review->reviewer->profile->first_name }}
+                                    {{ substr($c->review->reviewer->profile->first_name,0,1)}}.
                                     {{ $c->review->reviewer->profile->last_name }}
                                 @else
                                     -
@@ -85,6 +86,14 @@
 
 @section('scripts')
     <script>
+        $('#item_table').DataTable({
+            "pageLength": 25,
+            "dom": 'lrfrtip',
+            columnDefs : [
+                { targets: 0, type: 'locale-compare' }
+            ],
+            "order": [0, 'asc']
+        });
 
         $(document).ready(function () {
 

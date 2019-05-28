@@ -14,8 +14,8 @@
         <div class="col px-0">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <div class="row justify-content-center">
-                        <div class="image_galery" style="width: 100%">
+                    <div class="justify-content-center">
+                        <div class="row image_galery" style="width: 100%">
                             @foreach($dynamic_data->gallery as $p)
                                 <div class="col-xs-6 col-sm-3">
                                     <a href="{{asset('/images/conference/') . '/'.$dynamic_data->conference->id .'/large/' . $p->image}}"

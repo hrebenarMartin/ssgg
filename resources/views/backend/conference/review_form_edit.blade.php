@@ -10,7 +10,7 @@
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
                     <div class="dropdown">
-                        <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
+                        <a href="{{ route('admin.conferences.show', $conference->id) }}" class="btn btn-primary"><i
                                 class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                     </div>
                 </div>
@@ -116,3 +116,30 @@
     </div>
 
 @stop
+ @section('scripts')
+
+     <script>
+         $(document).ready(function () {
+             //If input type date is not supported initialize jqueryui datepicker
+             var datefield = document.createElement("input");
+
+             datefield.setAttribute("type", "date");
+
+             if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+                 $('#birthday').datepicker({
+                     dateFormat: "yy-mm-dd"
+                 });
+             }
+             if (datefield.type != "date") { //if browser doesn't support input type="date", initialize date picker widget:
+                 $(document).ready(function () {
+                     $('#fill_until').datepicker({
+                         dateFormat: "yy-mm-dd"
+                     });
+
+                 });
+             }
+         });
+
+     </script>
+
+ @stop

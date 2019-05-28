@@ -26,7 +26,7 @@
                         <div class="col-3 text-center">
                             @if($appl->user->profile->image)
                                 <img
-                                    src="{{asset('images/profiles/'.$appl->user->id."/".$appl->user->profile->image)}}" class="img-circle" style="max-width: 100px">
+                                    src="{{asset('images/profiles/'.$appl->user->id."/".$appl->user->profile->image)}}" class="img-circle" style="max-width: 100px;border-radius: 50%;">
                             @else
                                 <img
                                     src="{{asset('images/placeholders/user_o.png')}}" class="img-circle" style="max-width: 100px">

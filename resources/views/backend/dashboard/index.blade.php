@@ -80,6 +80,19 @@
         </div>
     </div>
 
+    @if(!$profile->workplace)
+        <div class="col-12 animated fadeIn">
+            <section class="card">
+                <div class="card-header bg-danger">
+                    <span class="card-title text-light">{{ __('titles.profile_not_complete') }} ->
+                        <b><a href="{{ route("user.profile.show", Auth::id()) }}"
+                              class="btn btn-outline-light text-light">{{ __('b_menu.profile') }}</a></b>
+                    </span>
+                </div>
+            </section>
+        </div>
+    @endif
+
     <div class="col-12 animated fadeIn">
         <aside class="profile-nav alt">
             <section class="card">
@@ -88,15 +101,15 @@
                         <a href="{{ route('user.profile.show', $profile->user_id) }}">
                             @if(!$profile->image)
                                 @if($profile->gender == 'M')
-                                    <img class="mx-auto d-block"
+                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;"
                                          src="{!! asset('images/placeholders/user_m.png') !!}"
                                          alt="Profile picture">
                                 @elseif($profile->gender == 'F')
-                                    <img class="mx-auto d-block"
+                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;"
                                          src="{!! asset('images/placeholders/user_f.png') !!}"
                                          alt="Profile picture">
                                 @else
-                                    <img class="mx-auto d-block"
+                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;"
                                          src="{!! asset('images/placeholders/user_o.png') !!}"
                                          alt="Profile picture">
                                 @endif

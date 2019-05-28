@@ -47,4 +47,10 @@ return [
     'reset_pass_help_2' => "Zadajte svoju emailovú adresu a zvoľte si svoje nové heslo.",
     'reset_pass_send_link' => "Odoslať odkaz",
     'reset_password' => "Resetovať heslo",
+
+    'bank_transfer' => "Zaplatiť bankovým prevodom",
+    'bank_transfer_info' => "Ako zaplatiť?",
+
+    'no_contribution' => "Bez príspevku",
+
 ];

@@ -50,12 +50,6 @@
                     <li class="nav-item">
                         <a href="{{ route('dashboard.index') }}" class="nav-link" target="_blank">Autentifikovaná zóna</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" target="_blank">FAQ</a>
-                    </li>
                 </ul>
             </div>
         </div>

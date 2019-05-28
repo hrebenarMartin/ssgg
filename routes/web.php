@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/cms/front_menu', 'Backend\CMS\FrontMenuController')->middleware("admin");
 
     Route::resource('/conferences', 'Backend\Admin\ConferenceController');
+    Route::delete( '/conferences/{id}/delete_image', 'Backend\Admin\ConferenceController@deleteImage')->name('conferences.delete_image');
     Route::get('/conferences/{id}/participants', 'Backend\Admin\ConferenceController@conferenceParticipants')->name('conferences.conference_participants');
     Route::get('/conferences/{cid}/participants/{aid}/confirm', 'Backend\Admin\ApplicationsController@confirmApplication')->name('conferences.conference_participants.confirm');
     Route::get('/conferences/{cid}/participants/{aid}/confirm-payment', 'Backend\Admin\ApplicationsController@confirmApplicationPayment')->name('conferences.conference_participants.confirm_payment');

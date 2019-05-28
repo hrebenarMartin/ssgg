@@ -31,11 +31,11 @@
                     @endif
                 </a>
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="{{ route('user.profile.show', Auth::id()) }}"><i class="fa fa-user"></i> My Profile</a>
+                    <a class="nav-link" href="{{ route('user.profile.show', Auth::id()) }}"><i class="fa fa-user"></i> {{ __('b_menu.profile') }}</a>
                     <a class="nav-link" href="#!"
                        onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                        <i class="fa fa-power-off"></i> {{ __('Main.Logout') }}
+                        <i class="fa fa-power-off"></i> {{ __('main.logout') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

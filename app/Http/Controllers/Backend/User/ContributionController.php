@@ -27,7 +27,7 @@ class ContributionController extends Controller
                 ->with('no_conference', true);
         }
 
-        $application = Application::where('user_id', Auth::id())->where('conference_id', $conference->id)->where('status', '>', 2)->first();
+        $application = Application::where('user_id', Auth::id())->where('conference_id', $conference->id)->where('status', '>=', 2)->first();
 
         if(!$application){
             return view('backend.contribution.user_contribution')

@@ -67,6 +67,7 @@
                     <thead>
                     <tr class="text-center">
                         <th scope="col">#</th>
+                        <th scope="col">VS</th>
                         <th scope="col">{{ __('form.application_user') }}</th>
                         <th scope="col">{{ __('application.status') }}</th>
                         <th scope="col" style="width:20%;">{{ __('form.actions') }}</th>
@@ -76,6 +77,7 @@
                     @foreach($confirmed as $appl)
                         <tr class="text-center">
                             <td scope="row">{{ $appl->id }}</td>
+                            <td><small>{{$appl->conference->year}}</small><b>{{str_pad($appl->user->id,5,0)}}{{str_pad($appl->id,2,0,STR_PAD_LEFT)}}</b></td>
                             <td>
                                 {{ $appl->user->profile->first_name." ".$appl->user->profile->last_name}}
                             </td>

@@ -7,17 +7,20 @@
         <div class="container">
             <div class="d-flex flex-row-reverse">
                 <div class="p-1">
-                    @if(Auth::id() == $profile->user_id  || Auth::user()->access_level == 4)<a href="{{ route('user.profile.edit', $profile->user_id) }}" class="btn btn-success">{{ __('form.action_edit_profile') }}</a>@endif
-                    <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
+                    @if(Auth::id() == $profile->user_id  || Auth::user()->access_level == 4)<a
+                            href="{{ route('user.profile.edit', $profile->user_id) }}"
+                            class="btn btn-success">{{ __('form.action_edit_profile') }}</a>@endif
+                    <a href="{{ route('dashboard.index') }}" class="btn btn-primary"><i
+                                class="fa fa-chevron-circle-left"></i> {{ __('form.action_dashboard') }}</a>
                 </div>
             </div>
         </div>
 
         <hr>
 
-        <div class="card">
+        <div class="card bg-primary">
             <div class="card-header">
-                <h4><strong class="card-title">{{ __('form.profile_detail') }}</strong></h4>
+                <h4><strong class="card-title text-white">{{ __('form.profile_detail') }}</strong></h4>
             </div>
             <div class="card-body">
                 <div class="row animated fadeIn">
@@ -30,33 +33,37 @@
                                 <div class="mx-auto d-block">
                                     @if(!$profile->image)
                                         @if($profile->gender == 'M')
-                                            <img class="mx-auto d-block" src="{!! asset('images/placeholders/user_m.png') !!}" alt="Profile picture" width="200">
+                                            <img class="mx-auto d-block"
+                                                 src="{!! asset('images/placeholders/user_m.png') !!}"
+                                                 alt="Profile picture" width="200">
                                         @elseif($profile->gender == 'F')
-                                            <img class="mx-auto d-block" src="{!! asset('images/placeholders/user_f.png') !!}" alt="Profile picture" width="200">
+                                            <img class="mx-auto d-block"
+                                                 src="{!! asset('images/placeholders/user_f.png') !!}"
+                                                 alt="Profile picture" width="200">
                                         @else
-                                            <img class="mx-auto d-block" src="{!! asset('images/placeholders/user_o.png') !!}" alt="Profile picture" width="200">
+                                            <img class="mx-auto d-block"
+                                                 src="{!! asset('images/placeholders/user_o.png') !!}"
+                                                 alt="Profile picture" width="200">
                                         @endif
                                     @else
-                                        <img class="rounded-circle mx-auto d-block" src="{!! asset('public/images/profiles/'.$profile->user_id.'/'.$profile->image) !!}" alt="Profile picture" width="200">
+                                        <img class="rounded-circle mx-auto d-block"
+                                             src="{!! asset('public/images/profiles/'.$profile->user_id.'/'.$profile->image) !!}"
+                                             alt="Profile picture" width="200">
                                     @endif
-                                    <h4 class="text-sm-center mt-2 mb-1 text-"><strong>{{ $profile->title_before." ".$profile->first_name." ".$profile->middle_name." ".$profile->last_name." ".$profile->title_after }}</strong></h4>
-                                        @if($user->access_level == 4)
-                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
-                                                <strong>{{__('main.superadmin')}}</strong>
-                                            </h4>
-                                        @elseif($user->access_level == 3)
-                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
-                                                <strong>{{__('main.admin')}}</strong>
-                                            </h4>
-                                        @elseif($user->access_level == 2)
-                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
-                                                <strong>{{__('main.reviewer')}}</strong>
-                                            </h4>
-                                        @elseif($user->access_level == 1)
-                                            <h4 class="text-sm-center mt-2 mb-1 text-muted">
-                                                <strong>{{__('main.reguser')}}</strong>
-                                            </h4>
-                                        @endif
+                                    <h4 class="text-sm-center mt-2 mb-1 text-">
+                                        <strong>{{ $profile->title_before." ".$profile->first_name." ".$profile->middle_name." ".$profile->last_name." ".$profile->title_after }}</strong>
+                                    </h4>
+                                    <h4 class="text-sm-center mt-2 mb-1 text-muted">
+                                        @foreach(Auth::user()->roles as $r)
+                                            @if($r->id == 1)
+                                                <strong>{{__('main.superadmin')}} | </strong>
+                                            @elseif($r->id == 3)
+                                                <strong>{{__('main.admin')}} | </strong>
+                                            @elseif($r->id == 4)
+                                                <strong>{{__('main.reviewer')}} | </strong>
+                                            @endif
+                                        @endforeach {{__('main.reguser')}}
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -94,12 +101,12 @@
                                     <div class="col-sm-6">
                                         {{ $profile->birthday }}
                                     </div>
-                                    <div class="col-sm-6 text-right">
+                                    {{--<div class="col-sm-6 text-right">
                                         <strong>{{ __('form.profile_age') }}:</strong>
                                     </div>
                                     <div class="col-sm-6">
                                         NYI
-                                    </div>
+                                    </div>--}}
 
                                     <div class="col-sm-6 text-right">
                                         <strong>{{ __('form.profile_phone') }}:</strong>

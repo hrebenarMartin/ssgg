@@ -20,9 +20,15 @@ class AjaxExternalController extends Controller
             $contr = Contribution::findOrFail($contr_id);
             $comments = ContributionComment::getContributionComments($contr_id);
             foreach ($comments as $comment) {
-                $comment->date = Carbon::createFromFormat("Y-m-d H:i:s", $comment->created_at)->format("d,M Y H:i:s");
+                $comment->date = Carbon::createFromFormat(
+                    "Y-m-d H:i:s",
+                    $comment->created_at)->format("d,M Y H:i:s");
             }
-            return response()->json(['status' => 'OK', 'contribution' => $contr, 'comments' => $comments]);
+            return response()->json([
+                'status' => 'OK',
+                'contribution' => $contr,
+                'comments' => $comments
+                ]);
         }
 
     }

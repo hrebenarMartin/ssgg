@@ -158,7 +158,7 @@
                             </a>
                         </li>
                         <li class="list-group-item bg-primary">
-                            <a href="$!" class="text-light">
+                            <a href="{{ route('admin.conferences.conference_contributions', $conference->id) }}" class="text-light">
                                 <i class="fa fa-file fa-fw"></i> {{__('stats.contributions')}}
                                 <span class="badge badge-danger pull-right">{{$stats['contributions']}}</span>
                             </a>
@@ -183,14 +183,14 @@
                             </a>
                         </li>
                         <li class="list-group-item bg-info">
-                            <a href="$!" class="text-light">
+                            <a href="{{ route("admin.email-queue.index") }}" class="text-light">
                                 <i class="fa fa-envelope-open fa-fw"></i> {{__('b_menu.email_queue')}}
                             </a>
                         </li>
                     @endif
                     @if(Auth::user()->roles()->where('role_id', 4)->first())
                         <li class="list-group-item bg-flat-color-5">
-                            <a href="$!" class="text-light">
+                            <a href="{{ route("review.myReview.index") }}" class="text-light">
                                 <i class="fa fa-certificate fa-fw"></i> {{__('b_menu.review')}}
                                 <span class="badge badge-danger pull-right">{{count(Auth::user()->reviews)}}</span>
                             </a>

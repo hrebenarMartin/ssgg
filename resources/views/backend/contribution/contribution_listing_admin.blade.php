@@ -17,6 +17,34 @@
 
         <hr>
 
+        <div class="col-12">
+            <div class="alert alert-info fade show" role="alert">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <i class="fa fa-lightbulb fa-fw"></i> Správa príspevkov
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-primary pull-right"><i class="fa fa-fw fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zobrazenie detailu príspevku
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-danger pull-right"><i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zmazanie príspevku
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card">
             <div class="card-header">
                 <strong class="card-title">{{ __('form.contribution_listing') }}</strong>

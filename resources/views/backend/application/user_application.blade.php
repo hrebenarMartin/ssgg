@@ -127,40 +127,39 @@
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h2 class="text-muted">Platba bankovým prevodom</h2>
+                                                <h2 class="text-muted">{{ __('application.transfer_pay') }}</h2>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-sm-6">
-                                                        <p>Detaily k poukázaniu poplatku bankovým prevodom</p>
+                                                        <p>{{ __('application.transfer_pay_txt_1') }}</p>
                                                         <div class="container">
                                                             <ul>
-                                                                <li>Jednotná cena <strong>55€</strong></li>
-                                                                <li>Banka: xxxxxxxxxxxx</li>
-                                                                <li>Názov účtu: xxxxxxxxxxxxxxxx</li>
-                                                                <li>Číslo účtu: xxxxxxxxxx</li>
-                                                                <li>Kód banky: xxxx</li>
-                                                                <li>Variabilný
-                                                                    symbol: {{$appl->conference->year}}</small>
-                                                                    <b>{{str_pad($appl->user->id,5,0)}}{{str_pad($appl->id,2,0,STR_PAD_LEFT)}}</b>
+                                                                <li>{{ __('application.cost') }} <strong>100€</strong></li>
+                                                                <li>{{ __('application.bank_name') }} Prima banka Slovensko, a.s. Bratislava</li>
+                                                                <li>{{ __('application.bank_number') }} 4040198208/3100</li>
+                                                                <li>SWIFT: LUBASKBX</li>
+                                                                <li>IBAN: SK05 3100 0000 0040 4019 8208</li>
+                                                                <li>{{ __('application.bank_variable_symbol') }}
+                                                                    <strong>{{$appl->conference->year.
+                                                                    str_pad($appl->user->id,5,0).str_pad($appl->id,2,0,STR_PAD_LEFT)}}</strong>
                                                                 </li>
-                                                                <li>IČ: xxxxxxxxx</li>
-                                                                <li>SWIFT: xxxxxxxxxx</li>
-                                                                <li>IBAN: SKxx xxxx 0000 00xx xxxx xxxx</li>
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <p>
-                                                            Ako postupovať?
+                                                            {{ __('application.pay_how_to') }}
                                                         </p>
                                                         <div class="container">
                                                             <ul>
-                                                                <li>Potvrďte svoju voľbu zeleným tlačidlom dole</li>
-                                                                <li>Detaily k platbe vám budú prístupné aj naďalej</li>
-                                                                <li>Stav zaplatenia vašej prihlášky nájdete vo vašej
-                                                                    prihláške a budeme vás informovať aj mailom
-                                                                </li>
+                                                                @if($appl->status == 1)
+                                                                    <li>{{ __('application.pay_txt1') }}</li>
+                                                                    <li>{{ __('application.pay_txt2') }}</li>
+                                                                    <li>{{ __('application.pay_txt3') }}</li>
+                                                                @else
+                                                                    <li>{{ __('application.pay_txt4') }}</li>
+                                                                @endif
                                                             </ul>
                                                         </div>
                                                     </div>

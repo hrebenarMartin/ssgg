@@ -95,12 +95,12 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-sm-6 text-right">
+                                    {{--<div class="col-sm-6 text-right">
                                         <strong>{{ __('form.profile_birthday') }}:</strong>
                                     </div>
                                     <div class="col-sm-6">
                                         {{ $profile->birthday }}
-                                    </div>
+                                    </div>--}}
                                     {{--<div class="col-sm-6 text-right">
                                         <strong>{{ __('form.profile_age') }}:</strong>
                                     </div>

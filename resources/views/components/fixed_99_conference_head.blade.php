@@ -1,17 +1,6 @@
-<section class="section section-lg section-hero section-shaped pb-200">
+<section class="section section-lg section-hero section-shaped pb-150">
     <!-- Background circles -->
     <div class="shape shape-style-1 shape-primary">
-        <span class="span-150 animated pulse infinite delay-1s slow"></span>
-        <span class="span-50 animated pulse infinite delay-2s slower"></span>
-        <span class="span-50 animated pulse infinite delay-4s slow"></span>
-        <span class="span-75 animated pulse infinite delay-2s slow"></span>
-        <span class="span-100 animated pulse infinite delay-3s slow"></span>
-        <span class="span-75 animated pulse infinite delay-1s slow"></span>
-        <span class="span-50 animated pulse infinite delay-5s slow"></span>
-        <span class="span-100 animated pulse infinite delay-2s slow"></span>
-        <span class="span-50 animated pulse infinite delay-5s slow"></span>
-        <span class="span-100 animated pulse infinite delay-3s slow"></span>
-
     </div>
     <div class="container shape-container d-flex align-items-center py-lg">
         <div class="col px-0">
@@ -22,7 +11,9 @@
                     @endif
                 </div>
                 <div class="col-lg-10 text-center">
-                    <h2 class="display-3 text-white">{{ $dynamic_data->conference->year }}</h2>
+                    <hr style="margin:.75rem 0">
+                    <h2 class="display-3 text-white">{{ \Carbon\Carbon::createFromFormat("Y-m-d", $dynamic_data->conference->conference_start)->format("d") }} -
+                        {{ \Carbon\Carbon::createFromFormat("Y-m-d", $dynamic_data->conference->conference_end)->format("d, M Y") }}</h2>
                 </div>
             </div>
         </div>

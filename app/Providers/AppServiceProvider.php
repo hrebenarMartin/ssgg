@@ -32,7 +32,12 @@ class AppServiceProvider extends ServiceProvider
             if(session()->has('module')) $module = session()->pull('module');
             else $module = 1;
 
-            $front_menu = FrontMenu::where('module', $module)->where('active', 1)->orderBy('rank', 'ASC')->get();
+            if ($module == 1){
+                $front_menu = FrontMenu::where('active', 1)->where('module', 1)->orderBy('rank', 'ASC')->get();
+            }
+            else {
+                $front_menu = FrontMenu::where('active', 1)->orderBy("module")->orderBy('rank', 'ASC')->get();
+            }
             $conference = Conference::where('status', 1)->first();
 
             view()->share('menu_items', $front_menu);

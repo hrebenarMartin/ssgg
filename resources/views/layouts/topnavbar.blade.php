@@ -28,7 +28,8 @@
                 </div>
                 <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                     @foreach ($menu_items as $i)
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown text-center"
+                            @if(url()->current() == url($i->route))style="background-color: rgba(255,255,255,.1); border-radius: 20px"@endif>
                             <a href="{{url($i->route)}}" class="nav-link" role="button">
                                 @if(App::isLocale('en'))
                                     <span class="nav-link-inner--text">{{ $i->name_en }}</span>
@@ -64,7 +65,8 @@
 
                     @if($user)
                         <li class="nav-item d-none d-lg-block ml-lg-4 dropdown">
-                            <button type="button" class="btn btn-neutral" data-toggle="dropdown" data-target="#f_menu" role="button">
+                            <button type="button" class="btn btn-neutral" data-toggle="dropdown" data-target="#f_menu"
+                                    role="button">
                                 <span class="nav-link-inner--text text-primary">Menu</span>
                             </button>
                         </li>
@@ -106,7 +108,8 @@
                                         </div>
                                     </a>
                                     <a href="#!" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();" target="_blank" class="dropdown-item">
+                                    document.getElementById('logout-form').submit();" target="_blank"
+                                       class="dropdown-item">
                                         <div class="media-body">
                                             <button type="button" class="btn btn-danger btn-sm" style="width: 100%">
                                                 <span class="nav-link-inner--text">{{__('main.logout')}}</span>

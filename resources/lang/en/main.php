@@ -26,7 +26,7 @@ return [
     'reviewer' => 'Reviewer',
     'reguser' => 'User',
 
-    'archive_list' => 'List of conferences',
+    'archive_list' => 'Conference archive',
     'cancel' => 'Cancel',
     'contribution' => 'Contribution',
     'comments' => 'Comments',

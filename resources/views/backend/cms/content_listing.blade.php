@@ -61,6 +61,34 @@
                 </table>
             </div>
         </div>
+
+        <div class="col-12">
+            <div class="alert alert-info fade show" role="alert">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <i class="fa fa-lightbulb fa-fw"></i> CMS správa obsahových blokov stránky
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-primary pull-right"><i class="fa fa-fw fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Editácia obsahového bloku stránky
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-danger pull-right"><i class="fa fa-fw fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zmazanie obsahového bloku stránky
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

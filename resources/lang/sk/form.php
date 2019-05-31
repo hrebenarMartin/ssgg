@@ -56,6 +56,7 @@ return [
     'cms_menu_edit_form' => 'Upraviť menu položku',
 
     'profile_detail' => "Detail profilu",
+    'profile_edit' => "Úprava profilu",
     'profile' => 'Profil',
     'profile_basic_information' => 'Základné informácie',
     'profile_first_name' => 'Meno',

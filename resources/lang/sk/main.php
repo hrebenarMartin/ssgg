@@ -26,7 +26,7 @@ return [
     'reviewer' => 'Recenzent',
     'reguser' => 'Užívateľ',
 
-    'archive_list' => 'Zoznam konferencíí',
+    'archive_list' => 'Archív konferencií',
     'cancel' => 'Zrušiť',
     'contribution' => 'Príspevok',
     'comments' => 'Komentáre',

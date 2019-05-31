@@ -165,7 +165,9 @@
                                             @endphp
                                             @for ($i = 1; $i <= $days+1; $i++)
                                                 <div class="col-6" style="padding-bottom: 1em">
-                                                    {{__('form.conference_day')." ".$i.":"}}
+                                                    {{__('form.conference_day')}} {{$i}}.
+                                                        ( {{\Carbon\Carbon::createFromFormat('Y-m-d', $conference->conference_start)->addDays(($i-1))->format('d M,Y')}}
+                                                        ):
                                                     <div class="container" style="padding-left: 2em">
                                                         @if($config["day".intval($i)."_breakfast"] == 1)
                                                             <div class="checkbox">

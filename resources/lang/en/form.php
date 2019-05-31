@@ -56,6 +56,7 @@ return [
     'cms_menu_edit_form' => 'Edit menu option',
 
     'profile_detail' => "Profile information",
+    'profile_edit' => "Profile edit",
     'profile' => 'Profile',
     'profile_basic_information' => 'Basic information',
     'profile_first_name' => 'First name',

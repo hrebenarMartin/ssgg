@@ -12,14 +12,40 @@
                     </div>
                 @endif
 
+                <div class="col-sm-12">
+                    <div class="row py-3">
+                        <div class="col-12 align-center text-center pb-4" style="border-radius: 20px">
+                            @if(App::isLocale('en'))
+                                <h3 class="text-center text-default">You can also contribute</h3>
+                                <p class="text-center">By following the link below you can <a
+                                            href="{{route('user.myContribution.index')}}">login or register</a> into our
+                                    system and you can upload your own contribution for our conference.
+                                    Follow <a href="{{url("/konferencia#dalej")}}">this link if you want to know more
+                                        about our conference</a>.</p>
+                            @else
+                                <h3 class="text-center text-default">Aj vy môžete prispieť</h3>
+                                <p class="text-center">Kliknutím na tlačidlo nižšie sa môžete <a
+                                            href="{{route('user.myContribution.index')}}">prihlásiť alebo
+                                        zaregistrovať </a>do náško systému a po vyplnení krátkej prihlášky začať
+                                    pracovať na vašom príspevku.
+                                    Alebo nasledujte <a href="{{url("/konferencia#dalej")}}">tento odkaz aby ste sa
+                                        dozvedeli viac o našej konferencii</a>.</p>
+                            @endif
+                            <p class="text-center">
+                                <a class="btn btn-primary"
+                                   href="{{ route('user.myContribution.index') }}">{{ __('titles.add_contribution') }}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 @foreach ($dynamic_data->participants as $p)
                     <div class="col-sm-12">
                         <div class="row py-3">
                             <div class="col-12 col-sm-3 align-center text-center pb-4">
                                 @if($p->profile->image)
-                                    <img
-                                            src="{{asset('public/images/profiles/'.$p->profile->user_id."/".$p->profile->image)}}"
-                                            class="rounded-circle" width="100%" style="max-width: 100px;">
+                                    <img src="{{asset('public/images/profiles/'.$p->profile->user_id."/".$p->profile->image)}}"
+                                         class="rounded-circle" width="100%" style="max-width: 100px;">
                                 @else
                                     @if($p->profile->gender == 'M')
                                         <img class="rounded-circle"
@@ -45,7 +71,8 @@
                                             data-target="#contribution_modal">{{ __('main.contribution') }}
                                     </button>
                                 @else
-                                    <button type="button" class="btn btn-outline-danger">{{ __('main.no_contribution') }}
+                                    <button type="button"
+                                            class="btn btn-outline-danger">{{ __('main.no_contribution') }}
                                     </button>
                                 @endif
                             </div>

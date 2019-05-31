@@ -77,6 +77,43 @@
                 </table>
             </div>
         </div>
+
+        <div class="col-12">
+            <div class="alert alert-info fade show" role="alert">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <i class="fa fa-lightbulb fa-fw"></i> Správa používateľov systému
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-warning pull-right"><i class="fa fa-fw fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Editácia používateľa a jeho používateľských rolí
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-primary pull-right"><i class="fa fa-fw fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zobrazenie profilu používateľa
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-danger pull-right"><i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zmazanie používateľa zo systému
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 @endsection

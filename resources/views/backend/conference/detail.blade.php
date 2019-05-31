@@ -24,12 +24,13 @@
                             Admin tools
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{route('admin.conferences.review_form.index', $data->id)}}">{{__('conference.review_form')}}</a>
+                            <a class="dropdown-item"
+                               href="{{route('admin.conferences.review_form.index', $data->id)}}">{{__('conference.review_form')}}</a>
                         </div>
                         <a href="{{ route('admin.conferences.edit', $data->id) }}"
                            class="btn btn-success">{{ __('form.action_edit_conference') }}</a>
                         <a href="{{ route('admin.conferences.index') }}" class="btn btn-primary"><i
-                                class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
+                                    class="fa fa-fw fa-chevron-circle-left"></i> {{ __('form.action_back') }}</a>
                     </div>
                 </div>
             </div>
@@ -50,6 +51,56 @@
                     @else
                         {{ __('form.conference_archived') }}
                     @endif</strong>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="alert alert-info fade show" role="alert">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <i class="fa fa-lightbulb fa-fw"></i> Detail konferencie
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-sm btn-secondary pull-right">Admin tools</i>
+                        </button>
+                    </div>
+                    <div class="col-sm-10">
+                        - Dropdown menu s odkazom na editáciu recenzného formulára konferencie
+                    </div>
+                </div>
+                <hr>
+                <div class="row py-1">
+                    <div class="col-sm-12">
+                        Pre pridanie obrázkov do galérie, kliknite na tlačidlo
+                        <button type="button" class="btn btn-success btn-sm">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>{{ __('form.files_add') }}...</span>
+                        </button>
+                        a vyberte 1 alebo viac obrázkov a potom kliknite na tlačidlo
+                        <button type="button" class="btn btn-primary btn-sm">
+                            <i class="glyphicon glyphicon-upload"></i>
+                            <span>{{ __('form.files_upload') }}</span>
+                        </button>
+                        pre začatie uploadu obrázkov na server. Pre zrušenie výberu alebo uploadu kliknite natlačidlo
+                        <button type="button" class="btn btn-warning btn-sm">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                            <span>{{ __('form.files_upload_cancel') }}</span>
+                        </button>
+                    </div>
+                </div>
+                <hr>
+                <div class="row py-1">
+                    <div class="col-sm-12">
+                        Pre zmazanie nahratého obrázku, kliknite na tlačidlo
+                        <button type="button"
+                                class="btn btn-md btn-danger btn-sm"><i
+                                    class="fa fa-fw fa-trash"></i></button>
+                        v pravom horno rohu daného obrázku.
+
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -88,13 +139,17 @@
                                     <strong>{{ __('form.conference_registration_dates') }}</strong>
                                 </div>
                                 <div class="col-12 text-right pb-3">
-                                    {{ $data->registration_start." - ".$data->registration_end }}
+                                    {{ \Carbon\Carbon::createFromFormat("Y-m-d",$data->registration_start)->format('d M,Y')
+                                    ." - ".
+                                    \Carbon\Carbon::createFromFormat("Y-m-d",$data->registration_end)->format('d M,Y') }}
                                 </div>
                                 <div class="col-12">
                                     <strong>{{ __('form.conference_conference_dates') }}</strong>
                                 </div>
                                 <div class="col-12 text-right">
-                                    {{ $data->conference_start." - ".$data->conference_end }}
+                                    {{ \Carbon\Carbon::createFromFormat("Y-m-d",$data->conference_start)->format('d M,Y')
+                                    ." - ".
+                                    \Carbon\Carbon::createFromFormat("Y-m-d",$data->conference_end)->format('d M,Y') }}
                                 </div>
                             </div>
                         </div>
@@ -102,7 +157,12 @@
                     <div class="col-6">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">{{ __('form.conference_statistics') }}</strong>
+                                <strong class="card-title">{{ __('form.conference_statistics') }}
+                                    <a href="{{ route('admin.conferences.conference_statistics', $data->id) }}"
+                                            class="pull-right btn btn-success btn-sm">
+                                        {{ __('form.conference_statistics') }}
+                                    </a>
+                                </strong>
                             </div>
                         </div>
                         <div class="card-body">
@@ -131,7 +191,8 @@
                                 <span id="proc_file_span">
                                     <a href="{{route('conference.proceedings_download', $data->year)}}"
                                        class="btn btn-outline-primary">{{__('contribution.download_document')}}</a>
-                                    <a href="#!" id="del_proc_file" class="text-danger"><i class="fa fa-fw fa-times"></i></a>
+                                    <a href="#!" id="del_proc_file" class="text-danger"><i
+                                                class="fa fa-fw fa-times"></i></a>
                                 </span>
                             </p>
                         @else
@@ -176,13 +237,13 @@
                                                     ( {{\Carbon\Carbon::createFromFormat('Y-m-d', $data->conference_start)->addDays(($i-1))->format('d M,Y')}}
                                                     ):</strong>
                                                 <br>&nbsp; &nbsp; &nbsp;<strong><i
-                                                        class="fa fa-fw @if($config["day".intval($i)."_breakfast"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_breakfast')}}
+                                                            class="fa fa-fw @if($config["day".intval($i)."_breakfast"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_breakfast')}}
                                                 </strong>
                                                 <br>&nbsp; &nbsp; &nbsp;<strong><i
-                                                        class="fa fa-fw @if($config["day".intval($i)."_lunch"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_lunch')}}
+                                                            class="fa fa-fw @if($config["day".intval($i)."_lunch"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_lunch')}}
                                                 </strong>
                                                 <br>&nbsp; &nbsp; &nbsp;<strong><i
-                                                        class="fa fa-fw @if($config["day".intval($i)."_dinner"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_dinner')}}
+                                                            class="fa fa-fw @if($config["day".intval($i)."_dinner"] == 1) fa-check text-success @else fa-times text-danger @endif"></i> {{__('form.conference_dinner')}}
                                                 </strong>
                                             </p>
                                         </div>
@@ -318,7 +379,7 @@
                                         <div class="img-overlay">
                                             <button data-img-button-id="{{$img->id}}"
                                                     class="btn btn-md btn-danger delete_image_btn"><i
-                                                    class="fa fa-fw fa-trash"></i></button>
+                                                        class="fa fa-fw fa-trash"></i></button>
                                         </div>
                                     </div>
                                 @endforeach
@@ -367,7 +428,7 @@
             padding: 0.25em;
         }
 
-        .hide{
+        .hide {
             display: none;
         }
 
@@ -556,6 +617,7 @@
 
 
 
+
     </script>
 
     <!-- The template to display files available for download -->
@@ -600,6 +662,7 @@
         </td>
     </tr>
 {% } %}
+
 
 
 

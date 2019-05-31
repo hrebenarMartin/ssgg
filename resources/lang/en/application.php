@@ -22,4 +22,15 @@ return [
     'apply_now' => "Apply now",
     'creating_application' => "Application",
 
+    'transfer_pay' => "Pay by bank transfer",
+    'transfer_pay_txt_1' => "Details regarding the bank transfer",
+    'cost' => "Single price:",
+    'bank_name' => "Bank name:",
+    'bank_number' => "Account number:",
+    'bank_variable_symbol' => "Variable symbol:",
+    'pay_how_to' => "How to proceed?",
+    'pay_txt1' => "Confirm that you will pay this application by clicking on the green button below",
+    'pay_txt2' => "Details about payment will be also available to you after confirmation",
+    'pay_txt3' => "You can find status of your application in 'My application' section. We will also inform you by mail if we receive payment.",
+    'pay_txt4' => "If we recieve confirmation about your payment, our administrator will confirm payment on your application.",
 ];

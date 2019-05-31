@@ -109,6 +109,65 @@
                 </table>
             </div>
         </div>
+
+        <div class="col-12">
+            <div class="alert alert-info fade show" role="alert">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <i class="fa fa-lightbulb fa-fw"></i> Zoznam prihlášok na konferenciu
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        Nepotvrdené prihlášky
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-check"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Manuálne potvrdiť prihlášku
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12">
+                        Potvrdené prihlášky
+                    </div>
+                </div>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-success pull-right"><i class="fa fa-fw fa-money-bill-wave"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Potvrdenie zaplatenej prihlášky (ak ešte nie je zaplatená nerobiť nič)
+                    </div>
+                </div>
+                <hr>
+                <div class="row py-1">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-primary pull-right"><i class="fa fa-fw fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zobrazenie detailu prihlášky
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-danger pull-right"><i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="col-sm-11">
+                        - Zmazanie prihlášky - DANGER
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @stop
 
@@ -121,7 +180,7 @@
                 var id = $(e.currentTarget).attr("data-item-id");
                 swal({
                     title: "DANGER ZONE! Are you sure you want to proceed?",
-                    text: "Email will be deleted from queue.",
+                    text: "Application will be deleted.",
                     icon: "error",
                     buttons: true,
                     dangerMode: true,

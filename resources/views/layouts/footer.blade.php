@@ -42,7 +42,7 @@
             <div class="col-md-6">
                 <div class="copyright">
                     &copy; 2019
-                    Pre SSGG ako Bakalársku prácu, vytvoril: <a href="https://www.st.fmph.uniba.sk/~hrebenar3" target="_blank">Martin Hrebeňár</a>
+                    Pre SSGG vytvoril: <a href="https://www.st.fmph.uniba.sk/~hrebenar3" target="_blank">Martin Hrebeňár</a>
                 </div>
             </div>
             <div class="col-md-6">

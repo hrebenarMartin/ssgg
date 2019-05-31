@@ -17,13 +17,13 @@
         <hr>
         @if(Auth::id() == $data->user_id || Auth::user()->access_level == 4)
 
-            <div class="card">
+            <div class="card bg-primary">
                 <form id="profile_edit_form" method="POST" enctype="multipart/form-data"
                       action="{{ route('user.profile.update', $data->id) }}">
                     @csrf
                     {{ method_field('PUT') }}
                     <div class="card-header">
-                        <strong class="card-title">{{ __('form.profile_edit') }}</strong>
+                        <strong class="card-title text-white">{{ __('form.profile_edit') }}</strong>
                     </div>
                     <div class="card-body">
 
@@ -160,7 +160,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-12 form-group my-0">
+                                            {{--<div class="col-sm-12 form-group my-0">
                                                 <div class="col-sm-4 text-right">
                                                     <strong><label class="form-control-label col-form-label-sm"
                                                                    for="birthday">{{ __('form.profile_birthday') }}</label></strong>
@@ -171,7 +171,7 @@
                                                            value="{{ old('birthday') ? old('birthday') : $data->birthday }}"
                                                            name="birthday">
                                                 </div>
-                                            </div>
+                                            </div>--}}
 
                                             {{--<div class="col-sm-12 form-group my-0">
                                                 <div class="col-sm-4 text-right">

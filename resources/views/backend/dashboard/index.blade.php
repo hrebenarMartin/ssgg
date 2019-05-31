@@ -158,7 +158,8 @@
                             </a>
                         </li>
                         <li class="list-group-item bg-primary">
-                            <a href="{{ route('admin.conferences.conference_contributions', $conference->id) }}" class="text-light">
+                            <a href="{{ route('admin.conferences.conference_contributions', $conference->id) }}"
+                               class="text-light">
                                 <i class="fa fa-file fa-fw"></i> {{__('stats.contributions')}}
                                 <span class="badge badge-danger pull-right">{{$stats['contributions']}}</span>
                             </a>
@@ -202,17 +203,15 @@
                         </a>
                     </li>
                     <li class="list-group-item">
+                        <a href="{{ route('user.application.index') }}">
+                            <i class="fa fa-id-badge fa-fw"></i> {{ __('b_menu.user_application') }}
+                        </a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="{{ route('user.myContribution.index') }}">
                             <i class="fa fa-file fa-fw"></i> {{ __('b_menu.user_contribution') }}
                         </a>
                     </li>
-                    @if($conference)
-                        <li class="list-group-item">
-                            <a href="{{ route('user.application.index') }}">
-                                <i class="fa fa-id-badge fa-fw"></i> {{ __('b_menu.user_application') }}
-                            </a>
-                        </li>
-                    @endif
                 </ul>
 
             </section>

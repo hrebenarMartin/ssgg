@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Lorem ipsum Donut sit amet.
                 </div>
             </div>
         </div>
